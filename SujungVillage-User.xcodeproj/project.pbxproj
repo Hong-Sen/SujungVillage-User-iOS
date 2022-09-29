@@ -22,6 +22,17 @@
 		742D13EA28E439B400150673 /* SettingTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 742D13E928E439B400150673 /* SettingTab.storyboard */; };
 		742D13F228E447CD00150673 /* CustomTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13F128E447CD00150673 /* CustomTabbarController.swift */; };
 		74840A6528E55EB4002AF1BC /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A6428E55EB4002AF1BC /* CustomTabBar.swift */; };
+		74840A7028E5B577002AF1BC /* SUIT-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6728E5B576002AF1BC /* SUIT-Light.otf */; };
+		74840A7128E5B577002AF1BC /* SUIT-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6828E5B576002AF1BC /* SUIT-Heavy.otf */; };
+		74840A7228E5B577002AF1BC /* SUIT-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6928E5B576002AF1BC /* SUIT-Regular.otf */; };
+		74840A7328E5B577002AF1BC /* SUIT-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6A28E5B576002AF1BC /* SUIT-Medium.otf */; };
+		74840A7428E5B577002AF1BC /* SUIT-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6B28E5B576002AF1BC /* SUIT-Bold.otf */; };
+		74840A7528E5B577002AF1BC /* SUIT-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6C28E5B576002AF1BC /* SUIT-ExtraBold.otf */; };
+		74840A7628E5B577002AF1BC /* SUIT-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6D28E5B576002AF1BC /* SUIT-SemiBold.otf */; };
+		74840A7728E5B577002AF1BC /* SUIT-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6E28E5B576002AF1BC /* SUIT-ExtraLight.otf */; };
+		74840A7828E5B577002AF1BC /* SUIT-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */; };
+		74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */; };
+		74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +53,17 @@
 		742D13E928E439B400150673 /* SettingTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingTab.storyboard; sourceTree = "<group>"; };
 		742D13F128E447CD00150673 /* CustomTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarController.swift; sourceTree = "<group>"; };
 		74840A6428E55EB4002AF1BC /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		74840A6728E5B576002AF1BC /* SUIT-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Light.otf"; sourceTree = "<group>"; };
+		74840A6828E5B576002AF1BC /* SUIT-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Heavy.otf"; sourceTree = "<group>"; };
+		74840A6928E5B576002AF1BC /* SUIT-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.otf"; sourceTree = "<group>"; };
+		74840A6A28E5B576002AF1BC /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
+		74840A6B28E5B576002AF1BC /* SUIT-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.otf"; sourceTree = "<group>"; };
+		74840A6C28E5B576002AF1BC /* SUIT-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-ExtraBold.otf"; sourceTree = "<group>"; };
+		74840A6D28E5B576002AF1BC /* SUIT-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.otf"; sourceTree = "<group>"; };
+		74840A6E28E5B576002AF1BC /* SUIT-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-ExtraLight.otf"; sourceTree = "<group>"; };
+		74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.otf"; sourceTree = "<group>"; };
+		74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +156,8 @@
 		742D13D128E4346300150673 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */,
+				74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -165,6 +189,7 @@
 		742D13D528E4352800150673 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				74840A6628E5B565002AF1BC /* Fonts */,
 				742D13C128E2C70300150673 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -220,6 +245,22 @@
 				74840A6428E55EB4002AF1BC /* CustomTabBar.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		74840A6628E5B565002AF1BC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				74840A6B28E5B576002AF1BC /* SUIT-Bold.otf */,
+				74840A6C28E5B576002AF1BC /* SUIT-ExtraBold.otf */,
+				74840A6E28E5B576002AF1BC /* SUIT-ExtraLight.otf */,
+				74840A6828E5B576002AF1BC /* SUIT-Heavy.otf */,
+				74840A6728E5B576002AF1BC /* SUIT-Light.otf */,
+				74840A6A28E5B576002AF1BC /* SUIT-Medium.otf */,
+				74840A6928E5B576002AF1BC /* SUIT-Regular.otf */,
+				74840A6D28E5B576002AF1BC /* SUIT-SemiBold.otf */,
+				74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,13 +321,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74840A7328E5B577002AF1BC /* SUIT-Medium.otf in Resources */,
+				74840A7528E5B577002AF1BC /* SUIT-ExtraBold.otf in Resources */,
+				74840A7128E5B577002AF1BC /* SUIT-Heavy.otf in Resources */,
 				742D13C528E2C70300150673 /* LaunchScreen.storyboard in Resources */,
+				74840A7728E5B577002AF1BC /* SUIT-ExtraLight.otf in Resources */,
+				74840A7428E5B577002AF1BC /* SUIT-Bold.otf in Resources */,
 				742D13E828E439AC00150673 /* QnATab.storyboard in Resources */,
+				74840A7228E5B577002AF1BC /* SUIT-Regular.otf in Resources */,
 				742D13D728E4380500150673 /* HomeTab.storyboard in Resources */,
+				74840A7828E5B577002AF1BC /* SUIT-Thin.otf in Resources */,
 				742D13C228E2C70300150673 /* Assets.xcassets in Resources */,
 				742D13E028E4395600150673 /* CommunityTab.storyboard in Resources */,
 				742D13EA28E439B400150673 /* SettingTab.storyboard in Resources */,
+				74840A7628E5B577002AF1BC /* SUIT-SemiBold.otf in Resources */,
 				742D13C028E2C6FE00150673 /* Main.storyboard in Resources */,
+				74840A7028E5B577002AF1BC /* SUIT-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,8 +353,10 @@
 				742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */,
 				74840A6528E55EB4002AF1BC /* CustomTabBar.swift in Sources */,
 				742D13E228E4398400150673 /* CommunityViewController.swift in Sources */,
+				74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */,
 				742D13E628E4399C00150673 /* SettingViewController.swift in Sources */,
 				742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */,
+				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

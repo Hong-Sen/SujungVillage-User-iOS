@@ -38,6 +38,8 @@ class CustomTabbarController: UITabBarController {
     }()
     
     override func viewDidLoad() {
+        tabBar.unselectedItemTintColor = .plight
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.suit(size: 9, family: .Bold)], for: .normal)
         addcoustmeTabBarView()
     }
     
