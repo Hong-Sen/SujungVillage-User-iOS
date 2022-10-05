@@ -17,7 +17,7 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var dormitoryLabel: UILabel!
     @IBOutlet weak var rewardPointLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
-
+    
     
     @IBOutlet weak var overnightLabel: UILabel!
     @IBOutlet weak var rollCallLabel: UILabel!
@@ -25,11 +25,29 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var rewardCheckLabel: UILabel!
     
     private let viewModel = HomeViewModel()
+    var observer: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !UserDefaults.standard.isLogined {
+            presentLoginVC()
+        }
+        
+        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
+            if UserDefaults.standard.isLogined {
+                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
+            }
+        })
+        
         setDefaultView()
         setView()
+    }
+    
+    func presentLoginVC() {
+        guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC, animated: true)
     }
     
     func setDefaultView() {
@@ -47,7 +65,7 @@ class HomeTabViewController: UIViewController {
         
         nameLabel.font = UIFont.suit(size: 34, family: .Bold)
         nameLabel.textColor = .white
-
+        
         welcomeLabel.font = UIFont.suit(size: 22, family: .Bold)
         welcomeLabel.textColor = .white
         welcomeLabel.text = "님 반갑습니다!"
@@ -59,7 +77,7 @@ class HomeTabViewController: UIViewController {
         rewardPointLabel.textColor = UIColor(hexString: "FFEEBD")
         
         bottomView.roundTopCorners()
-
+        
         bottomView.layer.shadowColor = UIColor.black.cgColor
         bottomView.layer.shadowOpacity = 0.3
         bottomView.layer.shadowRadius = 3.0
@@ -76,7 +94,7 @@ class HomeTabViewController: UIViewController {
         
         rewardCheckLabel.font = UIFont.suit(size: 11, family: .Medium)
         rewardCheckLabel.textColor = UIColor(hexString: "878787")
-    
+        
     }
     
     func setView() {
@@ -95,18 +113,18 @@ class HomeTabViewController: UIViewController {
 }
 
 extension UIView {
-
-   func roundTopCorners(radius: CGFloat = 30) {
-       self.clipsToBounds = true
-       self.layer.cornerRadius = radius
-       if #available(iOS 11.0, *) {
-           self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-       } else {
-           self.roundCorners(corners: [.topLeft, .topRight], radius: radius)
-       }
-   }
-
-   private func roundCorners(corners: UIRectCorner, radius: CGFloat) {    
+    
+    func roundTopCorners(radius: CGFloat = 30) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        if #available(iOS 11.0, *) {
+            self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            self.roundCorners(corners: [.topLeft, .topRight], radius: radius)
+        }
+    }
+    
+    private func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath

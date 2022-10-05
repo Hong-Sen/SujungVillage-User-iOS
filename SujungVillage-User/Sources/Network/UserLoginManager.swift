@@ -16,18 +16,15 @@ class UserLoginManager {
     }()
     
     static let shared = UserLoginManager()
-    //    private override init() { }
     
     func setUser(
         jwtToken: String? = nil
     ) {
         let defaults = UserDefaults.standard
-//         기존 유저정보가 존재하지 않으면
-        if defaults.object(forKey: "jwtToken") == nil {
-            if let jwtToken = jwtToken {
-                defaults.set(jwtToken, forKey: "jwtToken")
-            }
+        if let jwtToken = jwtToken {
+            defaults.set(jwtToken, forKey: "jwtToken")
         }
+        defaults.isLogined = true
     }
     
     func doLoginWithGoogle(vc : UIViewController) {
@@ -53,6 +50,7 @@ class UserLoginManager {
     
     func doLogoutWithGoogle() {
         UserDefaults.standard.removeObject(forKey: "jwtToken")
+        UserDefaults.standard.isLogined = false
         GIDSignIn.sharedInstance.signOut()
     }
 }

@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 
 class Repository: NSObject {
-//    private override init() {}
     static let shared = Repository()
     private let baseUrl = API.shared.base_url
 }

@@ -17,21 +17,21 @@ class HomeViewModel: NSObject {
             onUpdated()
         }
     }
-    
+
     var dormitoryName: String = ""
     {
         didSet {
             onUpdated()
         }
     }
-    
+
     var plusLMP: Int = 0
     {
         didSet {
             onUpdated()
         }
     }
-    
+
     var minusLMP: Int = 0
     {
         didSet {
