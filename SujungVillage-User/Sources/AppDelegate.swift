@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func resize(image: UIImage, newWidth: CGFloat) -> UIImage {
 
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: image.size.height))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: image.size.height)) // image.drawInRect( CGRect(x: 0, y: 0, width: newWidth, height: image.size.height))  in swift 2
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: image.size.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 

@@ -22,7 +22,7 @@ class UserLoginManager {
         jwtToken: String? = nil
     ) {
         let defaults = UserDefaults.standard
-        // 기존 유저정보가 존재하지 않으면
+//         기존 유저정보가 존재하지 않으면
         if defaults.object(forKey: "jwtToken") == nil {
             if let jwtToken = jwtToken {
                 defaults.set(jwtToken, forKey: "jwtToken")
@@ -30,11 +30,8 @@ class UserLoginManager {
         }
     }
     
-    func doLoginWithGoogle() {
-        guard let rootViewController = UIApplication.shared.windows.first?.rootViewController else {
-            return
-        }
-        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { user, error in
+    func doLoginWithGoogle(vc : UIViewController) {
+        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: vc) { user, error in
             if let error = error { return }
             
             guard let user = user, let idToken = user.authentication.idToken else { return }
@@ -43,6 +40,7 @@ class UserLoginManager {
                 switch status {
                 case .ok:
                     if let jwtToken = loginResponse?.jwtToken {
+                        print("jwtToken: \(jwtToken)")
                         self.setUser(jwtToken: jwtToken)
                     }
                 default:
