@@ -12,9 +12,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var googleLoginBtn: UIButton!
     
+    var observer: NSKeyValueObservation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        
+        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
+            self.dismiss(animated: true)
+           })
+        
         googleLoginBtn.addTarget(self, action: #selector(googleLoginButtonTapped), for: .touchDown)
     }
     
@@ -24,7 +31,13 @@ class LoginViewController: UIViewController {
     }
     
     @objc func googleLoginButtonTapped() {
-        UserLoginManager.shared.doLoginWithGoogle()
+        UserLoginManager.shared.doLoginWithGoogle(vc: self)
     }
-    
+}
+
+extension UserDefaults {
+    @objc dynamic var isLogined: Bool {
+        get { self.bool(forKey: "isLogined") ?? false }
+        set { self.setValue(newValue, forKey: "isLogined") }
+    }
 }

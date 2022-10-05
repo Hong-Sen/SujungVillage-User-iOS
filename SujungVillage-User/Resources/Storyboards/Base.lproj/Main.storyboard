@@ -1,60 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5e4-Jv-Q46">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RhL-2J-EPg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
-        <scene sceneID="NBo-eK-Pof">
-            <objects>
-                <viewController id="5e4-Jv-Q46" customClass="LoginViewController" customModule="SujungVillage_User" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SmW-v7-FSI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="taq-T1-tdk">
-                                <rect key="frame" x="147" y="292" width="120" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="nDM-Uq-fDV"/>
-                                    <constraint firstAttribute="width" constant="120" id="oBy-OR-SVy"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnl-uL-0lF">
-                                <rect key="frame" x="39" y="779" width="336" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="7vJ-7m-jBy"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="icon_google" title="Sign in with google         " imagePadding="66" cornerStyle="medium">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Wvx-c0-ayu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="wnl-uL-0lF" firstAttribute="leading" secondItem="Wvx-c0-ayu" secondAttribute="leading" constant="39" id="9bC-Sf-IfC"/>
-                            <constraint firstItem="Wvx-c0-ayu" firstAttribute="trailing" secondItem="wnl-uL-0lF" secondAttribute="trailing" constant="39" id="Qfa-LA-LwU"/>
-                            <constraint firstItem="taq-T1-tdk" firstAttribute="centerX" secondItem="SmW-v7-FSI" secondAttribute="centerX" id="QtE-T4-zym"/>
-                            <constraint firstItem="Wvx-c0-ayu" firstAttribute="bottom" secondItem="wnl-uL-0lF" secondAttribute="bottom" constant="35" id="WzS-5w-FGF"/>
-                            <constraint firstItem="taq-T1-tdk" firstAttribute="top" secondItem="Wvx-c0-ayu" secondAttribute="top" constant="248" id="c5B-ay-6b1"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="googleLoginBtn" destination="wnl-uL-0lF" id="YU4-G1-6f1"/>
-                        <outlet property="logoImg" destination="taq-T1-tdk" id="Vt8-Jn-bPU"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h1J-Dy-9GE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="32" y="-642"/>
-        </scene>
         <!--Custom Tabbar Controller-->
         <scene sceneID="PsX-aO-wAh">
             <objects>
@@ -119,10 +72,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_google" width="31" height="31"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

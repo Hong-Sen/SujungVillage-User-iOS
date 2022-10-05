@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class API {
     private init() {}
@@ -13,4 +14,13 @@ class API {
     static let shared: API = API()
     
     let base_url = "http://15.165.188.210:8080/api"
+    
+    func getHeaders() -> HTTPHeaders? {
+        var headers: HTTPHeaders = []
+        if let jwtToken = UserDefaults.standard.object(forKey: "jwtToken") {
+            headers = [ "Accept": "application/json",
+                        "jwt_token": "\(jwtToken)" ]
+        }
+        return headers
+    }
 }
