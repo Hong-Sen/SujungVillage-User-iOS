@@ -23,6 +23,7 @@
 		742D13F228E447CD00150673 /* CustomTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13F128E447CD00150673 /* CustomTabbarController.swift */; };
 		7457204928E9642500699184 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204828E9642500699184 /* HomeResponse.swift */; };
 		7457204B28EAEAFA00699184 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204A28EAEAFA00699184 /* HomeViewModel.swift */; };
+		7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479AF9E28EECF3000FF1FE8 /* ApplyRollCallViewController.swift */; };
 		7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */; };
 		7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */; };
 		7483C7A628E74F3800CCF70A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A528E74F3800CCF70A /* API.swift */; };
@@ -64,6 +65,7 @@
 		742D13F128E447CD00150673 /* CustomTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarController.swift; sourceTree = "<group>"; };
 		7457204828E9642500699184 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		7457204A28EAEAFA00699184 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7479AF9E28EECF3000FF1FE8 /* ApplyRollCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRollCallViewController.swift; sourceTree = "<group>"; };
 		7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPStaus+Enum.swift"; sourceTree = "<group>"; };
 		7483C7A528E74F3800CCF70A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -179,11 +181,11 @@
 		742D13CF28E4344E00150673 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7479AF9D28EEC99A00FF1FE8 /* Login */,
 				742D13DA28E4390000150673 /* HomeTab */,
 				742D13DD28E4391F00150673 /* Community */,
 				742D13DC28E4391000150673 /* QnATab */,
 				742D13DB28E4390400150673 /* SettingTab */,
-				7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				742D13D828E438FB00150673 /* HomeTabViewController.swift */,
+				7479AF9E28EECF3000FF1FE8 /* ApplyRollCallViewController.swift */,
 			);
 			path = HomeTab;
 			sourceTree = "<group>";
@@ -293,6 +296,14 @@
 				74840A6428E55EB4002AF1BC /* CustomTabBar.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7479AF9D28EEC99A00FF1FE8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		74840A6628E5B565002AF1BC /* Fonts */ = {
@@ -456,6 +467,7 @@
 				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,
 				7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */,
 				7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */,
+				7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */,
 				7483C7AA28E82DA500CCF70A /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

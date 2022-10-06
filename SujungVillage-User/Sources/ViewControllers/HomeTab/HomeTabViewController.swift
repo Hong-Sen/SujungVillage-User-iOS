@@ -19,9 +19,13 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     
     
-    @IBOutlet weak var overnightLabel: UILabel!
+    @IBOutlet weak var exeatView: UIStackView!
+    @IBOutlet weak var exeatLabel: UILabel!
+    @IBOutlet weak var rollCallView: UIStackView!
     @IBOutlet weak var rollCallLabel: UILabel!
+    @IBOutlet weak var noticeView: UIStackView!
     @IBOutlet weak var noticeLabel: UILabel!
+    @IBOutlet weak var rewardCheckView: UIStackView!
     @IBOutlet weak var rewardCheckLabel: UILabel!
     
     private let viewModel = HomeViewModel()
@@ -40,8 +44,8 @@ class HomeTabViewController: UIViewController {
             }
         })
         
-        setDefaultView()
-        setView()
+        setUI()
+        fetchView()
     }
     
     func presentLoginVC() {
@@ -50,7 +54,7 @@ class HomeTabViewController: UIViewController {
         self.present(loginVC, animated: true)
     }
     
-    func setDefaultView() {
+    func setUI() {
         self.view?.backgroundColor = UIColor(hexString: "FFA114")
         
         backgroundImg.image = UIImage(named: "home_background")
@@ -83,8 +87,8 @@ class HomeTabViewController: UIViewController {
         bottomView.layer.shadowRadius = 3.0
         bottomView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         
-        overnightLabel.font = UIFont.suit(size: 11, family: .Medium)
-        overnightLabel.textColor = UIColor(hexString: "878787")
+        exeatLabel.font = UIFont.suit(size: 11, family: .Medium)
+        exeatLabel.textColor = UIColor(hexString: "878787")
         
         rollCallLabel.font = UIFont.suit(size: 11, family: .Medium)
         rollCallLabel.textColor = UIColor(hexString: "878787")
@@ -95,9 +99,23 @@ class HomeTabViewController: UIViewController {
         rewardCheckLabel.font = UIFont.suit(size: 11, family: .Medium)
         rewardCheckLabel.textColor = UIColor(hexString: "878787")
         
+        exeatView.tag = 1000
+        rollCallView.tag = 1001
+        noticeView.tag = 1002
+        rewardCheckView.tag = 1003
+        
+        exeatView.isUserInteractionEnabled = true
+        rollCallView.isUserInteractionEnabled = true
+        noticeView.isUserInteractionEnabled = true
+        rewardCheckView.isUserInteractionEnabled = true
+        
+        exeatView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.viewTapped)))
+        rollCallView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.viewTapped)))
+        noticeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.viewTapped)))
+        rewardCheckView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.viewTapped)))
     }
     
-    func setView() {
+    func fetchView() {
         viewModel.onUpdated = {[weak self] in
             DispatchQueue.main.async {
                 self?.nameLabel.text = self?.viewModel.userName
@@ -107,6 +125,32 @@ class HomeTabViewController: UIViewController {
                 if let plus = self?.viewModel.plusLMP, let minus = self?.viewModel.minusLMP {
                     self?.rewardPointLabel.text = "상점 : \(plus)점    |    벌점 : \(minus)점"
                 }
+            }
+        }
+    }
+    
+    @objc func viewTapped(sender: UITapGestureRecognizer) {
+        if let tag = sender.view?.tag {
+            switch tag {
+            case 1000:
+                //
+                return
+                
+            case 1001:
+                guard let rollcallVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyRollCallViewController") as? ApplyRollCallViewController else { return }
+                self.navigationController?.pushViewController(rollcallVC, animated: true)
+                return
+                
+            case 1002:
+                //
+                return
+                
+            case 1003:
+                //
+                return
+                
+            default:
+                return
             }
         }
     }
