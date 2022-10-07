@@ -138,6 +138,7 @@ class HomeTabViewController: UIViewController {
                 
             case 1001:
                 guard let rollcallVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyRollCallViewController") as? ApplyRollCallViewController else { return }
+                rollcallVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(rollcallVC, animated: true)
                 return
                 

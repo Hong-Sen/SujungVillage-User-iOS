@@ -42,6 +42,8 @@
 		74840A7828E5B577002AF1BC /* SUIT-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */; };
 		74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */; };
 		74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */; };
+		74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */; };
+		74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E4243728EF342F00ADD295 /* RollCallResponse.swift */; };
 		B10842AAE8EB0DDC70A062F0 /* Pods_SujungVillage_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792CE14483603D06C8B3F308 /* Pods_SujungVillage_User.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.otf"; sourceTree = "<group>"; };
 		74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		74E4243728EF342F00ADD295 /* RollCallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallResponse.swift; sourceTree = "<group>"; };
 		792CE14483603D06C8B3F308 /* Pods_SujungVillage_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SujungVillage_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146AC24FAB5177AAB88A014 /* Pods-SujungVillage-User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SujungVillage-User.debug.xcconfig"; path = "Target Support Files/Pods-SujungVillage-User/Pods-SujungVillage-User.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +209,7 @@
 			children = (
 				74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */,
 				74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */,
+				74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 			children = (
 				7483C7A928E82DA500CCF70A /* LoginResponse.swift */,
 				7457204828E9642500699184 /* HomeResponse.swift */,
+				74E4243728EF342F00ADD295 /* RollCallResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,10 +469,12 @@
 				7483C7A828E74F9E00CCF70A /* Repository.swift in Sources */,
 				742D13E628E4399C00150673 /* SettingViewController.swift in Sources */,
 				7483C7A628E74F3800CCF70A /* API.swift in Sources */,
+				74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */,
 				742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */,
 				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,
 				7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */,
 				7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */,
+				74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */,
 				7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */,
 				7483C7AA28E82DA500CCF70A /* LoginResponse.swift in Sources */,
 			);
