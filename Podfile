@@ -12,5 +12,8 @@ target 'SujungVillage-User' do
   # Alamofire
   pod 'Alamofire', '~> 5.2'
 
+  # DropDown
+  pod 'DropDown'
+
 
 end

@@ -133,7 +133,9 @@ class HomeTabViewController: UIViewController {
         if let tag = sender.view?.tag {
             switch tag {
             case 1000:
-                //
+                guard let exeatVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyExeatViewController") as? ApplyExeatViewController else { return }
+                exeatVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(exeatVC, animated: true)
                 return
                 
             case 1001:

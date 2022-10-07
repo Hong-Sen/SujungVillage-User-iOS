@@ -44,6 +44,22 @@ extension Repository {
         }
     }
     
+    // MARK: Exeat
+    func applyExeat(applyModel: ApplyExeatModel, completion: @escaping (HTTPStatusCode)->Void) {
+        AF.request(
+        "\(baseUrl)/student/exeat/applyExeat",
+        method: .post,
+        parameters: ["destination": applyModel.destination, "reason": applyModel.reason, "emergencyPhoneNumber": applyModel.emergencyPhoneNumber, "dateToStart": applyModel.dateToStart, "dateToEnd": applyModel.dateToEnd],
+        encoding: JSONEncoding.default,
+        headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: RollCallResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode))
+            }
+        }
+    }
+    
     // MARK: RollCall
     func applyRollCall(image: Array<UInt8>, location: String, completion: @escaping (HTTPStatusCode, RollCallResponse?)->Void) {
         AF.request(
