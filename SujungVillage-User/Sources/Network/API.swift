@@ -15,10 +15,19 @@ class API {
     
     let base_url = "http://15.165.188.210:8080/api"
     
-    func getHeaders() -> HTTPHeaders? {
+    func getAcceptHeaders() -> HTTPHeaders? {
         var headers: HTTPHeaders = []
         if let jwtToken = UserDefaults.standard.object(forKey: "jwtToken") {
             headers = [ "Accept": "application/json",
+                        "jwt_token": "\(jwtToken)" ]
+        }
+        return headers
+    }
+    
+    func getContentTypeHeaders() -> HTTPHeaders? {
+        var headers: HTTPHeaders = []
+        if let jwtToken = UserDefaults.standard.object(forKey: "jwtToken") {
+            headers = [ "Content-Type": "application/json",
                         "jwt_token": "\(jwtToken)" ]
         }
         return headers

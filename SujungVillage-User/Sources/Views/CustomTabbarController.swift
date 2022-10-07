@@ -21,26 +21,20 @@ let tabBarItems = [TabBarItem(title: "Home", icon: "home", selectedIcon: "home_s
 
 class CustomTabbarController: UITabBarController {
     
-    let coustmeTabBarView:UIView = {
+    let coustmeTabBarView: UIView = {
         let view = UIView(frame: .zero)
-        
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.clipsToBounds = true
         
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: -8.0)
-        view.layer.shadowOpacity = 0.12
-        view.layer.shadowRadius = 10.0
         return view
     }()
     
     override func viewDidLoad() {
         tabBar.unselectedItemTintColor = .plight
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.suit(size: 9, family: .Bold)], for: .normal)
-        addcoustmeTabBarView()
+        addCustomTabBarView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,12 +46,7 @@ class CustomTabbarController: UITabBarController {
         self.tabBar.items![0].selectedImage = UIImage(named: selectedImageName)
         self.tabBar.items![0].title = ""
     }
-    
-    override func viewDidLayoutSubviews() {
-          super.viewDidLayoutSubviews()
-         coustmeTabBarView.frame = tabBar.frame
-      }
-    
+
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         for (index,tabBarItem) in tabBarItems.enumerated() {
             self.tabBar.items![index].title = tabBarItem.title
@@ -68,8 +57,8 @@ class CustomTabbarController: UITabBarController {
         item.title = ""
     }
     
-    private func addcoustmeTabBarView() {
-       coustmeTabBarView.frame = tabBar.frame
+    private func addCustomTabBarView() {
+        coustmeTabBarView.frame = tabBar.frame
         view.addSubview(coustmeTabBarView)
         view.bringSubviewToFront(self.tabBar)
     }

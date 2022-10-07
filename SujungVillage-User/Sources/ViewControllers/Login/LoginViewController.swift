@@ -34,10 +34,3 @@ class LoginViewController: UIViewController {
         UserLoginManager.shared.doLoginWithGoogle(vc: self)
     }
 }
-
-extension UserDefaults {
-    @objc dynamic var isLogined: Bool {
-        get { self.bool(forKey: "isLogined") ?? false }
-        set { self.setValue(newValue, forKey: "isLogined") }
-    }
-}

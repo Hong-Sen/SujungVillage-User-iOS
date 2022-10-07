@@ -13,8 +13,8 @@ class Repository: NSObject {
     private let baseUrl = API.shared.base_url
 }
 
-// MARK: Auth
 extension Repository {
+    // MARK: Auth
     func loginWithGoogle(token: String, completion: @escaping (HTTPStatusCode, LoginResponse?)->Void) {
         AF.request(
             "\(baseUrl)/student/login",
@@ -28,18 +28,32 @@ extension Repository {
             }
         }
     }
-}
-
-// MARK: HomeInfo
-extension Repository {
+    
+    // MARK: HomeInfo
     func getHomeInfo(year: Int, month: Int, completion: @escaping (HTTPStatusCode, HomeResponse?)->Void) {
         AF.request(
             "\(baseUrl)/student/home/getInfo?year=\(year)&month=\(month)",
             method: .get,
             encoding: JSONEncoding.default,
-            headers: API.shared.getHeaders()
+            headers: API.shared.getAcceptHeaders()
         )
         .responseDecodable(of: HomeResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    // MARK: RollCall
+    func applyRollCall(image: Array<UInt8>, location: String, completion: @escaping (HTTPStatusCode, RollCallResponse?)->Void) {
+        AF.request(
+        "\(baseUrl)/student/rollcall/applyRollcall",
+        method: .post,
+        parameters: ["image":image, "location": location],
+        encoding: JSONEncoding.default,
+        headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: RollCallResponse.self) { response in
             if let statusCode = response.response?.statusCode {
                 completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
             }
