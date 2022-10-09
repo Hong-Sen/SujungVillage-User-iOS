@@ -80,7 +80,7 @@ class HomeTabViewController: UIViewController {
         rewardPointLabel.font = UIFont.suit(size: 14, family: .Medium)
         rewardPointLabel.textColor = UIColor(hexString: "FFEEBD")
         
-        bottomView.roundTopCorners()
+        bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         
         bottomView.layer.shadowColor = UIColor.black.cgColor
         bottomView.layer.shadowOpacity = 0.3
@@ -149,32 +149,14 @@ class HomeTabViewController: UIViewController {
                 return
                 
             case 1003:
-                //
+                guard let LMPHistoryVC = self.storyboard?.instantiateViewController(withIdentifier: "GetLmpHistoryViewController") as? GetLmpHistoryViewController else { return }
+                LMPHistoryVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(LMPHistoryVC, animated: true)
                 return
                 
             default:
                 return
             }
         }
-    }
-}
-
-extension UIView {
-    
-    func roundTopCorners(radius: CGFloat = 30) {
-        self.clipsToBounds = true
-        self.layer.cornerRadius = radius
-        if #available(iOS 11.0, *) {
-            self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        } else {
-            self.roundCorners(corners: [.topLeft, .topRight], radius: radius)
-        }
-    }
-    
-    private func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
     }
 }
