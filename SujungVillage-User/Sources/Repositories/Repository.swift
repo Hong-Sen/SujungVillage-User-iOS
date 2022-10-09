@@ -29,7 +29,7 @@ extension Repository {
         }
     }
     
-    // MARK: HomeInfo
+    // MARK: Get HomeInfo
     func getHomeInfo(year: Int, month: Int, completion: @escaping (HTTPStatusCode, HomeResponse?)->Void) {
         AF.request(
             "\(baseUrl)/student/home/getInfo?year=\(year)&month=\(month)",
@@ -44,7 +44,7 @@ extension Repository {
         }
     }
     
-    // MARK: Exeat
+    // MARK: Apply Exeat
     func applyExeat(applyModel: ApplyExeatModel, completion: @escaping (HTTPStatusCode)->Void) {
         AF.request(
         "\(baseUrl)/student/exeat/applyExeat",
@@ -60,7 +60,7 @@ extension Repository {
         }
     }
     
-    // MARK: RollCall
+    // MARK: Apply RollCall
     func applyRollCall(image: Array<UInt8>, location: String, completion: @escaping (HTTPStatusCode, RollCallResponse?)->Void) {
         AF.request(
         "\(baseUrl)/student/rollcall/applyRollcall",
@@ -75,4 +75,20 @@ extension Repository {
             }
         }
     }
+    
+    // MARK: Get LMPHistory
+    func getLMPHistory(completion: @escaping (HTTPStatusCode, GetLMPHistoryResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/lmp/getLmpHistory",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getAcceptHeaders()
+        )
+        .responseDecodable(of: GetLMPHistoryResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
 }
