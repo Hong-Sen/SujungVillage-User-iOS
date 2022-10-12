@@ -15,11 +15,11 @@ class Repository: NSObject {
 
 extension Repository {
     // MARK: Auth
-    func loginWithGoogle(token: String, completion: @escaping (HTTPStatusCode, LoginResponse?)->Void) {
+    func doLogin(id: String, pwd: String, fcmToken: String, completion: @escaping (HTTPStatusCode, LoginResponse?)->Void) {
         AF.request(
             "\(baseUrl)/student/login",
             method: .post,
-            parameters: ["access_token": token, "fcm_token": ""],
+            parameters: ["id": id, "password": pwd, "fcm_token": fcmToken],
             encoding: JSONEncoding.default
         )
         .responseDecodable(of: LoginResponse.self) { response in
@@ -91,4 +91,19 @@ extension Repository {
         }
     }
     
+    // MARK: Sign Up
+    func signUp(signUpModel: SignUpModel, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/student/signup",
+            method: .post,
+            parameters: ["id": signUpModel.id, "password": signUpModel.password, "name": signUpModel.name, "dormitoryName": signUpModel.dormitoryName, "detailedAddress": signUpModel.detailedAddress, "phoneNumber": signUpModel.phoneNumber],
+            encoding: JSONEncoding.default,
+            headers: ["Content-Type": "application/json"]
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
 }

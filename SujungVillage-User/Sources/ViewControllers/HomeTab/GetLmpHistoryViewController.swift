@@ -83,6 +83,10 @@ class GetLmpHistoryViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func backBtnSelected(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension GetLmpHistoryViewController: UITableViewDelegate, UITableViewDataSource {

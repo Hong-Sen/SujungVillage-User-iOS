@@ -34,9 +34,7 @@ class HomeTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !UserDefaults.standard.isLogined {
-            presentLoginVC()
-        }
+        presentLoginVC()
         
         observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
             if UserDefaults.standard.isLogined {
@@ -49,7 +47,7 @@ class HomeTabViewController: UIViewController {
     }
     
     func presentLoginVC() {
-        guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController") as? UINavigationController else { return }
         loginVC.modalPresentationStyle = .fullScreen
         self.present(loginVC, animated: true)
     }

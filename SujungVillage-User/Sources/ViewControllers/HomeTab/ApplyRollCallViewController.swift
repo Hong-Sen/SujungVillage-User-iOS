@@ -38,7 +38,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
         
         submitBtn.setTitle("제출하기", for: .normal)
         submitBtn.setTitleColor(.white, for: .normal)
-        submitBtn.titleLabel?.font = UIFont.suit(size: 18, family: .Bold)
+        submitBtn.titleLabel?.font = UIFont.suit(size: 30, family: .Bold)
         submitBtn.tintColor = UIColor.primary
         
         cameraAreaImg.isUserInteractionEnabled = true

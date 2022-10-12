@@ -15,5 +15,8 @@ target 'SujungVillage-User' do
   # DropDown
   pod 'DropDown'
 
+  # CryptoSwift
+  pod 'CryptoSwift'
+
 
 end

@@ -67,9 +67,8 @@ class ApplyExeatViewController: UIViewController {
     }
     
     @IBAction func typeBtnSelected(_ sender: Any) {
-//        dropDownBtn.setImage(UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
-                isdropdownBtnClicked = !isdropdownBtnClicked
-                dropDownBtn.setImage(isdropdownBtnClicked ? UIImage(systemName: "arrowtriangle.up.fill") : UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
+        isdropdownBtnClicked = !isdropdownBtnClicked
+        dropDownBtn.setImage(isdropdownBtnClicked ? UIImage(systemName: "arrowtriangle.up.fill") : UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
         dropdown.show()
     }
     
