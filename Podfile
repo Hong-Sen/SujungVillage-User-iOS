@@ -6,8 +6,6 @@ target 'SujungVillage-User' do
   use_frameworks!
 
   # Pods for SujungVillage-User
-  # Login
-  pod 'GoogleSignIn'
 
   # Alamofire
   pod 'Alamofire', '~> 5.2'
