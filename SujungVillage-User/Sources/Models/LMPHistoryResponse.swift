@@ -7,11 +7,7 @@
 
 import Foundation
 
-struct GetLMPHistoryResponse: Codable {
-    let historyList: [History]
-}
-
-struct History: Codable {
+struct LMPHistoryResponse: Codable {
     let id: Int
     let userID: String
     let score: Int

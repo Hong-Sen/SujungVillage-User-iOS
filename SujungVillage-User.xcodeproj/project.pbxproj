@@ -43,7 +43,7 @@
 		7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */; };
 		7477DAC928F1C60500E3C865 /* LMPHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DAC728F1C60500E3C865 /* LMPHistoryTableViewCell.swift */; };
 		7477DACA28F1C60500E3C865 /* LMPHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7477DAC828F1C60500E3C865 /* LMPHistoryTableViewCell.xib */; };
-		7477DACE28F1CD0A00E3C865 /* GetLMPHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DACD28F1CD0A00E3C865 /* GetLMPHistoryResponse.swift */; };
+		7477DACE28F1CD0A00E3C865 /* LMPHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */; };
 		7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479AF9E28EECF3000FF1FE8 /* ApplyRollCallViewController.swift */; };
 		7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */; };
 		7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */; };
@@ -108,7 +108,7 @@
 		7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLmpHistoryViewController.swift; sourceTree = "<group>"; };
 		7477DAC728F1C60500E3C865 /* LMPHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		7477DAC828F1C60500E3C865 /* LMPHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMPHistoryTableViewCell.xib; sourceTree = "<group>"; };
-		7477DACD28F1CD0A00E3C865 /* GetLMPHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLMPHistoryResponse.swift; sourceTree = "<group>"; };
+		7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPHistoryResponse.swift; sourceTree = "<group>"; };
 		7479AF9E28EECF3000FF1FE8 /* ApplyRollCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRollCallViewController.swift; sourceTree = "<group>"; };
 		7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPStaus+Enum.swift"; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 				74E4243728EF342F00ADD295 /* RollCallResponse.swift */,
 				746AF5DC28F06F0E0027ADAA /* ApplyExeatModel.swift */,
 				742F33E928F6F03C00DA8478 /* NoticeTitleResponse.swift */,
-				7477DACD28F1CD0A00E3C865 /* GetLMPHistoryResponse.swift */,
+				7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */,
 				742A2D5F28F450050029C5A0 /* SignUpModel.swift */,
 				7469A14E28F80326007286C3 /* NoticeDetailResponse.swift */,
 			);
@@ -558,7 +558,7 @@
 				7469A14F28F80326007286C3 /* NoticeDetailResponse.swift in Sources */,
 				7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */,
 				7477DAC928F1C60500E3C865 /* LMPHistoryTableViewCell.swift in Sources */,
-				7477DACE28F1CD0A00E3C865 /* GetLMPHistoryResponse.swift in Sources */,
+				7477DACE28F1CD0A00E3C865 /* LMPHistoryResponse.swift in Sources */,
 				7457204B28EAEAFA00699184 /* HomeViewModel.swift in Sources */,
 				742D13E428E4399100150673 /* QnAViewController.swift in Sources */,
 				742F33E628F6EF0D00DA8478 /* GetNoticeViewController.swift in Sources */,

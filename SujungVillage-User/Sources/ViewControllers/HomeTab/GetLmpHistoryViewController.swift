@@ -23,6 +23,7 @@ class GetLmpHistoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let homeViewModel = HomeViewModel()
     private let LMPviewModel = LMPHistoryViewModel()
+    var historyList: [LMPHistoryResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +45,7 @@ class GetLmpHistoryViewController: UIViewController {
         minusLMPLabel.font = UIFont.suit(size: 17, family: .SemiBold)
         minusLMPLabel.textColor = UIColor.primary
         
-        if(LMPviewModel.historyArr.count == 0) {
-            tableIntroStackView.isHidden = true
-            return
-        }
+        tableIntroStackView.isHidden = true
         
         dateTableIntroView.layer.borderWidth = 1
         dateTableIntroView.layer.borderColor = UIColor.primary.cgColor
@@ -82,6 +80,17 @@ class GetLmpHistoryViewController: UIViewController {
                 }
             }
         }
+        
+        LMPviewModel.onUpdated = {[weak self] in
+            DispatchQueue.main.async {
+                self?.historyList = self?.LMPviewModel.historyList ?? []
+                self?.tableView.reloadData()
+            }
+        }
+        
+        if(historyList.count != 0) {
+            tableIntroStackView.isHidden = false
+        }
     }
     
     @IBAction func backBtnSelected(_ sender: Any) {
@@ -97,25 +106,29 @@ extension GetLmpHistoryViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.register(nibName, forCellReuseIdentifier: "LMPHistoryTableViewCell")
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 37
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return LMPviewModel.historyArr.count
+        return historyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LMPHistoryTableViewCell", for: indexPath) as! LMPHistoryTableViewCell
         
-        if(indexPath.row == LMPviewModel.historyArr.count-1) {
+        if(indexPath.row == historyList.count-1) {
             cell.dateView.roundCorners(corners: [.bottomLeft], radius: 10)
             cell.reasonView.roundCorners(corners: [.bottomRight], radius: 10)
         }
         
-        var date = LMPviewModel.historyArr[indexPath.row].regDate
+        var date = historyList[indexPath.row].regDate
         let endIdx = date.index(date.startIndex, offsetBy: 10)
         date = String(date[...endIdx])
         
-        cell.dateLabel.text = "\(date)"
-        cell.scoreLabel.text = "\(LMPviewModel.historyArr[indexPath.row].score)"
-        cell.reasonLabel.text  = "\(LMPviewModel.historyArr[indexPath.row].reason)"
+        cell.dateLabel.text = date
+        cell.scoreLabel.text = "\(historyList[indexPath.row].score)"
+        cell.reasonLabel.text  = historyList[indexPath.row].reason
         
         return cell
     }
