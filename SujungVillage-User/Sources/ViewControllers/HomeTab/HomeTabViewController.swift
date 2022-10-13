@@ -143,7 +143,9 @@ class HomeTabViewController: UIViewController {
                 return
                 
             case 1002:
-                //
+                guard let noticeVC = self.storyboard?.instantiateViewController(withIdentifier: "GetNoticeViewController") as? GetNoticeViewController else { return }
+                noticeVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(noticeVC, animated: true)
                 return
                 
             case 1003:

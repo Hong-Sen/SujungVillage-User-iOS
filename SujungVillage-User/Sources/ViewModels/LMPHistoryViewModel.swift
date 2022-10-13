@@ -27,7 +27,7 @@ class LMPHistoryViewModel: NSObject {
         self.repository.getLMPHistory { status, LMPHistoyResponse in
             switch status {
             case .ok:
-                if let historyArr = LMPHistoyResponse?.histories {
+                if let historyArr = LMPHistoyResponse?.historyList {
                     self.historyArr = historyArr
                 }
 

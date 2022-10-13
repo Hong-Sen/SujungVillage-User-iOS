@@ -106,4 +106,26 @@ extension Repository {
             }
         }
     }
+    
+    // MARK: Get NoticeTitle
+    func getNoticeTitle(dormitoryName: String, completion: @escaping (HTTPStatusCode, [NoticeTitleResponse]?)->Void) {
+        // dormitory name이 한글이라 URL encoding
+        let url = "\(baseUrl)/common/announcement/getAnnouncementTitles?dormitoryName=전체"
+        guard let encodingUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        
+        AF.request(
+            encodingUrl,
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getAcceptHeaders()
+        )
+        .responseDecodable(of: [NoticeTitleResponse].self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    
+    
 }

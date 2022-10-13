@@ -21,20 +21,9 @@ let tabBarItems = [TabBarItem(title: "Home", icon: "home", selectedIcon: "home_s
 
 class CustomTabbarController: UITabBarController {
     
-    let coustmeTabBarView: UIView = {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 20
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.clipsToBounds = true
-        
-        return view
-    }()
-    
     override func viewDidLoad() {
         tabBar.unselectedItemTintColor = .plight
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.suit(size: 9, family: .Bold)], for: .normal)
-        addCustomTabBarView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,10 +45,5 @@ class CustomTabbarController: UITabBarController {
         item.selectedImage = UIImage(named: selectedImageName)
         item.title = ""
     }
-    
-    private func addCustomTabBarView() {
-        coustmeTabBarView.frame = tabBar.frame
-        view.addSubview(coustmeTabBarView)
-        view.bringSubviewToFront(self.tabBar)
-    }
+
 }

@@ -166,7 +166,10 @@ class RegisterViewController: UIViewController {
             Repository.shared.signUp(signUpModel: model) { status, result in
                 switch status {
                 case .ok:
-                    if result == "회원가입 성공" { self.navigationController?.popViewController(animated: true) }
+                    if result == "회원가입 성공" {
+                        UserDefaults.standard.set(dormitory, forKey: "dormitoryName")
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     else if result == "이미 사용중인 id입니다." {
                         let alert = UIAlertController(title: "이미 사용중인 id입니다", message: nil, preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
