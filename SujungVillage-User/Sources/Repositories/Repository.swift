@@ -77,14 +77,14 @@ extension Repository {
     }
     
     // MARK: Get LMPHistory
-    func getLMPHistory(completion: @escaping (HTTPStatusCode, GetLMPHistoryResponse?)->Void) {
+    func getLMPHistory(completion: @escaping (HTTPStatusCode, [LMPHistoryResponse]?)->Void) {
         AF.request(
             "\(baseUrl)/student/lmp/getLmpHistory",
             method: .get,
             encoding: JSONEncoding.default,
             headers: API.shared.getAcceptHeaders()
         )
-        .responseDecodable(of: GetLMPHistoryResponse.self) { response in
+        .responseDecodable(of: [LMPHistoryResponse].self) { response in
             if let statusCode = response.response?.statusCode {
                 completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
             }

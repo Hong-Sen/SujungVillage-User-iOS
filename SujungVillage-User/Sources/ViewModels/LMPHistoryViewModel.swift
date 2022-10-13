@@ -11,7 +11,7 @@ class LMPHistoryViewModel: NSObject {
    let repository =  Repository()
     var onUpdated: () -> Void = {}
     
-    var historyArr: [History] = []
+    var historyList: [LMPHistoryResponse] = []
     {
         didSet {
             onUpdated()
@@ -24,11 +24,11 @@ class LMPHistoryViewModel: NSObject {
     }
     
     func fetchLMPHistory() {
-        self.repository.getLMPHistory { status, LMPHistoyResponse in
+        self.repository.getLMPHistory { status, response in
             switch status {
             case .ok:
-                if let historyArr = LMPHistoyResponse?.historyList {
-                    self.historyArr = historyArr
+                if let histories = response {
+                    self.historyList = histories
                 }
 
             default:
