@@ -34,8 +34,12 @@
 		7457204928E9642500699184 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204828E9642500699184 /* HomeResponse.swift */; };
 		7457204B28EAEAFA00699184 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204A28EAEAFA00699184 /* HomeViewModel.swift */; };
 		74680B6928F55F57006E289F /* AESUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74680B6828F55F57006E289F /* AESUtil.swift */; };
+		7469A14F28F80326007286C3 /* NoticeDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469A14E28F80326007286C3 /* NoticeDetailResponse.swift */; };
+		7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */; };
 		746AF5D928F044590027ADAA /* ApplyExeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */; };
 		746AF5DD28F06F0E0027ADAA /* ApplyExeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5DC28F06F0E0027ADAA /* ApplyExeatModel.swift */; };
+		7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */; };
+		7476EF9828F7FDA8008B7ABF /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */; };
 		7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */; };
 		7477DAC928F1C60500E3C865 /* LMPHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DAC728F1C60500E3C865 /* LMPHistoryTableViewCell.swift */; };
 		7477DACA28F1C60500E3C865 /* LMPHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7477DAC828F1C60500E3C865 /* LMPHistoryTableViewCell.xib */; };
@@ -95,8 +99,12 @@
 		7457204828E9642500699184 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		7457204A28EAEAFA00699184 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		74680B6828F55F57006E289F /* AESUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESUtil.swift; sourceTree = "<group>"; };
+		7469A14E28F80326007286C3 /* NoticeDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailResponse.swift; sourceTree = "<group>"; };
+		7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewModel.swift; sourceTree = "<group>"; };
 		746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyExeatViewController.swift; sourceTree = "<group>"; };
 		746AF5DC28F06F0E0027ADAA /* ApplyExeatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyExeatModel.swift; sourceTree = "<group>"; };
+		7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeDetailViewController.swift; sourceTree = "<group>"; };
+		7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLmpHistoryViewController.swift; sourceTree = "<group>"; };
 		7477DAC728F1C60500E3C865 /* LMPHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		7477DAC828F1C60500E3C865 /* LMPHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMPHistoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -215,6 +223,7 @@
 				7457204A28EAEAFA00699184 /* HomeViewModel.swift */,
 				74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */,
 				742F33E728F6EFEB00DA8478 /* NoticeViewModel.swift */,
+				7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -263,6 +272,7 @@
 				742F33E928F6F03C00DA8478 /* NoticeTitleResponse.swift */,
 				7477DACD28F1CD0A00E3C865 /* GetLMPHistoryResponse.swift */,
 				742A2D5F28F450050029C5A0 /* SignUpModel.swift */,
+				7469A14E28F80326007286C3 /* NoticeDetailResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,6 +312,7 @@
 				746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */,
 				7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */,
 				742F33E528F6EF0D00DA8478 /* GetNoticeViewController.swift */,
+				7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */,
 			);
 			path = HomeTab;
 			sourceTree = "<group>";
@@ -347,6 +358,7 @@
 				742F33E028F6EA6900DA8478 /* NoticeTableView */,
 				7477DACC28F1C62000E3C865 /* TabbarView */,
 				7477DACB28F1C61000E3C865 /* LMPHistoryCellView */,
+				7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -543,6 +555,7 @@
 			files = (
 				7457204928E9642500699184 /* HomeResponse.swift in Sources */,
 				746AF5D928F044590027ADAA /* ApplyExeatViewController.swift in Sources */,
+				7469A14F28F80326007286C3 /* NoticeDetailResponse.swift in Sources */,
 				7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */,
 				7477DAC928F1C60500E3C865 /* LMPHistoryTableViewCell.swift in Sources */,
 				7477DACE28F1CD0A00E3C865 /* GetLMPHistoryResponse.swift in Sources */,
@@ -567,9 +580,12 @@
 				74008EF428F31314008A609F /* RegisterViewController.swift in Sources */,
 				742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */,
 				742F33E828F6EFEB00DA8478 /* NoticeViewModel.swift in Sources */,
+				7476EF9828F7FDA8008B7ABF /* PaddingLabel.swift in Sources */,
 				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,
 				742F33EA28F6F03C00DA8478 /* NoticeTitleResponse.swift in Sources */,
 				7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */,
+				7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */,
+				7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */,
 				742F33E328F6EAC400DA8478 /* NoticeTableViewCell.swift in Sources */,
 				7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */,
 				74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */,

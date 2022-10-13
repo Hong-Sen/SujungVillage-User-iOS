@@ -110,7 +110,7 @@ extension Repository {
     // MARK: Get NoticeTitle
     func getNoticeTitle(dormitoryName: String, completion: @escaping (HTTPStatusCode, [NoticeTitleResponse]?)->Void) {
         // dormitory name이 한글이라 URL encoding
-        let url = "\(baseUrl)/common/announcement/getAnnouncementTitles?dormitoryName=전체"
+        let url = "\(baseUrl)/common/announcement/getAnnouncementTitles?dormitoryName=\(dormitoryName)"
         guard let encodingUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         
         AF.request(
@@ -126,6 +126,19 @@ extension Repository {
         }
     }
     
-    
+    // MARK: Get Notice detail
+    func getNoticeDetail(announcementId: Int, completion: @escaping (HTTPStatusCode, NoticeDetailResponse?)->Void) {
+     AF.request(
+            "\(baseUrl)/common/announcement/getAnnouncement?announcementId=\(announcementId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getAcceptHeaders()
+        )
+        .responseDecodable(of: NoticeDetailResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
     
 }

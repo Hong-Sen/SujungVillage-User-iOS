@@ -24,11 +24,25 @@ class NoticeViewModel: NSObject {
      }
      
      func fetchNoticeTitle() {
-         self.repository.getNoticeTitle(dormitoryName: UserDefaults.standard.string(forKey: "dormitoryName") ?? "전체"){ status, noticeTitleResponse in
+         self.repository.getNoticeTitle(dormitoryName: "전체"){ status, noticeTitleResponse in
              switch status {
              case .ok:
                  if let notices = noticeTitleResponse {
-                     self.noticeTitleList = notices
+                     self.noticeTitleList.append(contentsOf: notices)
+                 }
+                 break
+
+             default:
+                 print("error: \(status)")
+                 break
+             }
+         }
+         
+         self.repository.getNoticeTitle(dormitoryName: UserDefaults.standard.string(forKey: "dormitoryName") ?? ""){ status, noticeTitleResponse in
+             switch status {
+             case .ok:
+                 if let notices = noticeTitleResponse {
+                     self.noticeTitleList.append(contentsOf: notices)
                  }
                  break
 

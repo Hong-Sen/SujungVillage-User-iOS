@@ -59,4 +59,10 @@ extension GetNoticeViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let noticeDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "GetNoticeDetailViewController") as? GetNoticeDetailViewController else { return }
+        noticeDetailVC.announcementId = noticeList[indexPath.row].id
+        self.navigationController?.pushViewController(noticeDetailVC, animated: true)
+    }
 }

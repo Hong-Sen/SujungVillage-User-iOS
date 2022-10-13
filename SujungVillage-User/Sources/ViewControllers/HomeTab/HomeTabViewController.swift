@@ -34,13 +34,14 @@ class HomeTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.isLogined = false
         presentLoginVC()
         
-        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
-            if UserDefaults.standard.isLogined {
-                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
-            }
-        })
+//        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
+//            if UserDefaults.standard.isLogined {
+//                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
+//            }
+//        })
         
         setUI()
         fetchView()

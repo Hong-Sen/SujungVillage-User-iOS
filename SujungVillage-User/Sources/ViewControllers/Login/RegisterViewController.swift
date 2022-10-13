@@ -84,15 +84,18 @@ class RegisterViewController: UIViewController {
         pwdInputTextField.layer.cornerRadius = 5
         checkPwdTextField.layer.cornerRadius = 5
         
-        checkOverlapIdBtn.titleLabel?.font = UIFont.suit(size: 9, family: .Regular)
-        checkOverlapIdBtn.titleLabel?.textColor = .white
-        checkOverlapIdBtn.tintColor = .primary
+        checkOverlapIdBtn.titleLabel?.font = UIFont.suit(size: 12, family: .Regular)
+        checkOverlapIdBtn.tintColor = .white
+        checkOverlapIdBtn.backgroundColor = .primary
+        checkOverlapIdBtn.layer.cornerRadius = 5
         
         dormitoryTextField.placeholder = "기숙사 선택"
         roomTextField.placeholder = "호실을 입력해주세요."
         
-        registerBtn.tintColor = .primary
         registerBtn.titleLabel?.font = UIFont.suit(size: 18, family: .Bold)
+        registerBtn.tintColor = .white
+        registerBtn.backgroundColor = .primary
+        registerBtn.layer.cornerRadius = 15
     }
     
     @IBAction func backBtnSelected(_ sender: Any) {

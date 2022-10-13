@@ -36,10 +36,10 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
         refreshLabel.font = UIFont.suit(size: 15, family: .Medium)
         refreshLabel.textColor = UIColor.primary
         
-        submitBtn.setTitle("제출하기", for: .normal)
-        submitBtn.setTitleColor(.white, for: .normal)
-        submitBtn.titleLabel?.font = UIFont.suit(size: 30, family: .Bold)
-        submitBtn.tintColor = UIColor.primary
+        submitBtn.titleLabel?.font = UIFont.suit(size: 18, family: .Bold)
+        submitBtn.tintColor = .white
+        submitBtn.backgroundColor = .primary
+        submitBtn.layer.cornerRadius = 15
         
         cameraAreaImg.isUserInteractionEnabled = true
         cameraAreaImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.cameraAreaTapped)))

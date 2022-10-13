@@ -25,10 +25,12 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setView()
         
-//        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
-//            self.dismiss(animated: true)
-//        })
-        
+        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
+            if UserDefaults.standard.isLogined {
+                self.dismiss(animated: true)
+            }
+        })
+
         autoLoginBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.autoLoginTapped)))
         autoLoginBtn.isUserInteractionEnabled = true
     }
@@ -36,6 +38,7 @@ class LoginViewController: UIViewController {
     func setView() {
         self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .plight
+        
         logoImg.image = UIImage(named: "logo")
         bottomView.layer.cornerRadius = 20
         bottomView.layer.shadowOpacity = 0.08
@@ -43,15 +46,16 @@ class LoginViewController: UIViewController {
         bottomView.layer.shadowOffset = CGSize(width: 0, height: 0)
         bottomView.layer.shadowRadius = 20
         bottomView.layer.masksToBounds = false
+        bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = false
         
         loginLabel.font = UIFont.suit(size: 24, family: .SemiBold)
-        idTextField.layer.cornerRadius = 20
+        idTextField.layer.cornerRadius = idTextField.frame.size.height/2
         idTextField.layer.masksToBounds = true
         idTextField.placeholder = "ID"
         idTextField.backgroundColor = UIColor(hexString: "EAEAEA")
         idTextField.setPadding(left: 10, right: 10)
         
-        pwdTextField.layer.cornerRadius = 20
+        pwdTextField.layer.cornerRadius = pwdTextField.frame.size.height/2
         pwdTextField.layer.masksToBounds = true
         pwdTextField.placeholder = "PW"
         pwdTextField.backgroundColor = UIColor(hexString: "EAEAEA")
@@ -59,8 +63,10 @@ class LoginViewController: UIViewController {
         
         autoLoginLabel.font = UIFont.suit(size: 12, family: .Medium)
         
-        loginBtn.tintColor = UIColor.primary
+        loginBtn.tintColor = .white
         loginBtn.titleLabel?.font = UIFont.suit(size: 14, family: .Bold)
+        loginBtn.backgroundColor = .primary
+        loginBtn.layer.cornerRadius = 10
         
         signUpBtn.tintColor = .primary
         signUpBtn.titleLabel?.font = UIFont.suit(size: 10, family: .Bold)
@@ -83,9 +89,6 @@ class LoginViewController: UIViewController {
             let aes = AESUtil()
             let encodedPwd = aes.setAES256Encrypt(string: pwd)
             UserLoginManager.shared.doLogin(id: id, pwd: encodedPwd, fcmToken: "")
-            if UserDefaults.standard.isLogined {
-                self.dismiss(animated: true)
-            }
         }
     }
     
