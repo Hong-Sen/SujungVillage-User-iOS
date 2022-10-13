@@ -30,6 +30,7 @@ class UserLoginManager {
                     self.setUser(jwtToken: jwtToken)
                 }
             default:
+                UserDefaults.standard.isLogined = false
                 print("error: \(status)")
                 break
             }

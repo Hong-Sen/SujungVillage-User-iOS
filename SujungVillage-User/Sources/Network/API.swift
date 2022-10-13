@@ -17,18 +17,18 @@ class API {
     
     func getAcceptHeaders() -> HTTPHeaders? {
         var headers: HTTPHeaders = []
-        if let jwtToken = UserDefaults.standard.object(forKey: "jwtToken") {
+        if let jwtToken = UserDefaults.standard.string(forKey: "jwtToken") {
             headers = [ "Accept": "application/json",
-                        "jwt_token": "\(jwtToken)" ]
+                        "jwt_token": jwtToken]
         }
         return headers
     }
     
     func getContentTypeHeaders() -> HTTPHeaders? {
         var headers: HTTPHeaders = []
-        if let jwtToken = UserDefaults.standard.object(forKey: "jwtToken") {
+        if let jwtToken = UserDefaults.standard.string(forKey: "jwtToken") {
             headers = [ "Content-Type": "application/json",
-                        "jwt_token": "\(jwtToken)" ]
+                        "jwt_token": jwtToken ]
         }
         return headers
     }

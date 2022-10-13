@@ -8,7 +8,7 @@
 import Foundation
 
 struct GetLMPHistoryResponse: Codable {
-    let histories: [History]
+    let historyList: [History]
 }
 
 struct History: Codable {

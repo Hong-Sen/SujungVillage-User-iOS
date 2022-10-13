@@ -59,8 +59,9 @@ class ApplyExeatViewController: UIViewController {
         rememberBtn.tintColor = UIColor.primary
         
         applyBtn.titleLabel?.font = UIFont.suit(size: 18, family: .Bold)
-        applyBtn.setTitleColor(.white, for: .normal)
-        applyBtn.tintColor = .primary
+        applyBtn.tintColor = .white
+        applyBtn.backgroundColor = .primary
+        applyBtn.layer.cornerRadius = 15
     }
     @IBAction func backBtnSelected(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

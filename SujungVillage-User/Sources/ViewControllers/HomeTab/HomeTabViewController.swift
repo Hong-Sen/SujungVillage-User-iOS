@@ -34,13 +34,14 @@ class HomeTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.isLogined = false
         presentLoginVC()
         
-        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
-            if UserDefaults.standard.isLogined {
-                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
-            }
-        })
+//        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
+//            if UserDefaults.standard.isLogined {
+//                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
+//            }
+//        })
         
         setUI()
         fetchView()
@@ -143,7 +144,9 @@ class HomeTabViewController: UIViewController {
                 return
                 
             case 1002:
-                //
+                guard let noticeVC = self.storyboard?.instantiateViewController(withIdentifier: "GetNoticeViewController") as? GetNoticeViewController else { return }
+                noticeVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(noticeVC, animated: true)
                 return
                 
             case 1003:
