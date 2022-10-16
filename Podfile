@@ -16,5 +16,8 @@ target 'SujungVillage-User' do
   # CryptoSwift
   pod 'CryptoSwift'
 
+  # Calendar
+  pod 'FSCalendar'
+
 
 end

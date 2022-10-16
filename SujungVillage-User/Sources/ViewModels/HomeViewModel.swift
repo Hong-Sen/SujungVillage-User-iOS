@@ -8,8 +8,10 @@
 import Foundation
 
 class HomeViewModel: NSObject {
-   let repository =  Repository()
+    let repository =  Repository()
     var onUpdated: () -> Void = {}
+    var year: Int = Calendar.current.component(.year, from: Date())
+    var month: Int = Calendar.current.component(.month, from: Date())
     
     var userName: String = "???"
     {
@@ -17,22 +19,43 @@ class HomeViewModel: NSObject {
             onUpdated()
         }
     }
-
+    
     var dormitoryName: String = ""
     {
         didSet {
             onUpdated()
         }
     }
-
+    
     var plusLMP: Int = 0
     {
         didSet {
             onUpdated()
         }
     }
-
+    
     var minusLMP: Int = 0
+    {
+        didSet {
+            onUpdated()
+        }
+    }
+    
+    var rollcallDays: [Day] = []
+    {
+        didSet {
+            onUpdated()
+        }
+    }
+
+    var appliedRollcallDays: [Day] = []
+    {
+        didSet {
+            onUpdated()
+        }
+    }
+
+    var appliedExeatDays: [Day] = []
     {
         didSet {
             onUpdated()
@@ -41,21 +64,27 @@ class HomeViewModel: NSObject {
     
     override init() {
         super.init()
-       fetchResidentInfo(year: 2022, month: 8) // FIX: 현재 년도, 월로 변경 하기
+        fetchResidentInfo(year: year, month: month)
     }
     
     func fetchResidentInfo(year: Int, month: Int) {
-        self.repository.getHomeInfo(year: 2022, month: 8) { status, homeResponse in
+        self.repository.getHomeInfo(year: year, month: month) { status, homeResponse in
             switch status {
             case .ok:
                 if let name = homeResponse?.residentInfo.name,
                    let dormitory = homeResponse?.residentInfo.dormitoryName,
                    let plus = homeResponse?.residentInfo.plusLMP,
-                   let minus = homeResponse?.residentInfo.minusLMP {
+                   let minus = homeResponse?.residentInfo.minusLMP,
+                   let rollcallDays = homeResponse?.rollcallDays,
+                   let appliedRollcallDays = homeResponse?.appliedRollcallDays,
+                   let appliedExeatDays = homeResponse?.appliedExeatDays {
                     self.userName = name
                     self.dormitoryName = dormitory
                     self.plusLMP = plus
                     self.minusLMP = minus
+                    self.rollcallDays = rollcallDays
+                    self.appliedRollcallDays = appliedRollcallDays
+                    self.appliedExeatDays = appliedExeatDays
                 }
             default:
                 print("error: \(status)")

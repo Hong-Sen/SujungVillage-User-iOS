@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FSCalendar
 
 class HomeTabViewController: UIViewController {
     
@@ -27,9 +28,17 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var rewardCheckView: UIStackView!
     @IBOutlet weak var rewardCheckLabel: UILabel!
+    @IBOutlet weak var calendarView: FSCalendar!
     
     private let viewModel = HomeViewModel()
-    var observer: NSKeyValueObservation?
+    private var observer: NSKeyValueObservation?
+    private let dateFormatter = DateFormatter()
+    private var curYear = Calendar.current.component(.year, from: Date())
+    private var curMonth = Calendar.current.component(.month, from: Date())
+    
+    private var rollcallDayList: [Day] = []
+    private var appliedRollcallDayList: [Day] = []
+    private var appliedExeatDayList: [Day] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +46,15 @@ class HomeTabViewController: UIViewController {
         UserDefaults.standard.isLogined = false
         presentLoginVC()
         
-//        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
-//            if UserDefaults.standard.isLogined {
-//                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
-//            }
-//        })
-        
-        setUI()
+        //        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
+        //            if UserDefaults.standard.isLogined {
+        //                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
+        //            }
+        //        })
         fetchView()
+        setUI()
+        setCalendarView()
+        
     }
     
     func presentLoginVC() {
@@ -112,17 +122,50 @@ class HomeTabViewController: UIViewController {
         rollCallView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.viewTapped)))
         noticeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.viewTapped)))
         rewardCheckView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.viewTapped)))
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+    }
+    
+    func setCalendarView() {
+        calendarView.delegate = self
+        calendarView.dataSource = self
+        
+        calendarView.backgroundColor = .white
+        calendarView.scrollEnabled = false
+        
+        calendarView.appearance.headerTitleFont = UIFont.suit(size: 22, family: .Bold)
+        calendarView.appearance.headerTitleColor = UIColor(hexString: "0E0E0E")
+        calendarView.appearance.headerDateFormat = "MM월"
+        calendarView.appearance.headerTitleAlignment = .center
+        
+        calendarView.appearance.weekdayFont = UIFont.suit(size: 12, family: .Medium)
+        calendarView.appearance.weekdayTextColor = UIColor(hexString: "878787")
+        
+        calendarView.appearance.titleFont = UIFont.suit(size: 14, family: .Medium)
+        calendarView.appearance.titleDefaultColor = UIColor(hexString: "0E0E0E")
+        calendarView.appearance.titleTodayColor = .primary
+        calendarView.appearance.todayColor = nil
+        
+        calendarView.placeholderType = .none
     }
     
     func fetchView() {
         viewModel.onUpdated = {[weak self] in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 self?.nameLabel.text = self?.viewModel.userName
                 if let dormitory = self?.viewModel.dormitoryName {
                     self?.dormitoryLabel.text = "\(dormitory) 기숙사"
                 }
                 if let plus = self?.viewModel.plusLMP, let minus = self?.viewModel.minusLMP {
                     self?.rewardPointLabel.text = "상점 : \(plus)점    |    벌점 : \(minus)점"
+                }
+                if let rollcalls = self?.viewModel.rollcallDays,
+                   let appliedRollcalls = self?.viewModel.appliedRollcallDays,
+                   let appliedExeats = self?.viewModel.appliedExeatDays {
+                    self?.rollcallDayList = rollcalls
+                    self?.appliedRollcallDayList = appliedRollcalls
+                    self?.appliedExeatDayList = appliedExeats
+                    self?.calendarView.reloadData()
                 }
             }
         }
@@ -159,5 +202,58 @@ class HomeTabViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    @IBAction func moveToPrevMonthSelected(_ sender: Any) {
+        self.moveCurrentPage(moveUp: true)
+    }
+    
+    @IBAction func moveToNextMonthSelected(_ sender: Any) {
+        self.moveCurrentPage(moveUp: false)
+    }
+}
+
+
+extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    
+    private func moveCurrentPage(moveUp: Bool) {
+        let _calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.month = moveUp ? -1 : 1
+        
+        calendarView.currentPage = _calendar.date(byAdding: dateComponents, to: calendarView.currentPage)!
+        calendarView.setCurrentPage(calendarView.currentPage, animated: true)
+        
+        curYear = _calendar.component(.year, from: calendarView.currentPage)
+        curMonth =  _calendar.component(.month, from: calendarView.currentPage)
+        
+        viewModel.fetchResidentInfo(year: curYear, month: curMonth)
+        fetchView()
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        var dateToStr = dateFormatter.string(from: date)
+        
+        if dateToStr[dateToStr.index(dateToStr.startIndex, offsetBy: 8)] == "0" {
+            var i = dateToStr.index(dateToStr.startIndex, offsetBy: 8)
+            dateToStr.remove(at: i)
+        }
+        
+        if dateToStr[dateToStr.index(dateToStr.startIndex, offsetBy: 5)] == "0" {
+            var i = dateToStr.index(dateToStr.startIndex, offsetBy: 5)
+            dateToStr.remove(at: i)
+        }
+        
+        print(dateToStr)
+        
+        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == dateToStr}).count > 0 {
+            return .primary
+        }
+        
+        if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == dateToStr}).count > 0 {
+            return .systemPink
+        }
+        
+        return nil
     }
 }

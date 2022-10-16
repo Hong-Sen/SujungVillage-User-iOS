@@ -12,6 +12,7 @@
         <!--Home Tab View Controller-->
         <scene sceneID="yC3-Xc-tGh">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lk-4B-IKF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HomeTabViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N2k-xz-zaX" customClass="HomeTabViewController" customModule="SujungVillage_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vxX-vE-HHK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -153,12 +154,49 @@
                                             <constraint firstAttribute="height" constant="69" id="uo0-Qv-4hH"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPq-OD-TKc" customClass="FSCalendar">
+                                        <rect key="frame" x="30" y="150" width="354" height="375"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOB-62-VIg">
+                                        <rect key="frame" x="130" y="167" width="10" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="AEj-R7-o3q"/>
+                                            <constraint firstAttribute="width" constant="10" id="s70-cy-uWr"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="arrowtriangle.left.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="moveToPrevMonthSelected:" destination="N2k-xz-zaX" eventType="touchUpInside" id="Pop-v9-in9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRa-2h-PBC">
+                                        <rect key="frame" x="274" y="167" width="10" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="p7B-Wb-Yon"/>
+                                            <constraint firstAttribute="width" constant="10" id="sKp-ML-pAq"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="arrowtriangle.right.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="moveToNextMonthSelected:" destination="N2k-xz-zaX" eventType="touchUpInside" id="qd7-A4-S5E"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="TRa-2h-PBC" firstAttribute="top" secondItem="RbQ-q8-f2P" secondAttribute="bottom" constant="37" id="1g4-46-nH0"/>
+                                    <constraint firstItem="jOB-62-VIg" firstAttribute="leading" secondItem="gHV-Lu-t19" secondAttribute="leading" constant="130" id="8ts-eu-7BJ"/>
                                     <constraint firstItem="RbQ-q8-f2P" firstAttribute="leading" secondItem="gHV-Lu-t19" secondAttribute="leading" constant="32" id="Hcj-jv-3tG"/>
+                                    <constraint firstItem="jOB-62-VIg" firstAttribute="top" secondItem="RbQ-q8-f2P" secondAttribute="bottom" constant="37" id="IGX-lL-P5v"/>
                                     <constraint firstAttribute="trailing" secondItem="RbQ-q8-f2P" secondAttribute="trailing" constant="32" id="Jvz-Wv-Z5A"/>
+                                    <constraint firstItem="KPq-OD-TKc" firstAttribute="leading" secondItem="gHV-Lu-t19" secondAttribute="leading" constant="30" id="RIr-yr-jz5"/>
+                                    <constraint firstAttribute="bottom" secondItem="KPq-OD-TKc" secondAttribute="bottom" constant="80" id="j16-qJ-cpp"/>
+                                    <constraint firstAttribute="trailing" secondItem="TRa-2h-PBC" secondAttribute="trailing" constant="130" id="lQi-da-xqc"/>
+                                    <constraint firstAttribute="trailing" secondItem="KPq-OD-TKc" secondAttribute="trailing" constant="30" id="rBc-Gt-Y0X"/>
                                     <constraint firstItem="RbQ-q8-f2P" firstAttribute="top" secondItem="gHV-Lu-t19" secondAttribute="top" constant="61" id="vcf-Fe-GEC"/>
+                                    <constraint firstItem="KPq-OD-TKc" firstAttribute="top" secondItem="RbQ-q8-f2P" secondAttribute="bottom" constant="20" id="xgm-Sn-6I5"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -190,6 +228,7 @@
                         <outlet property="alarmBtn" destination="woy-fh-mlu" id="nHa-Qv-gNh"/>
                         <outlet property="backgroundImg" destination="Vpq-N4-BcI" id="g7R-7J-1Vy"/>
                         <outlet property="bottomView" destination="gHV-Lu-t19" id="5qG-4r-ziF"/>
+                        <outlet property="calendarView" destination="KPq-OD-TKc" id="stc-ev-OQY"/>
                         <outlet property="dormitoryLabel" destination="LKg-OS-UGJ" id="eq4-om-WvI"/>
                         <outlet property="exeatLabel" destination="c2l-kf-vhW" id="uAl-vj-0T6"/>
                         <outlet property="exeatView" destination="VLj-er-noV" id="QD8-v8-J1G"/>
@@ -205,7 +244,6 @@
                         <outlet property="welcomeLabel" destination="yWw-wr-NOV" id="Jls-i0-UHx"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5lk-4B-IKF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2719" y="148"/>
         </scene>
@@ -1558,6 +1596,8 @@
     </scenes>
     <resources>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
+        <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
+        <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>
         <image name="calendar" width="50" height="50"/>
         <image name="calendar.badge.clock" catalog="system" width="128" height="108"/>
         <image name="camera_area" width="270" height="267"/>

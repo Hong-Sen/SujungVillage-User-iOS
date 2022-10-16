@@ -9,4 +9,5 @@ import Foundation
 
 struct LoginResponse: Codable {
     var jwtToken: String?
+//    var refreshToken: String?
 }
