@@ -51,6 +51,7 @@ class HomeTabViewController: UIViewController {
         //                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
         //            }
         //        })
+        
         fetchView()
         setUI()
         setCalendarView()
@@ -231,29 +232,47 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         fetchView()
     }
     
+    func dateToStr(date: Date) -> String {
+        var day = dateFormatter.string(from: date)
+        
+        if day[day.index(day.startIndex, offsetBy: 8)] == "0" {
+            var idx = day.index(day.startIndex, offsetBy: 8)
+            day.remove(at: idx)
+        }
+        
+        if day[day.index(day.startIndex, offsetBy: 5)] == "0" {
+            var idx = day.index(day.startIndex, offsetBy: 5)
+            day.remove(at: idx)
+        }
+        
+        return day
+    }
+    
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        var dateToStr = dateFormatter.string(from: date)
+        var day = dateToStr(date: date)
         
-        if dateToStr[dateToStr.index(dateToStr.startIndex, offsetBy: 8)] == "0" {
-            var i = dateToStr.index(dateToStr.startIndex, offsetBy: 8)
-            dateToStr.remove(at: i)
+        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            return UIColor(hexString: "FF7979")
         }
         
-        if dateToStr[dateToStr.index(dateToStr.startIndex, offsetBy: 5)] == "0" {
-            var i = dateToStr.index(dateToStr.startIndex, offsetBy: 5)
-            dateToStr.remove(at: i)
-        }
-        
-        print(dateToStr)
-        
-        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == dateToStr}).count > 0 {
+        if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
             return .primary
         }
         
-        if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == dateToStr}).count > 0 {
-            return .systemPink
+        if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            return UIColor(hexString: "FFDB73")
         }
         
-        return nil
+        return .white
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
+        var day = dateToStr(date: date)
+        
+        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            return 0
+        }
+        
+        return 1
     }
 }

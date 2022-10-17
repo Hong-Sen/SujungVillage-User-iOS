@@ -59,7 +59,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     
     @objc func cameraAreaTapped(sender: UITapGestureRecognizer) {
         self.imagePicker.sourceType = .camera // simulator 작동시 오류(test시 .photoLibrary로 변경)
-        //        self.imagePicker.sourceType = .photoLibrary
+//        self.imagePicker.sourceType = .photoLibrary
         self.imagePicker.modalPresentationStyle = .overFullScreen
         self.present(self.imagePicker, animated: true, completion: nil)
     }
@@ -72,6 +72,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
         else {
             print("위치 서비스 허용 off")
         }
+        locationManager.startUpdatingLocation()
     }
     
     @IBAction func backBtnSelected(_ sender: Any) {
@@ -166,6 +167,6 @@ extension ApplyRollCallViewController {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error")
+        print("error: \(error)")
     }
 }
