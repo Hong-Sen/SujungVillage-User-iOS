@@ -13,8 +13,8 @@ class Repository: NSObject {
     private let baseUrl = API.shared.base_url
 }
 
+// MARK: Auth
 extension Repository {
-    // MARK: Auth
     func doLogin(id: String, pwd: String, fcmToken: String, completion: @escaping (HTTPStatusCode, LoginResponse?)->Void) {
         AF.request(
             "\(baseUrl)/student/login",
@@ -23,68 +23,6 @@ extension Repository {
             encoding: JSONEncoding.default
         )
         .responseDecodable(of: LoginResponse.self) { response in
-            if let statusCode = response.response?.statusCode {
-                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
-            }
-        }
-    }
-    
-    // MARK: Get HomeInfo
-    func getHomeInfo(year: Int, month: Int, completion: @escaping (HTTPStatusCode, HomeResponse?)->Void) {
-        AF.request(
-            "\(baseUrl)/student/home/getInfo?year=\(year)&month=\(month)",
-            method: .get,
-            encoding: JSONEncoding.default,
-            headers: API.shared.getAcceptHeaders()
-        )
-        .responseDecodable(of: HomeResponse.self) { response in
-            if let statusCode = response.response?.statusCode {
-                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
-            }
-        }
-    }
-    
-    // MARK: Apply Exeat
-    func applyExeat(applyModel: ApplyExeatModel, completion: @escaping (HTTPStatusCode)->Void) {
-        AF.request(
-        "\(baseUrl)/student/exeat/applyExeat",
-        method: .post,
-        parameters: ["destination": applyModel.destination, "reason": applyModel.reason, "emergencyPhoneNumber": applyModel.emergencyPhoneNumber, "dateToStart": applyModel.dateToStart, "dateToEnd": applyModel.dateToEnd],
-        encoding: JSONEncoding.default,
-        headers: API.shared.getContentTypeHeaders()
-        )
-        .responseDecodable(of: RollCallResponse.self) { response in
-            if let statusCode = response.response?.statusCode {
-                completion(HTTPStatusCode.init(rawValue: statusCode))
-            }
-        }
-    }
-    
-    // MARK: Apply RollCall
-    func applyRollCall(image: Array<UInt8>, location: String, completion: @escaping (HTTPStatusCode, RollCallResponse?)->Void) {
-        AF.request(
-        "\(baseUrl)/student/rollcall/applyRollcall",
-        method: .post,
-        parameters: ["image":image, "location": location],
-        encoding: JSONEncoding.default,
-        headers: API.shared.getContentTypeHeaders()
-        )
-        .responseDecodable(of: RollCallResponse.self) { response in
-            if let statusCode = response.response?.statusCode {
-                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
-            }
-        }
-    }
-    
-    // MARK: Get LMPHistory
-    func getLMPHistory(completion: @escaping (HTTPStatusCode, [LMPHistoryResponse]?)->Void) {
-        AF.request(
-            "\(baseUrl)/student/lmp/getLmpHistory",
-            method: .get,
-            encoding: JSONEncoding.default,
-            headers: API.shared.getAcceptHeaders()
-        )
-        .responseDecodable(of: [LMPHistoryResponse].self) { response in
             if let statusCode = response.response?.statusCode {
                 completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
             }
@@ -106,8 +44,113 @@ extension Repository {
             }
         }
     }
+}
+
+// MARK: Home
+extension Repository {
+    func getHomeInfo(year: Int, month: Int, completion: @escaping (HTTPStatusCode, HomeResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/home/getInfo?year=\(year)&month=\(month)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getAcceptHeaders()
+        )
+        .responseDecodable(of: HomeResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+}
+
+
+// MARK: RollCall
+extension Repository {
+    func applyRollCall(image: [Int8], location: String, completion: @escaping (HTTPStatusCode, CreateRollCallResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/rollcall/applyRollcall",
+            method: .post,
+            parameters: ["image":image, "location": location],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: CreateRollCallResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
     
-    // MARK: Get NoticeTitle
+    func getRollCallInfo(rollcallId: Int, completion: @escaping (HTTPStatusCode, GetRollCallInfoResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/rollcall/getAppliedRollcallInfo?rollcallId=\(rollcallId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getAcceptHeaders()
+        )
+        .responseDecodable(of: GetRollCallInfoResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+}
+
+
+// MARK: Exeat
+extension Repository {
+    func applyExeat(applyModel: ApplyExeatModel, completion: @escaping (HTTPStatusCode)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/applyExeat",
+            method: .post,
+            parameters: ["destination": applyModel.destination, "reason": applyModel.reason, "emergencyPhoneNumber": applyModel.emergencyPhoneNumber, "dateToStart": applyModel.dateToStart, "dateToEnd": applyModel.dateToEnd],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: CreateRollCallResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode))
+            }
+        }
+    }
+    
+    func getAppliedExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, GetAppliedExeatResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/getAppliedExeat?exeatId=\(exeatId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getAcceptHeaders()
+        )
+        .responseDecodable(of: GetAppliedExeatResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+}
+
+
+// MARK: LMP history
+extension Repository {
+    func getLMPHistory(completion: @escaping (HTTPStatusCode, [LMPHistoryResponse]?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/lmp/getLmpHistory",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getAcceptHeaders()
+        )
+        .responseDecodable(of: [LMPHistoryResponse].self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+}
+
+
+// MARK: Notice
+extension Repository {
     func getNoticeTitle(dormitoryName: String, completion: @escaping (HTTPStatusCode, [NoticeTitleResponse]?)->Void) {
         // dormitory name이 한글이라 URL encoding
         let url = "\(baseUrl)/common/announcement/getAnnouncementTitles?dormitoryName=\(dormitoryName)"
@@ -126,9 +169,8 @@ extension Repository {
         }
     }
     
-    // MARK: Get Notice detail
     func getNoticeDetail(announcementId: Int, completion: @escaping (HTTPStatusCode, NoticeDetailResponse?)->Void) {
-     AF.request(
+        AF.request(
             "\(baseUrl)/common/announcement/getAnnouncement?announcementId=\(announcementId)",
             method: .get,
             encoding: JSONEncoding.default,
@@ -140,5 +182,4 @@ extension Repository {
             }
         }
     }
-    
 }

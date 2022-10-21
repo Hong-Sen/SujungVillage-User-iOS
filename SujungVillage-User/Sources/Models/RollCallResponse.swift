@@ -6,10 +6,27 @@
 //
 
 import Foundation
+import UIKit
 
-struct RollCallResponse: Codable {
+struct CreateRollCallResponse: Codable {
     let id: Int
-    let userID, image, location, rollcallDateTime: String
+    let image: [Int8]
+    let userID, location, rollcallDateTime: String
+    let state: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userID = "userId"
+        case image, location, rollcallDateTime, state
+    }
+}
+
+struct GetRollCallInfoResponse: Codable {
+    let id: Int
+    let image: [Int8]
+    let userID: String
+    let location: String
+    let rollcallDateTime: String
     let state: String
 
     enum CodingKeys: String, CodingKey {

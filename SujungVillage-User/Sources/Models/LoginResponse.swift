@@ -11,3 +11,7 @@ struct LoginResponse: Codable {
     var jwtToken: String?
 //    var refreshToken: String?
 }
+
+struct SignUpModel: Codable {
+    var id, password, name, dormitoryName, detailedAddress, phoneNumber: String
+}

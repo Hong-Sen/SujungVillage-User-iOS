@@ -251,28 +251,48 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
         var day = dateToStr(date: date)
         
-        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+        // 무단 외박일
+        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0  && appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count == 0 {
             return UIColor(hexString: "FF7979")
         }
         
-        if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
-            return .primary
+        // 점호
+        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            return UIColor(hexString: "FFDB73")
         }
         
-        if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
-            return UIColor(hexString: "FFDB73")
+        // 외박
+        else if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            return .primary
         }
         
         return .white
     }
     
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         var day = dateToStr(date: date)
         
-        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
-            return 0
+        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0  && appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count == 0 {
+            let popUpViewController = UnRollCallAlertViewController()
+            popUpViewController.date = dateFormatter.string(from: date)
+            popUpViewController.modalPresentationStyle = .overFullScreen
+            present(popUpViewController, animated: true, completion: nil)
         }
         
-        return 1
+        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            let popUpViewController = RollCallAlertViewController()
+            popUpViewController.rollcallId = appliedRollcallDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
+            popUpViewController.date = dateFormatter.string(from: date)
+            popUpViewController.modalPresentationStyle = .overFullScreen
+            present(popUpViewController, animated: true, completion: nil)
+        }
+        
+        else if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            let popUpViewController = ExeatAlertViewController()
+            popUpViewController.exeatId = appliedExeatDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
+            popUpViewController.date = dateFormatter.string(from: date)
+            popUpViewController.modalPresentationStyle = .overFullScreen
+            present(popUpViewController, animated: true, completion: nil)
+        }
     }
 }

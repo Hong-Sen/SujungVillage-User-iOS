@@ -38,6 +38,7 @@ class NoticeDetailViewModel: NSObject {
         if announcementId != -101 {
             fetchNoticeDetail()
         }
+        
     }
     
     func fetchNoticeDetail() {

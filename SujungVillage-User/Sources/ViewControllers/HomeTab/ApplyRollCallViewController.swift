@@ -17,7 +17,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var refreshView: UIView!
     let imagePicker = UIImagePickerController()
     let locationManager = CLLocationManager()
-    private var photoArr: Array<UInt8> = []
+    private var photoArr: [Int8] = []
     private var finalLocation: String = ""
     
     override func viewDidLoad() {
@@ -58,8 +58,8 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func cameraAreaTapped(sender: UITapGestureRecognizer) {
-        self.imagePicker.sourceType = .camera // simulator 작동시 오류(test시 .photoLibrary로 변경)
-//        self.imagePicker.sourceType = .photoLibrary
+//        self.imagePicker.sourceType = .camera // simulator 작동시 오류(test시 .photoLibrary로 변경)
+        self.imagePicker.sourceType = .photoLibrary
         self.imagePicker.modalPresentationStyle = .overFullScreen
         self.present(self.imagePicker, animated: true, completion: nil)
     }
@@ -104,7 +104,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
             case .ok:
                 print("점호 제출 완료")
             default:
-                print("error: \(status)")
+                print("apply roll call error: \(status)")
                 break
             }
         }
@@ -113,19 +113,16 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
 }
 
 extension ApplyRollCallViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func toByteArray<T>(_ value: T) -> [UInt8] {
-        var value = value
-        return withUnsafeBytes(of: &value) { Array($0) }
-    }
-    
+ 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
             cameraAreaImg.image = image
-            guard let data = image.jpegData(compressionQuality: 1.0) else { return }
-            let byteArray = toByteArray(data)
-            photoArr = byteArray
+            
+            guard let data = image.jpegData(compressionQuality: 0.1) else { return }
+            
+            photoArr = data.map{Int8(bitPattern: $0)}
+            print(photoArr)
         }
         picker.dismiss(animated: true, completion: nil)
     }
