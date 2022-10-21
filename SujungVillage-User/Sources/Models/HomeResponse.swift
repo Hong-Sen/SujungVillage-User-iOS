@@ -13,7 +13,7 @@ struct HomeResponse: Codable {
 }
 
 struct Day: Codable {
-    let id, day: Int
+    var id, day: Int
 }
 
 struct ResidentInfo: Codable {

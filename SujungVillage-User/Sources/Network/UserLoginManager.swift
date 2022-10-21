@@ -11,7 +11,8 @@ class UserLoginManager {
     static let shared = UserLoginManager()
     
     func setUser(
-        jwtToken: String? = nil
+        jwtToken: String? = nil,
+        refreshToken: String? = nil
     ) {
         let defaults = UserDefaults.standard
         if let jwtToken = jwtToken {

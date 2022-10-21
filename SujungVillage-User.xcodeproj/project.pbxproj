@@ -11,7 +11,6 @@
 		74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */; };
 		74008EF228F302D4008A609F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF128F302D4008A609F /* UITextField+Extension.swift */; };
 		74008EF428F31314008A609F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF328F31314008A609F /* RegisterViewController.swift */; };
-		742A2D6028F450050029C5A0 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A2D5F28F450050029C5A0 /* SignUpModel.swift */; };
 		742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13B828E2C6FE00150673 /* AppDelegate.swift */; };
 		742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13BA28E2C6FE00150673 /* SceneDelegate.swift */; };
 		742D13C028E2C6FE00150673 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 742D13BE28E2C6FE00150673 /* Main.storyboard */; };
@@ -30,14 +29,13 @@
 		742F33E428F6EAC400DA8478 /* NoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 742F33E228F6EAC400DA8478 /* NoticeTableViewCell.xib */; };
 		742F33E628F6EF0D00DA8478 /* GetNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F33E528F6EF0D00DA8478 /* GetNoticeViewController.swift */; };
 		742F33E828F6EFEB00DA8478 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F33E728F6EFEB00DA8478 /* NoticeViewModel.swift */; };
-		742F33EA28F6F03C00DA8478 /* NoticeTitleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F33E928F6F03C00DA8478 /* NoticeTitleResponse.swift */; };
+		742F33EA28F6F03C00DA8478 /* NoticeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F33E928F6F03C00DA8478 /* NoticeResponse.swift */; };
 		7457204928E9642500699184 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204828E9642500699184 /* HomeResponse.swift */; };
 		7457204B28EAEAFA00699184 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204A28EAEAFA00699184 /* HomeViewModel.swift */; };
 		74680B6928F55F57006E289F /* AESUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74680B6828F55F57006E289F /* AESUtil.swift */; };
-		7469A14F28F80326007286C3 /* NoticeDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469A14E28F80326007286C3 /* NoticeDetailResponse.swift */; };
 		7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */; };
 		746AF5D928F044590027ADAA /* ApplyExeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */; };
-		746AF5DD28F06F0E0027ADAA /* ApplyExeatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5DC28F06F0E0027ADAA /* ApplyExeatModel.swift */; };
+		746AF5DD28F06F0E0027ADAA /* ExeatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */; };
 		7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */; };
 		7476EF9828F7FDA8008B7ABF /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */; };
 		7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */; };
@@ -64,7 +62,15 @@
 		74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */; };
 		74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */; };
 		74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */; };
+		74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */; };
+		74D0E06D2900ECEC0040C462 /* RollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */; };
+		74D0E0742900ED500040C462 /* ExeatAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E0722900ED500040C462 /* ExeatAlertViewController.swift */; };
+		74D0E0752900ED500040C462 /* ExeatAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E0732900ED500040C462 /* ExeatAlertViewController.xib */; };
+		74D0E0782900ED660040C462 /* UnRollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E0762900ED660040C462 /* UnRollCallAlertViewController.swift */; };
+		74D0E0792900ED660040C462 /* UnRollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E0772900ED660040C462 /* UnRollCallAlertViewController.xib */; };
+		74D2DB7B29028AA600695F62 /* GetExeatInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D2DB7A29028AA600695F62 /* GetExeatInfoViewModel.swift */; };
 		74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E4243728EF342F00ADD295 /* RollCallResponse.swift */; };
+		74F3FA6C2901796F00226A42 /* GetRollCallInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F3FA6B2901796F00226A42 /* GetRollCallInfoViewModel.swift */; };
 		B10842AAE8EB0DDC70A062F0 /* Pods_SujungVillage_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792CE14483603D06C8B3F308 /* Pods_SujungVillage_User.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +80,6 @@
 		74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPHistoryViewModel.swift; sourceTree = "<group>"; };
 		74008EF128F302D4008A609F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		74008EF328F31314008A609F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		742A2D5F28F450050029C5A0 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		742D13B528E2C6FE00150673 /* SujungVillage-User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SujungVillage-User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		742D13B828E2C6FE00150673 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		742D13BA28E2C6FE00150673 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,14 +100,13 @@
 		742F33E228F6EAC400DA8478 /* NoticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeTableViewCell.xib; sourceTree = "<group>"; };
 		742F33E528F6EF0D00DA8478 /* GetNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeViewController.swift; sourceTree = "<group>"; };
 		742F33E728F6EFEB00DA8478 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
-		742F33E928F6F03C00DA8478 /* NoticeTitleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTitleResponse.swift; sourceTree = "<group>"; };
+		742F33E928F6F03C00DA8478 /* NoticeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeResponse.swift; sourceTree = "<group>"; };
 		7457204828E9642500699184 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
 		7457204A28EAEAFA00699184 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		74680B6828F55F57006E289F /* AESUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESUtil.swift; sourceTree = "<group>"; };
-		7469A14E28F80326007286C3 /* NoticeDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailResponse.swift; sourceTree = "<group>"; };
 		7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewModel.swift; sourceTree = "<group>"; };
 		746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyExeatViewController.swift; sourceTree = "<group>"; };
-		746AF5DC28F06F0E0027ADAA /* ApplyExeatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyExeatModel.swift; sourceTree = "<group>"; };
+		746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExeatResponse.swift; sourceTree = "<group>"; };
 		7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeDetailViewController.swift; sourceTree = "<group>"; };
 		7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLmpHistoryViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +133,15 @@
 		74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallAlertViewController.swift; sourceTree = "<group>"; };
+		74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollCallAlertViewController.xib; sourceTree = "<group>"; };
+		74D0E0722900ED500040C462 /* ExeatAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExeatAlertViewController.swift; sourceTree = "<group>"; };
+		74D0E0732900ED500040C462 /* ExeatAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExeatAlertViewController.xib; sourceTree = "<group>"; };
+		74D0E0762900ED660040C462 /* UnRollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnRollCallAlertViewController.swift; sourceTree = "<group>"; };
+		74D0E0772900ED660040C462 /* UnRollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnRollCallAlertViewController.xib; sourceTree = "<group>"; };
+		74D2DB7A29028AA600695F62 /* GetExeatInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExeatInfoViewModel.swift; sourceTree = "<group>"; };
 		74E4243728EF342F00ADD295 /* RollCallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallResponse.swift; sourceTree = "<group>"; };
+		74F3FA6B2901796F00226A42 /* GetRollCallInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRollCallInfoViewModel.swift; sourceTree = "<group>"; };
 		792CE14483603D06C8B3F308 /* Pods_SujungVillage_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SujungVillage_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146AC24FAB5177AAB88A014 /* Pods-SujungVillage-User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SujungVillage-User.debug.xcconfig"; path = "Target Support Files/Pods-SujungVillage-User/Pods-SujungVillage-User.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,10 +232,7 @@
 		742D13CE28E4341100150673 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7457204A28EAEAFA00699184 /* HomeViewModel.swift */,
-				74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */,
-				742F33E728F6EFEB00DA8478 /* NoticeViewModel.swift */,
-				7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */,
+				74F3FA69290178D700226A42 /* Home */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -243,8 +252,8 @@
 		742D13D028E4345600150673 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */,
 				7483C7A528E74F3800CCF70A /* API.swift */,
+				7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */,
 				7483C7AD28E8320000CCF70A /* UserLoginManager.swift */,
 			);
 			path = Network;
@@ -268,11 +277,9 @@
 				7483C7A928E82DA500CCF70A /* LoginResponse.swift */,
 				7457204828E9642500699184 /* HomeResponse.swift */,
 				74E4243728EF342F00ADD295 /* RollCallResponse.swift */,
-				746AF5DC28F06F0E0027ADAA /* ApplyExeatModel.swift */,
-				742F33E928F6F03C00DA8478 /* NoticeTitleResponse.swift */,
+				746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */,
+				742F33E928F6F03C00DA8478 /* NoticeResponse.swift */,
 				7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */,
-				742A2D5F28F450050029C5A0 /* SignUpModel.swift */,
-				7469A14E28F80326007286C3 /* NoticeDetailResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -355,6 +362,7 @@
 		742D13F028E447A800150673 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				74D2615C28FEA5C8008BC5BE /* AlertView */,
 				742F33E028F6EA6900DA8478 /* NoticeTableView */,
 				7477DACC28F1C62000E3C865 /* TabbarView */,
 				7477DACB28F1C61000E3C865 /* LMPHistoryCellView */,
@@ -421,6 +429,40 @@
 				74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		74D2615C28FEA5C8008BC5BE /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */,
+				74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */,
+				74D0E0722900ED500040C462 /* ExeatAlertViewController.swift */,
+				74D0E0732900ED500040C462 /* ExeatAlertViewController.xib */,
+				74D0E0762900ED660040C462 /* UnRollCallAlertViewController.swift */,
+				74D0E0772900ED660040C462 /* UnRollCallAlertViewController.xib */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		74F3FA69290178D700226A42 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7457204A28EAEAFA00699184 /* HomeViewModel.swift */,
+				74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */,
+				742F33E728F6EFEB00DA8478 /* NoticeViewModel.swift */,
+				7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */,
+				74F3FA6A290178EA00226A42 /* Calendar */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		74F3FA6A290178EA00226A42 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				74F3FA6B2901796F00226A42 /* GetRollCallInfoViewModel.swift */,
+				74D2DB7A29028AA600695F62 /* GetExeatInfoViewModel.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,8 +535,11 @@
 				742D13E828E439AC00150673 /* QnATab.storyboard in Resources */,
 				7477DACA28F1C60500E3C865 /* LMPHistoryTableViewCell.xib in Resources */,
 				74840A7228E5B577002AF1BC /* SUIT-Regular.otf in Resources */,
+				74D0E0752900ED500040C462 /* ExeatAlertViewController.xib in Resources */,
 				742D13D728E4380500150673 /* HomeTab.storyboard in Resources */,
+				74D0E06D2900ECEC0040C462 /* RollCallAlertViewController.xib in Resources */,
 				74840A7828E5B577002AF1BC /* SUIT-Thin.otf in Resources */,
+				74D0E0792900ED660040C462 /* UnRollCallAlertViewController.xib in Resources */,
 				742D13C228E2C70300150673 /* Assets.xcassets in Resources */,
 				742D13E028E4395600150673 /* CommunityTab.storyboard in Resources */,
 				742D13EA28E439B400150673 /* SettingTab.storyboard in Resources */,
@@ -554,8 +599,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7457204928E9642500699184 /* HomeResponse.swift in Sources */,
+				74D0E0782900ED660040C462 /* UnRollCallAlertViewController.swift in Sources */,
 				746AF5D928F044590027ADAA /* ApplyExeatViewController.swift in Sources */,
-				7469A14F28F80326007286C3 /* NoticeDetailResponse.swift in Sources */,
 				7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */,
 				7477DAC928F1C60500E3C865 /* LMPHistoryTableViewCell.swift in Sources */,
 				7477DACE28F1CD0A00E3C865 /* LMPHistoryResponse.swift in Sources */,
@@ -571,9 +616,9 @@
 				74840A6528E55EB4002AF1BC /* CustomTabBar.swift in Sources */,
 				74008EED28F2B323008A609F /* UIView+Extension.swift in Sources */,
 				742D13E228E4398400150673 /* CommunityViewController.swift in Sources */,
-				742A2D6028F450050029C5A0 /* SignUpModel.swift in Sources */,
 				74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */,
 				7483C7A828E74F9E00CCF70A /* Repository.swift in Sources */,
+				74F3FA6C2901796F00226A42 /* GetRollCallInfoViewModel.swift in Sources */,
 				742D13E628E4399C00150673 /* SettingViewController.swift in Sources */,
 				7483C7A628E74F3800CCF70A /* API.swift in Sources */,
 				74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */,
@@ -581,17 +626,20 @@
 				742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */,
 				742F33E828F6EFEB00DA8478 /* NoticeViewModel.swift in Sources */,
 				7476EF9828F7FDA8008B7ABF /* PaddingLabel.swift in Sources */,
+				74D2DB7B29028AA600695F62 /* GetExeatInfoViewModel.swift in Sources */,
 				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,
-				742F33EA28F6F03C00DA8478 /* NoticeTitleResponse.swift in Sources */,
+				742F33EA28F6F03C00DA8478 /* NoticeResponse.swift in Sources */,
 				7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */,
 				7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */,
 				7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */,
+				74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */,
 				742F33E328F6EAC400DA8478 /* NoticeTableViewCell.swift in Sources */,
 				7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */,
 				74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */,
 				7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */,
+				74D0E0742900ED500040C462 /* ExeatAlertViewController.swift in Sources */,
 				7483C7AA28E82DA500CCF70A /* LoginResponse.swift in Sources */,
-				746AF5DD28F06F0E0027ADAA /* ApplyExeatModel.swift in Sources */,
+				746AF5DD28F06F0E0027ADAA /* ExeatResponse.swift in Sources */,
 				74680B6928F55F57006E289F /* AESUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
