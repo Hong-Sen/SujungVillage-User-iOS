@@ -29,7 +29,6 @@ extension Repository {
         }
     }
     
-    // MARK: Sign Up
     func signUp(signUpModel: SignUpModel, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
         AF.request(
             "\(baseUrl)/student/signup",
@@ -128,6 +127,19 @@ extension Repository {
         }
     }
     
+    func cancleExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/cancelExeat?exeatId=\(exeatId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.deleteHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
 }
 
 

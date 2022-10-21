@@ -87,7 +87,7 @@ class HomeViewModel: NSObject {
                     self.appliedExeatDays = appliedExeatDays
                 }
             default:
-                print("error: \(status)")
+                print("home viewmodel error: \(status)")
                 break
             }
         }

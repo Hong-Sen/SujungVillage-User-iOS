@@ -85,6 +85,9 @@
                             <rect key="frame" x="187" y="205" width="46" height="30"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="cancleBtnSelected:" destination="-1" eventType="touchUpInside" id="h3P-Hu-jg4"/>
+                            </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="5Wy-7I-Jti">
                             <rect key="frame" x="30" y="126.5" width="254" height="14"/>

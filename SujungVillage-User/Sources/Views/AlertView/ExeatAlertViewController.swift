@@ -82,6 +82,32 @@ class ExeatAlertViewController: UIViewController {
         }
     }
     
+    @IBAction func cancleBtnSelected(_ sender: Any) {
+        Repository.shared.cancleExeat(exeatId: exeatId) { status, result in
+            switch status {
+            case .ok:
+                if result == "외박신청 취소 완료" {
+                    let alert = UIAlertController(title: "외박신청 취소 완료", message: nil, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { UIAlertAction in
+                        self.dismiss(animated: true)
+                    }))
+                    self.present(alert, animated: true)
+                }
+                else {
+                    let alert = UIAlertController(title: "외박신청 취소 실패", message: nil, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { UIAlertAction in
+                        self.dismiss(animated: true)
+                    }))
+                    self.present(alert, animated: true)
+                }
+            default:
+                print("cancle exeat error: \(status)")
+                break
+            }
+        }
+    }
+    
+    
     @IBAction func okBtnSelected(_ sender: Any) {
         self.dismiss(animated: true)
     }

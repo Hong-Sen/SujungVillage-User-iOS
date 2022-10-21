@@ -42,8 +42,6 @@ class GetExeatInfoViewModel: NSObject {
     
     func fetchExeatAlert() {
         self.repository.getAppliedExeat(exeatId: exeatId, completion: { status, response in
-            print(status)
-            print(response)
             switch status {
             case .ok:
                 if let destination = response?.destination,
