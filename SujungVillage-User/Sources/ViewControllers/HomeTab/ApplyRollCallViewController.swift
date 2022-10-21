@@ -19,6 +19,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     private var photoArr: [Int8] = []
     private var finalLocation: String = ""
+    private let homeViewModel = HomeViewModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,6 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func setLocationManager() {
-        locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
@@ -103,6 +103,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
         Repository.shared.applyRollCall(image: photoArr, location: finalLocation) { status, rollcallResponse in
             switch status {
             case .ok:
+                self.homeViewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
                 print("점호 제출 완료")
             default:
                 print("apply roll call error: \(status)")
@@ -116,14 +117,10 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
 extension ApplyRollCallViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
             cameraAreaImg.image = image
-            
             guard let data = image.jpegData(compressionQuality: 0.1) else { return }
-            
             photoArr = data.map{Int8(bitPattern: $0)}
-            print(photoArr)
         }
         picker.dismiss(animated: true, completion: nil)
     }

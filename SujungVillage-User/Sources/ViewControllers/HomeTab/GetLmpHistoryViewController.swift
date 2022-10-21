@@ -21,8 +21,8 @@ class GetLmpHistoryViewController: UIViewController {
     @IBOutlet weak var reasonTableIntroView: UIView!
     @IBOutlet weak var reasonTableIntroLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    private let homeViewModel = HomeViewModel()
-    private let LMPviewModel = LMPHistoryViewModel()
+    private let homeViewModel = HomeViewModel.shared
+    private let LMPviewModel = LMPHistoryViewModel.shared
     var historyList: [LMPHistoryResponse] = []
     
     override func viewDidLoad() {
@@ -30,6 +30,8 @@ class GetLmpHistoryViewController: UIViewController {
         setUI()
         fetchView()
         setTableView()
+        homeViewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
+        LMPviewModel.fetchLMPHistory()
     }
     
     func setUI() {
@@ -132,5 +134,4 @@ extension GetLmpHistoryViewController: UITableViewDelegate, UITableViewDataSourc
         
         return cell
     }
-    
 }

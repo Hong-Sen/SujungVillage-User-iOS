@@ -7,8 +7,10 @@
 
 import Foundation
 
-class LMPHistoryViewModel: NSObject {
-   let repository =  Repository()
+class LMPHistoryViewModel {
+    static let shared = LMPHistoryViewModel()
+    private init() {}
+    let repository =  Repository()
     var onUpdated: () -> Void = {}
     
     var historyList: [LMPHistoryResponse] = []
@@ -18,11 +20,6 @@ class LMPHistoryViewModel: NSObject {
         }
     }
     
-    override init() {
-        super.init()
-        fetchLMPHistory()
-    }
-    
     func fetchLMPHistory() {
         self.repository.getLMPHistory { status, response in
             switch status {
@@ -30,7 +27,7 @@ class LMPHistoryViewModel: NSObject {
                 if let histories = response {
                     self.historyList = histories
                 }
-
+                
             default:
                 print("error: \(status)")
                 break

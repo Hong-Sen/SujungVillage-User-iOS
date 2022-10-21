@@ -7,7 +7,9 @@
 
 import Foundation
 
-class NoticeDetailViewModel: NSObject {
+class NoticeDetailViewModel {
+    static let shared = NoticeDetailViewModel()
+    private init() {}
     let repository =  Repository()
     var onUpdated: () -> Void = {}
     var announcementId: Int = -101
@@ -31,14 +33,6 @@ class NoticeDetailViewModel: NSObject {
         didSet {
             onUpdated()
         }
-    }
-    
-    override init() {
-        super.init()
-        if announcementId != -101 {
-            fetchNoticeDetail()
-        }
-        
     }
     
     func fetchNoticeDetail() {

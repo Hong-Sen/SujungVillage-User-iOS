@@ -18,7 +18,7 @@ class UserLoginManager {
         if let jwtToken = jwtToken {
             defaults.set(jwtToken, forKey: "jwtToken")
         }
-        defaults.isLogined = true
+        defaults.isLogedIn = true
     }
     
     func doLogin(id: String, pwd: String, fcmToken: String) {
@@ -30,7 +30,7 @@ class UserLoginManager {
                     self.setUser(jwtToken: jwtToken)
                 }
             default:
-                UserDefaults.standard.isLogined = false
+                UserDefaults.standard.isLogedIn = false
                 print("error: \(status)")
                 break
             }
@@ -39,6 +39,6 @@ class UserLoginManager {
     
     func doLogout() {
         UserDefaults.standard.removeObject(forKey: "jwtToken")
-        UserDefaults.standard.isLogined = false
+        UserDefaults.standard.isLogedIn = false
     }
 }

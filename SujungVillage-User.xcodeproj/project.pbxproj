@@ -34,6 +34,7 @@
 		7457204B28EAEAFA00699184 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204A28EAEAFA00699184 /* HomeViewModel.swift */; };
 		74680B6928F55F57006E289F /* AESUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74680B6828F55F57006E289F /* AESUtil.swift */; };
 		7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */; };
+		7469D7BA2902FB3000168FFA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469D7B92902FB3000168FFA /* String+Extension.swift */; };
 		746AF5D928F044590027ADAA /* ApplyExeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */; };
 		746AF5DD28F06F0E0027ADAA /* ExeatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */; };
 		7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */; };
@@ -105,6 +106,7 @@
 		7457204A28EAEAFA00699184 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		74680B6828F55F57006E289F /* AESUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESUtil.swift; sourceTree = "<group>"; };
 		7469A15028F803C9007286C3 /* NoticeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailViewModel.swift; sourceTree = "<group>"; };
+		7469D7B92902FB3000168FFA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyExeatViewController.swift; sourceTree = "<group>"; };
 		746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExeatResponse.swift; sourceTree = "<group>"; };
 		7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeDetailViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */,
 				74008EEC28F2B323008A609F /* UIView+Extension.swift */,
 				74008EF128F302D4008A609F /* UITextField+Extension.swift */,
+				7469D7B92902FB3000168FFA /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */,
 				742D13D928E438FB00150673 /* HomeTabViewController.swift in Sources */,
 				742D13F228E447CD00150673 /* CustomTabbarController.swift in Sources */,
+				7469D7BA2902FB3000168FFA /* String+Extension.swift in Sources */,
 				742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */,
 				74008EF228F302D4008A609F /* UITextField+Extension.swift in Sources */,
 				7483C7AE28E8320000CCF70A /* UserLoginManager.swift in Sources */,

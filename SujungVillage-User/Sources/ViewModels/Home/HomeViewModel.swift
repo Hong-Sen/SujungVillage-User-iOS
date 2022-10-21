@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import Combine
 
-class HomeViewModel: NSObject {
-    let repository =  Repository()
+class HomeViewModel {
+    static let shared = HomeViewModel()
+    private init() {}
+    let repository = Repository()
     var onUpdated: () -> Void = {}
     var year: Int = Calendar.current.component(.year, from: Date())
     var month: Int = Calendar.current.component(.month, from: Date())
@@ -60,11 +63,6 @@ class HomeViewModel: NSObject {
         didSet {
             onUpdated()
         }
-    }
-    
-    override init() {
-        super.init()
-        fetchResidentInfo(year: year, month: month)
     }
     
     func fetchResidentInfo(year: Int, month: Int) {

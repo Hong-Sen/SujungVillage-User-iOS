@@ -8,8 +8,8 @@
 import Foundation
 
 extension UserDefaults {
-    @objc dynamic var isLogined: Bool {
-        get { self.bool(forKey: "isLogined") ?? false }
-        set { self.setValue(newValue, forKey: "isLogined") }
+    @objc dynamic var isLogedIn: Bool {
+        get { self.bool(forKey: "isLogedIn") ?? false }
+        set { self.setValue(newValue, forKey: "isLogedIn") }
     }
 }
