@@ -53,6 +53,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func setLocationManager() {
+        locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
@@ -129,6 +130,20 @@ extension ApplyRollCallViewController: UIImagePickerControllerDelegate, UINaviga
 }
 
 extension ApplyRollCallViewController {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+           switch status {
+           case .authorizedAlways, .authorizedWhenInUse:
+               print("GPS 권한 설정됨")
+               self.locationManager.startUpdatingLocation()
+           case .restricted, .notDetermined:
+               print("GPS 권한 설정되지 않음")
+           case .denied:
+               print("GPS 권한 요청 거부됨")
+           default:
+               print("GPS: Default")
+           }
+       }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             let latitude = location.coordinate.latitude
@@ -136,7 +151,7 @@ extension ApplyRollCallViewController {
             
             let findLocation = CLLocation(latitude: latitude, longitude: longtitude)
             let geocoder = CLGeocoder()
-            let locale = Locale(identifier: "Ko-kr") //원하는 언어의 나라 코드를 넣어주시면 됩니다.
+            let locale = Locale(identifier: "Ko-kr")
             geocoder.reverseGeocodeLocation(findLocation, preferredLocale: locale, completionHandler: { [self](placemarks, error) in
                 var address = ""
                 if let placemark = placemarks?.first {
