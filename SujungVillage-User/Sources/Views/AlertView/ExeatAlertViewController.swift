@@ -21,15 +21,14 @@ class ExeatAlertViewController: UIViewController {
     @IBOutlet weak var okBtn: UIButton!
     var date: String = ""
     var exeatId: Int = -101
-    private var viewModel = GetExeatInfoViewModel()
+    private var viewModel = GetExeatInfoViewModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Date: \(date)")
         viewModel.exeatId = exeatId
-        viewModel.fetchExeatAlert()
         setUI()
         fetchView()
+        viewModel.fetchExeatAlert()
     }
     
     func setUI() {
@@ -89,6 +88,7 @@ class ExeatAlertViewController: UIViewController {
                 if result == "외박신청 취소 완료" {
                     let alert = UIAlertController(title: "외박신청 취소 완료", message: nil, preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { UIAlertAction in
+                        HomeViewModel.shared.fetchResidentInfo(year: Int(self.date.substring(from: 0, to: 3))!, month: Int(self.date.substring(from: 5, to: 6))!)
                         self.dismiss(animated: true)
                     }))
                     self.present(alert, animated: true)
@@ -111,5 +111,4 @@ class ExeatAlertViewController: UIViewController {
     @IBAction func okBtnSelected(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    
 }

@@ -10,13 +10,14 @@ import UIKit
 class GetNoticeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var viewModel = NoticeViewModel()
+    private let viewModel = NoticeViewModel.shared
     var noticeList: [NoticeTitleResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTableView()
         setTableView()
+        viewModel.fetchNoticeTitle()
     }
     
     func setTableView() {

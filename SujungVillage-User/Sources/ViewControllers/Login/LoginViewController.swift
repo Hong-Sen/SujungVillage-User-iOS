@@ -25,8 +25,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setView()
         
-        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
-            if UserDefaults.standard.isLogined {
+        observer = UserDefaults.standard.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
+            if UserDefaults.standard.isLogedIn {
+                HomeViewModel.shared.fetchResidentInfo(year: 2022, month: 10)
                 self.dismiss(animated: true)
             }
         })

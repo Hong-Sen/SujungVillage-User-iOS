@@ -19,7 +19,6 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var rewardPointLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     
-    
     @IBOutlet weak var exeatView: UIStackView!
     @IBOutlet weak var exeatLabel: UILabel!
     @IBOutlet weak var rollCallView: UIStackView!
@@ -30,11 +29,12 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var rewardCheckLabel: UILabel!
     @IBOutlet weak var calendarView: FSCalendar!
     
-    private let viewModel = HomeViewModel()
+    private let viewModel = HomeViewModel.shared
     private var observer: NSKeyValueObservation?
     private let dateFormatter = DateFormatter()
     private var curYear = Calendar.current.component(.year, from: Date())
     private var curMonth = Calendar.current.component(.month, from: Date())
+    private let userDefault = UserDefaults.standard
     
     private var rollcallDayList: [Day] = []
     private var appliedRollcallDayList: [Day] = []
@@ -42,25 +42,25 @@ class HomeTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UserDefaults.standard.isLogined = false
-        presentLoginVC()
-        
-        //        observer = UserDefaults.standard.observe(\.isLogined, options: [.initial, .new], changeHandler: { (defaults, change) in
-        //            if UserDefaults.standard.isLogined {
-        //                self.viewModel.fetchResidentInfo(year: 2022, month: 8)
-        //            }
-        //        })
+        if !userDefault.isLogedIn {
+            presentLoginVC()
+        }
+        observer = userDefault.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
+            if self.userDefault.isLogedIn {
+                self.viewModel.fetchResidentInfo(year: self.curYear, month: self.curMonth)
+            }
+        })
         
         fetchView()
         setUI()
         setCalendarView()
-        
+        viewModel.fetchResidentInfo(year: curYear, month: curMonth)
     }
     
     func presentLoginVC() {
         guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController") as? UINavigationController else { return }
         loginVC.modalPresentationStyle = .fullScreen
+        loginVC.modalTransitionStyle = .crossDissolve
         self.present(loginVC, animated: true)
     }
     
@@ -134,6 +134,7 @@ class HomeTabViewController: UIViewController {
         calendarView.backgroundColor = .white
         calendarView.scrollEnabled = false
         
+        calendarView.appearance.titleSelectionColor = .black
         calendarView.appearance.headerTitleFont = UIFont.suit(size: 22, family: .Bold)
         calendarView.appearance.headerTitleColor = UIColor(hexString: "0E0E0E")
         calendarView.appearance.headerDateFormat = "MM월"
@@ -216,7 +217,6 @@ class HomeTabViewController: UIViewController {
 
 
 extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    
     private func moveCurrentPage(moveUp: Bool) {
         let _calendar = Calendar.current
         var dateComponents = DateComponents()
@@ -229,7 +229,6 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         curMonth =  _calendar.component(.month, from: calendarView.currentPage)
         
         viewModel.fetchResidentInfo(year: curYear, month: curMonth)
-        fetchView()
     }
     
     func dateToStr(date: Date) -> String {
@@ -269,30 +268,55 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         return .white
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    // select시 색상 변경 방지
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
         var day = dateToStr(date: date)
         
+        // 무단 외박일
         if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0  && appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count == 0 {
-            let popUpViewController = UnRollCallAlertViewController()
-            popUpViewController.date = dateFormatter.string(from: date)
-            popUpViewController.modalPresentationStyle = .overFullScreen
-            present(popUpViewController, animated: true, completion: nil)
+            return UIColor(hexString: "FF7979")
+        }
+        
+        // 점호
+        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            return UIColor(hexString: "FFDB73")
+        }
+        
+        // 외박
+        else if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+            return .primary
+        }
+        
+        return .white
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        var day = dateToStr(date: date)
+
+        if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0  && appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count == 0 {
+            let unRollCallVC = UnRollCallAlertViewController()
+            unRollCallVC.date = dateFormatter.string(from: date)
+            unRollCallVC.modalPresentationStyle = .overFullScreen
+            unRollCallVC.modalTransitionStyle = .crossDissolve
+            present(unRollCallVC, animated: true, completion: nil)
         }
         
         else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
-            let popUpViewController = RollCallAlertViewController()
-            popUpViewController.rollcallId = appliedRollcallDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
-            popUpViewController.date = dateFormatter.string(from: date)
-            popUpViewController.modalPresentationStyle = .overFullScreen
-            present(popUpViewController, animated: true, completion: nil)
+            let rollcallVC = RollCallAlertViewController()
+            rollcallVC.rollcallId = appliedRollcallDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
+            rollcallVC.date = dateFormatter.string(from: date)
+            rollcallVC.modalPresentationStyle = .overFullScreen
+            rollcallVC.modalTransitionStyle = .crossDissolve
+            present(rollcallVC, animated: true, completion: nil)
         }
         
         else if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
-            let popUpViewController = ExeatAlertViewController()
-            popUpViewController.exeatId = appliedExeatDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
-            popUpViewController.date = dateFormatter.string(from: date)
-            popUpViewController.modalPresentationStyle = .overFullScreen
-            present(popUpViewController, animated: true, completion: nil)
+            let exeatVC = ExeatAlertViewController()
+            exeatVC.exeatId = appliedExeatDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
+            exeatVC.date = dateFormatter.string(from: date)
+            exeatVC.modalPresentationStyle = .overFullScreen
+            exeatVC.modalTransitionStyle = .crossDissolve
+            present(exeatVC, animated: true, completion: nil)
         }
     }
 }

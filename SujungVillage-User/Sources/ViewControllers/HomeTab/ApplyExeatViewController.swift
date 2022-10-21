@@ -27,9 +27,10 @@ class ApplyExeatViewController: UIViewController {
     @IBOutlet weak var rememberBtn: UIButton!
     @IBOutlet weak var applyBtn: UIButton!
     private var rememberInfo: Bool = false
-    let dropdown = DropDown()
+    private let dropdown = DropDown()
     private var isdropdownBtnClicked: Bool = false
-    let menuList = ["단기 외박","장기 외박"]
+    private let menuList = ["단기 외박","장기 외박"]
+    private let homeViewModel = HomeViewModel.shared
     
     
     override func viewDidLoad() {
@@ -96,6 +97,7 @@ class ApplyExeatViewController: UIViewController {
             Repository.shared.applyExeat(applyModel: model) { status in
                 switch status {
                 case .ok:
+                    self.homeViewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
                     print("외박신청 제출 완료")
                 default:
                     print("error: \(status)")

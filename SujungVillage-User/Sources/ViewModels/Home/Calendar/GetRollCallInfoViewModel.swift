@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-class GetRollCallInfoViewModel: NSObject {
+class GetRollCallInfoViewModel {
+    static let shared = GetRollCallInfoViewModel()
+    private init() {}
     let repository =  Repository()
     var onUpdated: () -> Void = {}
     var rollcallId: Int = -101
@@ -34,16 +36,8 @@ class GetRollCallInfoViewModel: NSObject {
         }
     }
     
-    override init() {
-        super.init()
-        if rollcallId != -101 {
-            fetchRollCallAlert()
-        }
-    }
-    
     func convertImage(imgUrl:[Int8]) -> UIImage? {
         let datos: NSData = NSData(bytes: imgUrl, length: imgUrl.count)
-        print(datos)
         return UIImage(data: datos as Data)
     }
     

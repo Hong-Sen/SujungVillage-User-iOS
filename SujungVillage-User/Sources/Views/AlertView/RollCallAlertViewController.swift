@@ -17,14 +17,14 @@ class RollCallAlertViewController: UIViewController {
     @IBOutlet weak var okBtn: UIButton!
     var rollcallId: Int = -101
     var date: String = ""
-    private var viewModel = GetRollCallInfoViewModel()
+    private var viewModel = GetRollCallInfoViewModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.rollcallId = rollcallId
-        viewModel.fetchRollCallAlert()
         setUI()
         fetchView()
+        viewModel.fetchRollCallAlert()
     }
     
     func setUI() {

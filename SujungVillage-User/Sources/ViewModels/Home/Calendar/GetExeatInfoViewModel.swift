@@ -7,7 +7,9 @@
 
 import Foundation
 
-class GetExeatInfoViewModel: NSObject {
+class GetExeatInfoViewModel {
+    static let shared = GetExeatInfoViewModel()
+    private init() {}
     let repository =  Repository()
     var onUpdated: () -> Void = {}
     var exeatId: Int = -101
@@ -30,13 +32,6 @@ class GetExeatInfoViewModel: NSObject {
     {
         didSet {
             onUpdated()
-        }
-    }
-    
-    override init() {
-        super.init()
-        if exeatId != -101 {
-            fetchExeatAlert()
         }
     }
     

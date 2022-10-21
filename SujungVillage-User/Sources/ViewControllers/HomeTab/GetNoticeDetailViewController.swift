@@ -13,14 +13,14 @@ class GetNoticeDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: PaddingLabel!
     var announcementId: Int = 0
-    private var viewModel = NoticeDetailViewModel()
+    private var viewModel = NoticeDetailViewModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.announcementId = announcementId
-        viewModel.fetchNoticeDetail()
         setUI()
         fetchView()
+        viewModel.fetchNoticeDetail()
     }
     
     func setUI() {
