@@ -29,7 +29,7 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var rewardCheckLabel: UILabel!
     @IBOutlet weak var calendarView: FSCalendar!
     
-    private let viewModel = HomeViewModel.shared
+    private let viewModel = UserInfoViewModel.shared
     private var observer: NSKeyValueObservation?
     private let dateFormatter = DateFormatter()
     private var curYear = Calendar.current.component(.year, from: Date())
@@ -42,6 +42,7 @@ class HomeTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if !userDefault.isLogedIn {
             presentLoginVC()
         }

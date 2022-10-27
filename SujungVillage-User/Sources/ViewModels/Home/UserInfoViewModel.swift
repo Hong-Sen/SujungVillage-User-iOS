@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-class HomeViewModel {
-    static let shared = HomeViewModel()
+class UserInfoViewModel {
+    static let shared = UserInfoViewModel()
     private init() {}
     let repository = Repository()
     var onUpdated: () -> Void = {}
@@ -24,6 +24,13 @@ class HomeViewModel {
     }
     
     var dormitoryName: String = ""
+    {
+        didSet {
+            onUpdated()
+        }
+    }
+    
+    var detailedAddress: String = ""
     {
         didSet {
             onUpdated()
@@ -71,6 +78,7 @@ class HomeViewModel {
             case .ok:
                 if let name = homeResponse?.residentInfo.name,
                    let dormitory = homeResponse?.residentInfo.dormitoryName,
+                   let detail = homeResponse?.residentInfo.detailedAddress,
                    let plus = homeResponse?.residentInfo.plusLMP,
                    let minus = homeResponse?.residentInfo.minusLMP,
                    let rollcallDays = homeResponse?.rollcallDays,
@@ -78,6 +86,7 @@ class HomeViewModel {
                    let appliedExeatDays = homeResponse?.appliedExeatDays {
                     self.userName = name
                     self.dormitoryName = dormitory
+                    self.detailedAddress = detail
                     self.plusLMP = plus
                     self.minusLMP = minus
                     self.rollcallDays = rollcallDays
