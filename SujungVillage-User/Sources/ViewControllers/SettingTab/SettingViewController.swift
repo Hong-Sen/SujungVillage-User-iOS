@@ -109,6 +109,12 @@ class SettingViewController: UIViewController {
         viewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchView()
+        setUI()
+        viewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
+    }
+    
     func setUI() {
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.isTranslucent = true
@@ -208,7 +214,7 @@ class SettingViewController: UIViewController {
             potalView.rightAnchor.constraint(equalTo: settingListView.rightAnchor, constant: 0),
             potalView.heightAnchor.constraint(equalToConstant: 84)
         ])
-
+        
         potalLabel = setSettingListLabel(text: "성신 포탈")
         potalView.addSubview(potalLabel)
         
@@ -244,7 +250,7 @@ class SettingViewController: UIViewController {
             howToUseView.rightAnchor.constraint(equalTo: settingListView.rightAnchor, constant: 0),
             howToUseView.heightAnchor.constraint(equalToConstant: 84)
         ])
-       
+        
         howToUseLabel = setSettingListLabel(text: "앱 사용법")
         howToUseView.addSubview(howToUseLabel)
         
@@ -381,7 +387,7 @@ class SettingViewController: UIViewController {
         if let tag = sender.view?.tag {
             switch tag {
             case 1000:
-               //
+                //
                 return
                 
             case 1001:
@@ -393,7 +399,13 @@ class SettingViewController: UIViewController {
                 return
                 
             case 1003:
-                //
+                let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { UIAlertAction in
+                    UserDefaults.standard.isLogedIn = false
+                    self.tabBarController?.selectedIndex = 0
+                }))
+                alert.addAction(UIAlertAction(title: "취소", style: .destructive, handler: nil))
+                present(alert, animated: true)
                 return
                 
             default:

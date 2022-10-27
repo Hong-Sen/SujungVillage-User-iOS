@@ -73,17 +73,17 @@ class UserInfoViewModel {
     }
     
     func fetchResidentInfo(year: Int, month: Int) {
-        self.repository.getHomeInfo(year: year, month: month) { status, homeResponse in
+        self.repository.getHomeInfo(year: year, month: month) { status, userInfoResponse in
             switch status {
             case .ok:
-                if let name = homeResponse?.residentInfo.name,
-                   let dormitory = homeResponse?.residentInfo.dormitoryName,
-                   let detail = homeResponse?.residentInfo.detailedAddress,
-                   let plus = homeResponse?.residentInfo.plusLMP,
-                   let minus = homeResponse?.residentInfo.minusLMP,
-                   let rollcallDays = homeResponse?.rollcallDays,
-                   let appliedRollcallDays = homeResponse?.appliedRollcallDays,
-                   let appliedExeatDays = homeResponse?.appliedExeatDays {
+                if let name = userInfoResponse?.residentInfo.name,
+                   let dormitory = userInfoResponse?.residentInfo.dormitoryName,
+                   let detail = userInfoResponse?.residentInfo.detailedAddress,
+                   let plus = userInfoResponse?.residentInfo.plusLMP,
+                   let minus = userInfoResponse?.residentInfo.minusLMP,
+                   let rollcallDays = userInfoResponse?.rollcallDays,
+                   let appliedRollcallDays = userInfoResponse?.appliedRollcallDays,
+                   let appliedExeatDays = userInfoResponse?.appliedExeatDays {
                     self.userName = name
                     self.dormitoryName = dormitory
                     self.detailedAddress = detail

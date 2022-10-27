@@ -41,6 +41,7 @@ class CustomTabbarController: UITabBarController {
             self.tabBar.items![index].title = tabBarItem.title
             self.tabBar.items![index].image = UIImage(named: tabBarItem.icon)
         }
+        
         let selectedImageName = tabBarItems.filter({$0.title == item.title})[0].selectedIcon
         item.selectedImage = UIImage(named: selectedImageName)
         item.title = ""

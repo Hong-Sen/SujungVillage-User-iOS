@@ -42,9 +42,27 @@ class HomeTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if !userDefault.isLogedIn {
             presentLoginVC()
+        }
+        observer = userDefault.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
+            if self.userDefault.isLogedIn {
+                self.viewModel.fetchResidentInfo(year: self.curYear, month: self.curMonth)
+            }
+        })
+        
+        fetchView()
+        setUI()
+        setCalendarView()
+        viewModel.fetchResidentInfo(year: curYear, month: curMonth)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !userDefault.isLogedIn {
+            guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController") as? UINavigationController else { return }
+            loginVC.modalPresentationStyle = .fullScreen
+            loginVC.modalTransitionStyle = .coverVertical
+            self.present(loginVC, animated: true)
         }
         observer = userDefault.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
             if self.userDefault.isLogedIn {
