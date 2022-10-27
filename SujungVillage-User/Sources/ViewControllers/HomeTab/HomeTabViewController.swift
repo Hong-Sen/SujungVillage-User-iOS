@@ -29,7 +29,7 @@ class HomeTabViewController: UIViewController {
     @IBOutlet weak var rewardCheckLabel: UILabel!
     @IBOutlet weak var calendarView: FSCalendar!
     
-    private let viewModel = HomeViewModel.shared
+    private let viewModel = UserInfoViewModel.shared
     private var observer: NSKeyValueObservation?
     private let dateFormatter = DateFormatter()
     private var curYear = Calendar.current.component(.year, from: Date())
@@ -44,6 +44,25 @@ class HomeTabViewController: UIViewController {
         super.viewDidLoad()
         if !userDefault.isLogedIn {
             presentLoginVC()
+        }
+        observer = userDefault.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
+            if self.userDefault.isLogedIn {
+                self.viewModel.fetchResidentInfo(year: self.curYear, month: self.curMonth)
+            }
+        })
+        
+        fetchView()
+        setUI()
+        setCalendarView()
+        viewModel.fetchResidentInfo(year: curYear, month: curMonth)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !userDefault.isLogedIn {
+            guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController") as? UINavigationController else { return }
+            loginVC.modalPresentationStyle = .fullScreen
+            loginVC.modalTransitionStyle = .coverVertical
+            self.present(loginVC, animated: true)
         }
         observer = userDefault.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
             if self.userDefault.isLogedIn {

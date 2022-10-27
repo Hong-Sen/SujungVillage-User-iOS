@@ -30,7 +30,7 @@ class ApplyExeatViewController: UIViewController {
     private let dropdown = DropDown()
     private var isdropdownBtnClicked: Bool = false
     private let menuList = ["단기 외박","장기 외박"]
-    private let homeViewModel = HomeViewModel.shared
+    private let homeViewModel = UserInfoViewModel.shared
     
     
     override func viewDidLoad() {

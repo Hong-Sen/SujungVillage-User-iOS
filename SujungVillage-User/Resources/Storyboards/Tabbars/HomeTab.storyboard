@@ -12,7 +12,6 @@
         <!--Home Tab View Controller-->
         <scene sceneID="yC3-Xc-tGh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5lk-4B-IKF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HomeTabViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N2k-xz-zaX" customClass="HomeTabViewController" customModule="SujungVillage_User" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vxX-vE-HHK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -244,6 +243,7 @@
                         <outlet property="welcomeLabel" destination="yWw-wr-NOV" id="Jls-i0-UHx"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lk-4B-IKF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2719" y="148"/>
         </scene>

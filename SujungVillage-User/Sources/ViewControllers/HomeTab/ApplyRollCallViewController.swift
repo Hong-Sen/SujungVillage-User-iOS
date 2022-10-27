@@ -19,7 +19,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     private var photoArr: [Int8] = []
     private var finalLocation: String = ""
-    private let homeViewModel = HomeViewModel.shared
+    private let homeViewModel = UserInfoViewModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

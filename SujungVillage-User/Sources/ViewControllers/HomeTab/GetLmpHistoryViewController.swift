@@ -21,7 +21,7 @@ class GetLmpHistoryViewController: UIViewController {
     @IBOutlet weak var reasonTableIntroView: UIView!
     @IBOutlet weak var reasonTableIntroLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    private let homeViewModel = HomeViewModel.shared
+    private let homeViewModel = UserInfoViewModel.shared
     private let LMPviewModel = LMPHistoryViewModel.shared
     var historyList: [LMPHistoryResponse] = []
     
