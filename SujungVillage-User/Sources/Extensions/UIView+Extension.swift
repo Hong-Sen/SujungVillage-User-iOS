@@ -28,4 +28,32 @@ extension UIView {
             return
         }
     }
+    
+    enum Direction {
+        case bottom
+        case top
+        case left
+        case right
+    }
+    
+    func addShadow(location: Direction, color: UIColor = .black, opacity: Float, radius: CGFloat) {
+        switch location {
+        case .bottom:
+            setShadow(offset: CGSize(width: 0, height: 5), color: color, opacity: opacity, radius: radius)
+        case .top:
+            setShadow(offset: CGSize(width: 0, height: -5), color: color, opacity: opacity, radius: radius)
+        case .left:
+            setShadow(offset: CGSize(width: -5, height: 0), color: color, opacity: opacity, radius: radius)
+        case .right:
+            setShadow(offset: CGSize(width: 5, height: 0), color: color, opacity: opacity, radius: radius)
+        }
+    }
+    
+    func setShadow(offset: CGSize, color: UIColor, opacity: Float, radius: CGFloat) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = offset
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowRadius = radius
+    }
 }
