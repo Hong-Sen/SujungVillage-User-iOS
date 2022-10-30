@@ -11,6 +11,11 @@
 		74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */; };
 		74008EF228F302D4008A609F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF128F302D4008A609F /* UITextField+Extension.swift */; };
 		74008EF428F31314008A609F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF328F31314008A609F /* RegisterViewController.swift */; };
+		741E062E290E2E4600417519 /* MyQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E062C290E2E4600417519 /* MyQCell.swift */; };
+		741E062F290E2E4600417519 /* MyQCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741E062D290E2E4600417519 /* MyQCell.xib */; };
+		741E0631290E3A0400417519 /* MyQResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E0630290E3A0400417519 /* MyQResponse.swift */; };
+		741E0633290EB06000417519 /* MyQuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E0632290EB06000417519 /* MyQuestionDetailViewController.swift */; };
+		741E0636290EB88300417519 /* MyQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E0635290EB88300417519 /* MyQuestionViewModel.swift */; };
 		742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13B828E2C6FE00150673 /* AppDelegate.swift */; };
 		742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13BA28E2C6FE00150673 /* SceneDelegate.swift */; };
 		742D13C028E2C6FE00150673 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 742D13BE28E2C6FE00150673 /* Main.storyboard */; };
@@ -30,6 +35,11 @@
 		742F33E628F6EF0D00DA8478 /* GetNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F33E528F6EF0D00DA8478 /* GetNoticeViewController.swift */; };
 		742F33E828F6EFEB00DA8478 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F33E728F6EFEB00DA8478 /* NoticeViewModel.swift */; };
 		742F33EA28F6F03C00DA8478 /* NoticeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F33E928F6F03C00DA8478 /* NoticeResponse.swift */; };
+		743D888F290D28C400D601E0 /* FAQResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743D888E290D28C400D601E0 /* FAQResponse.swift */; };
+		743D8893290D2CCB00D601E0 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743D8891290D2CCB00D601E0 /* FAQTableViewCell.swift */; };
+		743D8894290D2CCB00D601E0 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743D8892290D2CCB00D601E0 /* FAQTableViewCell.xib */; };
+		743D8897290D2F7600D601E0 /* FAQDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743D8895290D2F7600D601E0 /* FAQDetailTableViewCell.swift */; };
+		743D8898290D2F7600D601E0 /* FAQDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743D8896290D2F7600D601E0 /* FAQDetailTableViewCell.xib */; };
 		744FE448290C390200EA04C4 /* MyQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744FE447290C390200EA04C4 /* MyQuestionViewController.swift */; };
 		744FE44A290C3B5700EA04C4 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744FE449290C3B5700EA04C4 /* FAQViewController.swift */; };
 		7457204928E9642500699184 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204828E9642500699184 /* HomeResponse.swift */; };
@@ -83,6 +93,11 @@
 		74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPHistoryViewModel.swift; sourceTree = "<group>"; };
 		74008EF128F302D4008A609F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		74008EF328F31314008A609F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		741E062C290E2E4600417519 /* MyQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQCell.swift; sourceTree = "<group>"; };
+		741E062D290E2E4600417519 /* MyQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQCell.xib; sourceTree = "<group>"; };
+		741E0630290E3A0400417519 /* MyQResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQResponse.swift; sourceTree = "<group>"; };
+		741E0632290EB06000417519 /* MyQuestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionDetailViewController.swift; sourceTree = "<group>"; };
+		741E0635290EB88300417519 /* MyQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionViewModel.swift; sourceTree = "<group>"; };
 		742D13B528E2C6FE00150673 /* SujungVillage-User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SujungVillage-User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		742D13B828E2C6FE00150673 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		742D13BA28E2C6FE00150673 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +119,11 @@
 		742F33E528F6EF0D00DA8478 /* GetNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeViewController.swift; sourceTree = "<group>"; };
 		742F33E728F6EFEB00DA8478 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		742F33E928F6F03C00DA8478 /* NoticeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeResponse.swift; sourceTree = "<group>"; };
+		743D888E290D28C400D601E0 /* FAQResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQResponse.swift; sourceTree = "<group>"; };
+		743D8891290D2CCB00D601E0 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
+		743D8892290D2CCB00D601E0 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
+		743D8895290D2F7600D601E0 /* FAQDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQDetailTableViewCell.swift; sourceTree = "<group>"; };
+		743D8896290D2F7600D601E0 /* FAQDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQDetailTableViewCell.xib; sourceTree = "<group>"; };
 		744FE447290C390200EA04C4 /* MyQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionViewController.swift; sourceTree = "<group>"; };
 		744FE449290C3B5700EA04C4 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		7457204828E9642500699184 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
@@ -184,8 +204,22 @@
 		741A2666290B83DB004FF508 /* Q&AView */ = {
 			isa = PBXGroup;
 			children = (
+				743D8891290D2CCB00D601E0 /* FAQTableViewCell.swift */,
+				743D8892290D2CCB00D601E0 /* FAQTableViewCell.xib */,
+				743D8895290D2F7600D601E0 /* FAQDetailTableViewCell.swift */,
+				743D8896290D2F7600D601E0 /* FAQDetailTableViewCell.xib */,
+				741E062C290E2E4600417519 /* MyQCell.swift */,
+				741E062D290E2E4600417519 /* MyQCell.xib */,
 			);
 			path = "Q&AView";
+			sourceTree = "<group>";
+		};
+		741E0634290EB75800417519 /* QnA */ = {
+			isa = PBXGroup;
+			children = (
+				741E0635290EB88300417519 /* MyQuestionViewModel.swift */,
+			);
+			path = QnA;
 			sourceTree = "<group>";
 		};
 		742D13AC28E2C6FE00150673 = {
@@ -245,6 +279,7 @@
 		742D13CE28E4341100150673 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				741E0634290EB75800417519 /* QnA */,
 				74F3FA69290178D700226A42 /* Home */,
 			);
 			path = ViewModels;
@@ -294,6 +329,8 @@
 				746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */,
 				742F33E928F6F03C00DA8478 /* NoticeResponse.swift */,
 				7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */,
+				743D888E290D28C400D601E0 /* FAQResponse.swift */,
+				741E0630290E3A0400417519 /* MyQResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,8 +387,9 @@
 			isa = PBXGroup;
 			children = (
 				742D13E328E4399100150673 /* QnAViewController.swift */,
-				744FE447290C390200EA04C4 /* MyQuestionViewController.swift */,
 				744FE449290C3B5700EA04C4 /* FAQViewController.swift */,
+				744FE447290C390200EA04C4 /* MyQuestionViewController.swift */,
+				741E0632290EB06000417519 /* MyQuestionDetailViewController.swift */,
 			);
 			path = QnATab;
 			sourceTree = "<group>";
@@ -542,6 +580,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				743D8894290D2CCB00D601E0 /* FAQTableViewCell.xib in Resources */,
 				74840A7328E5B577002AF1BC /* SUIT-Medium.otf in Resources */,
 				74840A7528E5B577002AF1BC /* SUIT-ExtraBold.otf in Resources */,
 				74840A7128E5B577002AF1BC /* SUIT-Heavy.otf in Resources */,
@@ -560,7 +599,9 @@
 				742D13C228E2C70300150673 /* Assets.xcassets in Resources */,
 				742D13E028E4395600150673 /* CommunityTab.storyboard in Resources */,
 				742D13EA28E439B400150673 /* SettingTab.storyboard in Resources */,
+				741E062F290E2E4600417519 /* MyQCell.xib in Resources */,
 				74840A7628E5B577002AF1BC /* SUIT-SemiBold.otf in Resources */,
+				743D8898290D2F7600D601E0 /* FAQDetailTableViewCell.xib in Resources */,
 				742D13C028E2C6FE00150673 /* Main.storyboard in Resources */,
 				74840A7028E5B577002AF1BC /* SUIT-Light.otf in Resources */,
 			);
@@ -635,6 +676,8 @@
 				74840A6528E55EB4002AF1BC /* CustomTabBar.swift in Sources */,
 				74008EED28F2B323008A609F /* UIView+Extension.swift in Sources */,
 				742D13E228E4398400150673 /* CommunityViewController.swift in Sources */,
+				743D888F290D28C400D601E0 /* FAQResponse.swift in Sources */,
+				741E0633290EB06000417519 /* MyQuestionDetailViewController.swift in Sources */,
 				74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */,
 				7483C7A828E74F9E00CCF70A /* Repository.swift in Sources */,
 				74F3FA6C2901796F00226A42 /* GetRollCallInfoViewModel.swift in Sources */,
@@ -648,6 +691,7 @@
 				74D2DB7B29028AA600695F62 /* GetExeatInfoViewModel.swift in Sources */,
 				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,
 				742F33EA28F6F03C00DA8478 /* NoticeResponse.swift in Sources */,
+				741E0636290EB88300417519 /* MyQuestionViewModel.swift in Sources */,
 				7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */,
 				7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */,
 				7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */,
@@ -658,9 +702,13 @@
 				7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */,
 				744FE44A290C3B5700EA04C4 /* FAQViewController.swift in Sources */,
 				74D0E0742900ED500040C462 /* ExeatAlertViewController.swift in Sources */,
+				741E0631290E3A0400417519 /* MyQResponse.swift in Sources */,
+				743D8893290D2CCB00D601E0 /* FAQTableViewCell.swift in Sources */,
+				743D8897290D2F7600D601E0 /* FAQDetailTableViewCell.swift in Sources */,
 				7483C7AA28E82DA500CCF70A /* LoginResponse.swift in Sources */,
 				746AF5DD28F06F0E0027ADAA /* ExeatResponse.swift in Sources */,
 				74680B6928F55F57006E289F /* AESUtil.swift in Sources */,
+				741E062E290E2E4600417519 /* MyQCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

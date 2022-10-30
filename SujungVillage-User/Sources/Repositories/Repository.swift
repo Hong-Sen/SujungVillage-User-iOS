@@ -195,3 +195,34 @@ extension Repository {
         }
     }
 }
+
+// MARK: Q&A
+extension Repository {
+    func getMyQnas(completion: @escaping (HTTPStatusCode, [MyQTitleResponse]?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/qna/getMyQnas",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: [MyQTitleResponse].self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    func getQnaDetails(questionId: Int, completion: @escaping (HTTPStatusCode, MyQDetailResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/qna/getQna?questionId=\(questionId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: MyQDetailResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+}

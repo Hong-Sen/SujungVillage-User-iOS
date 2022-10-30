@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func roundCorners(corners: [UIRectCorner], radius: CGFloat = 30) {
+    func roundCorners(corners: [UIRectCorner], radius: CGFloat) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         switch corners {
@@ -24,6 +24,8 @@ extension UIView {
             self.layer.maskedCorners = .layerMaxXMaxYCorner
         case [.bottomLeft, .bottomRight]:
             self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        case [.topLeft, .topRight, .bottomLeft, .bottomRight]:
+            self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         default:
             return
         }

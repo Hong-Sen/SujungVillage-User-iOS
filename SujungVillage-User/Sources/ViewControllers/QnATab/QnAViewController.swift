@@ -51,6 +51,7 @@ class QnAViewController: TabmanViewController {
         }
         
         bar.indicator.tintColor = .plight
+        bar.addShadow(location: .bottom, opacity: 0.1, radius: 3)
         addBar(bar, dataSource: self, at: .custom(view: tabView, layout: nil))
     }
     

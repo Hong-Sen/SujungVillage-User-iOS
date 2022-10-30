@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 class UserInfoViewModel {
     static let shared = UserInfoViewModel()

@@ -41,7 +41,7 @@ class GetNoticeViewController: UIViewController {
 
 extension GetNoticeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 92
+        return 73
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
