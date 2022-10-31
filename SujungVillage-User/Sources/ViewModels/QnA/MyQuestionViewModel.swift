@@ -25,7 +25,7 @@ class MyQuestionViewModel {
             switch status {
             case .ok:
                 if let myQs = myQresponse {
-                    self.myQList.append(contentsOf: myQs)
+                    self.myQList = myQs
                 }
                 break
                 

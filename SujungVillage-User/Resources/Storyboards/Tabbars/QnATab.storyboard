@@ -200,7 +200,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="삭제하기"/>
                                 <connections>
-                                    <action selector="removeBtnSelected:" destination="bg3-OT-bB0" eventType="touchUpInside" id="sU1-Y3-bXf"/>
+                                    <action selector="removeBtnSelected:" destination="bg3-OT-bB0" eventType="touchUpInside" id="dlb-at-PrN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGV-ik-Vwp">

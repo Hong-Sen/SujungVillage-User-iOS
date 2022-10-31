@@ -20,6 +20,11 @@ class MyQuestionViewController: UIViewController {
         viewModel.fetchMyQuestions()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchTableView()
+        viewModel.fetchMyQuestions()
+    }
+    
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self

@@ -77,6 +77,26 @@ class MyQuestionDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func removeBtnSelected(_ sender: Any) {
+        let alert = UIAlertController(title: "삭제하시겠습니까?", message: nil, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "삭제", style: .default, handler: { UIAlertAction in
+            Repository.shared.deletQuestion(questionId: self.questionId) { status, result in
+                switch status {
+                case .ok:
+                    MyQuestionViewModel.shared.fetchMyQuestions()
+                    print("삭제 성공")
+                    break
+                default:
+                    print("remove question error: \(status)")
+                    break
+                }
+            }
+            self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .destructive, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     @IBAction func backBtnSelected(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

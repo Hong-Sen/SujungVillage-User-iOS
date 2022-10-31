@@ -225,4 +225,19 @@ extension Repository {
             }
         }
     }
+    
+    func deletQuestion(questionId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/common/qna/deleteQuestion?questionId=\(questionId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
+    
 }
