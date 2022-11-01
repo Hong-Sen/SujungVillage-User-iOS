@@ -22,5 +22,8 @@ target 'SujungVillage-User' do
   # Menu bar
   pod 'Tabman', '~> 2.13'
 
+  # Expandable Table Cell
+  pod 'ExpandableCell'
+
 
 end

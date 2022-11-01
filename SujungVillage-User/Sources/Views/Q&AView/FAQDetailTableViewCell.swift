@@ -19,14 +19,14 @@ class FAQDetailTableViewCell: UITableViewCell {
     }
     
     func setUI() {
-        cellView.layer.borderWidth = 1
+        cellView.layer.borderWidth = 3
         cellView.layer.borderColor = UIColor(hexString: "FFEAAE").cgColor
         cellView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 30)
         cellView.backgroundColor = .white
         cellView.addShadow(location: .bottom, opacity: 0.2, radius: 3)
         
         questionLabel.textColor = .text_gray
-        questionLabel.font = UIFont.suit(size: 16, family: .Medium)
+        questionLabel.font = UIFont.suit(size: 15, family: .Medium)
         
         answerLabel.textColor = .text_gray
         answerLabel.font = UIFont.suit(size: 12, family: .Medium)

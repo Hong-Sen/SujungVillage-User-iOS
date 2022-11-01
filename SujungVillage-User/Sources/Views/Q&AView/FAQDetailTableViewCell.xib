@@ -29,8 +29,8 @@
                                     <constraint firstAttribute="width" constant="20" id="kQU-k6-Kom"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-bc-I0Z">
-                                <rect key="frame" x="35" y="24" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiB-bc-I0Z">
+                                <rect key="frame" x="35" y="24" width="226" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,6 +58,7 @@
                             <constraint firstItem="Z0e-Qy-BgF" firstAttribute="top" secondItem="TYN-sN-CUf" secondAttribute="top" constant="24" id="NIe-Lv-tDM"/>
                             <constraint firstItem="2xn-rM-DLf" firstAttribute="leading" secondItem="TYN-sN-CUf" secondAttribute="leading" id="NWY-5H-5uI"/>
                             <constraint firstItem="tiB-bc-I0Z" firstAttribute="leading" secondItem="Z0e-Qy-BgF" secondAttribute="trailing" constant="7" id="P2p-vv-t6H"/>
+                            <constraint firstAttribute="trailing" secondItem="tiB-bc-I0Z" secondAttribute="trailing" constant="20" id="dhB-gf-GsG"/>
                             <constraint firstItem="w9r-nm-DxS" firstAttribute="leading" secondItem="TYN-sN-CUf" secondAttribute="leading" constant="30" id="nrl-gu-h9s"/>
                             <constraint firstAttribute="trailing" secondItem="2xn-rM-DLf" secondAttribute="trailing" id="tci-ms-krC"/>
                             <constraint firstItem="2xn-rM-DLf" firstAttribute="top" secondItem="Z0e-Qy-BgF" secondAttribute="bottom" constant="15" id="xdz-vV-787"/>

@@ -10,13 +10,18 @@ import UIKit
 class FAQViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var faqDataList: [FAQListResponse] = [
-        FAQListResponse(id: 1, writerID: "1", question: "qqq11111", answer: "answer", dormitoryName: "qq", regDate: "20201010", modDate: "0330", isOpen: false),
-        FAQListResponse(id: 2, writerID: "2", question: "qqq22222", answer: "answer2222", dormitoryName: "qq", regDate: "20201010", modDate: "0330", isOpen: false),
-        FAQListResponse(id: 3, writerID: "3", question: "qqq33333", answer: "answer3333", dormitoryName: "qq", regDate: "20201010", modDate: "0330", isOpen: false)]
+    private let viewModel = FAQViewModel.shared
+    var faqDataList: [FAQListResponse] = []
+    var selectIdx = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTableView()
+        setTableView()
+        viewModel.fetchFAQs()
+    }
+    
+    func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "FAQDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "FAQDetailTableViewCell")
@@ -24,11 +29,25 @@ class FAQViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
+    func fetchTableView() {
+        viewModel.onUpdated = {[weak self] in
+            DispatchQueue.main.async {
+                self?.faqDataList = self?.viewModel.FAQList ?? []
+                self?.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension FAQViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        if indexPath.row == selectIdx {
+            return CGFloat(180 + (faqDataList[indexPath.row].answer.count / 44) * 20)
+        }
+        else {
+            return 97
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,10 +55,27 @@ extension FAQViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let titleCell = tableView.dequeueReusableCell(withIdentifier: "FAQTableViewCell", for: indexPath) as! FAQTableViewCell
-        titleCell.questionLabel.text = faqDataList[indexPath.row].question
-        titleCell.selectionStyle = .none
-        return titleCell
+        if indexPath.row == selectIdx {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FAQDetailTableViewCell", for: indexPath) as! FAQDetailTableViewCell
+            cell.questionLabel.text = faqDataList[indexPath.row].question
+            cell.answerLabel.text = faqDataList[indexPath.row].answer
+            return cell
+        }
+        else {
+            let titleCell = tableView.dequeueReusableCell(withIdentifier: "FAQTableViewCell", for: indexPath) as! FAQTableViewCell
+            titleCell.questionLabel.text = faqDataList[indexPath.row].question
+            titleCell.selectionStyle = .none
+            return titleCell
+        }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if selectIdx == indexPath.row {
+            selectIdx = -1
+        }
+        else {
+            selectIdx = indexPath.row
+        }
+        self.tableView.reloadData()
+    }
 }

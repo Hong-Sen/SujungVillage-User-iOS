@@ -41,7 +41,6 @@ class MyQuestionViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension MyQuestionViewController: UITableViewDelegate, UITableViewDataSource {
