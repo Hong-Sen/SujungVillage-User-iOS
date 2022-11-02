@@ -13,3 +13,9 @@
 - 🚚 **[MOVE]** : 프로젝트 내 파일 또는 코드의 이동
 - ⏪️ **[RENAME]** : 파일 이름 변경
 - ♻️ **[REFACTOR]** : 전면 수정
+
+<br>
+
+## 📌 References
+- [수정마을 발표 자료](https://github.com/b1urrrr/TheBluePlanet/files/9537863/default.pdf)
+- [▶ 수정마을 시연영상](https://user-images.githubusercontent.com/70993562/189418286-766a0428-2771-4b2f-a503-8f55df8673a2.mp4)
