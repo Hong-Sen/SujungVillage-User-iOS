@@ -13,11 +13,17 @@ target 'SujungVillage-User' do
   # DropDown
   pod 'DropDown'
 
-  # CryptoSwift
+  # Encryption
   pod 'CryptoSwift'
 
   # Calendar
   pod 'FSCalendar'
+
+  # Menu bar
+  pod 'Tabman', '~> 2.13'
+
+  # Floating Button
+  pod 'DTZFloatingActionButton'
 
 
 end

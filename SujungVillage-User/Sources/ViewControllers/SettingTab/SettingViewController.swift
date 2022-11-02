@@ -13,11 +13,7 @@ class SettingViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 15)
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: -8.0)
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 15
+        view.addShadow(location: .bottom, opacity: 0.15, radius: 15)
         return view
     }()
     
@@ -120,7 +116,7 @@ class SettingViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.topItem?.title = "설정"
         
-        let alarmItem = UIBarButtonItem(image: UIImage(named: "icon_bell"),
+        let alarmItem = UIBarButtonItem(image: UIImage(named: "icon_bell_black"),
                                         style: .plain,
                                         target: self,
                                         action: #selector(alarmBtnSelected))

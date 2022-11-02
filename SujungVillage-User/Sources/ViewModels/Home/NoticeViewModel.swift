@@ -39,7 +39,7 @@ class NoticeViewModel {
              switch status {
              case .ok:
                  if let notices = noticeTitleResponse {
-                     self.noticeTitleList.append(contentsOf: notices)
+                     self.noticeTitleList = notices
                  }
                  break
 

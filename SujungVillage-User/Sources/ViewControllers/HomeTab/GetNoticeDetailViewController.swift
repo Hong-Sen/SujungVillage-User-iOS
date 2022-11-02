@@ -18,8 +18,8 @@ class GetNoticeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.announcementId = announcementId
-        setUI()
         fetchView()
+        setUI()
         viewModel.fetchNoticeDetail()
     }
     

@@ -42,11 +42,7 @@ class LoginViewController: UIViewController {
         
         logoImg.image = UIImage(named: "logo")
         bottomView.layer.cornerRadius = 20
-        bottomView.layer.shadowOpacity = 0.08
-        bottomView.layer.shadowColor = UIColor.black.cgColor
-        bottomView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        bottomView.layer.shadowRadius = 20
-        bottomView.layer.masksToBounds = false
+        bottomView.addShadow(location: .top, opacity: 0.12, radius: 20)
         bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = false
         
         loginLabel.font = UIFont.suit(size: 24, family: .SemiBold)
