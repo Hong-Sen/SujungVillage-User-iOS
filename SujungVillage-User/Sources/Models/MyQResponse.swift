@@ -40,3 +40,22 @@ struct Question: Codable {
         case writerName, title, content, anonymous, reqDate, modDate
     }
 }
+
+struct WriteQuestionModel: Codable {
+    let title, content: String
+    let anonymous: Bool
+}
+
+struct WriteQuestionResponse: Codable {
+    let id: Int
+    let writerID, writerName, title, content: String
+    let anonymous: Bool
+    let reqDate, modDate: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case writerID = "writerId"
+        case writerName, title, content, anonymous, reqDate, modDate
+    }
+}
+

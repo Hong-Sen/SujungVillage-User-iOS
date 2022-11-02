@@ -19,7 +19,9 @@ extension Repository {
         AF.request(
             "\(baseUrl)/student/login",
             method: .post,
-            parameters: ["id": id, "password": pwd, "fcm_token": fcmToken],
+            parameters: ["id": id,
+                         "password": pwd,
+                         "fcm_token": fcmToken],
             encoding: JSONEncoding.default
         )
         .responseDecodable(of: LoginResponse.self) { response in
@@ -33,7 +35,12 @@ extension Repository {
         AF.request(
             "\(baseUrl)/student/signup",
             method: .post,
-            parameters: ["id": signUpModel.id, "password": signUpModel.password, "name": signUpModel.name, "dormitoryName": signUpModel.dormitoryName, "detailedAddress": signUpModel.detailedAddress, "phoneNumber": signUpModel.phoneNumber],
+            parameters: ["id": signUpModel.id,
+                         "password": signUpModel.password,
+                         "name": signUpModel.name,
+                         "dormitoryName": signUpModel.dormitoryName,
+                         "detailedAddress": signUpModel.detailedAddress,
+                         "phoneNumber": signUpModel.phoneNumber],
             encoding: JSONEncoding.default,
             headers: ["Content-Type": "application/json"]
         )
@@ -102,7 +109,11 @@ extension Repository {
         AF.request(
             "\(baseUrl)/student/exeat/applyExeat",
             method: .post,
-            parameters: ["destination": applyModel.destination, "reason": applyModel.reason, "emergencyPhoneNumber": applyModel.emergencyPhoneNumber, "dateToStart": applyModel.dateToStart, "dateToEnd": applyModel.dateToEnd],
+            parameters: ["destination": applyModel.destination,
+                         "reason": applyModel.reason,
+                         "emergencyPhoneNumber": applyModel.emergencyPhoneNumber,
+                         "dateToStart": applyModel.dateToStart,
+                         "dateToEnd": applyModel.dateToEnd],
             encoding: JSONEncoding.default,
             headers: API.shared.getContentTypeHeaders()
         )
@@ -254,4 +265,20 @@ extension Repository {
         }
     }
     
+    func writeQuestion(writeModel: WriteQuestionModel, completion: @escaping (HTTPStatusCode, WriteQuestionResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/qna/writeQuestion",
+            method: .post,
+            parameters: [ "title": writeModel.title,
+                          "content": writeModel.content,
+                          "anonymous": writeModel.anonymous],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: WriteQuestionResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
 }

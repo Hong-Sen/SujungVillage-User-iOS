@@ -91,6 +91,7 @@ class MyQuestionDetailViewModel {
             case .ok:
                 if let title = myQDetailResponse?.question.title,
                    let qDate = myQDetailResponse?.question.reqDate,
+                   let anonymous = myQDetailResponse?.question.anonymous,
                    let writerName = myQDetailResponse?.question.writerName,
                    let qContent = myQDetailResponse?.question.content {
                     self.title = title
@@ -98,7 +99,7 @@ class MyQuestionDetailViewModel {
                     var formatTime = qDate.replacingOccurrences(of: "T", with: " ")
                     formatTime = formatTime.replacingOccurrences(of: "-", with: "/")
                     self.qDate = String(formatTime.prefix(16))
-                    self.writerName = "작성자: \(writerName)"
+                    self.writerName = anonymous ? "작성자: 익명" : "작성자: \(writerName)"
                     self.questionContent = qContent
                 }
                 if myQDetailResponse?.answer != nil {

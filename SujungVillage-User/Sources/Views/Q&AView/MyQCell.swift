@@ -19,7 +19,7 @@ class MyQCell: UITableViewCell {
     }
     
     func setUI() {
-        cellView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 30)
+        cellView.roundCorners(corners: [.allCorners], radius: 30)
         cellView.layer.borderWidth = 3
         cellView.layer.borderColor = UIColor(hexString: "FFEAAE").cgColor
         cellView.backgroundColor = .white

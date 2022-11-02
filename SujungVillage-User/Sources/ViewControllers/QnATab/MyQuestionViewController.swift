@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import DTZFloatingActionButton
 
 class MyQuestionViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     private let viewModel = MyQuestionViewModel.shared
     var myQuestionList: [MyQTitleResponse] = []
@@ -16,6 +17,7 @@ class MyQuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTableView()
+        createWritingBtn()
         setTableView()
         viewModel.fetchMyQuestions()
     }
@@ -30,6 +32,7 @@ class MyQuestionViewController: UIViewController {
         tableView.dataSource = self
         let nibName = UINib(nibName: "MyQCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "MyQCell")
+        tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
     }
     
@@ -41,6 +44,28 @@ class MyQuestionViewController: UIViewController {
             }
         }
     }
+    
+    private func createWritingBtn() {
+        let writingBtn = DTZFloatingActionButton(frame:CGRect(x: view.frame.size.width - 56 - 16, y: view.frame.size.height - 56 - 16 - 130, width: 56, height: 56))
+        writingBtn.handler = {
+            button in
+            self.presentWritingView()
+        }
+        writingBtn.isScrollView = true
+        writingBtn.buttonImage = UIImage(named: "icon_pencil")
+        writingBtn.shadowCircleColor = .black
+        writingBtn.shadowCircleOffSet = CGSize(width: 0, height: 2)
+        writingBtn.shadowCircleOpacity = 0.2
+        writingBtn.shadowCircleRadius = 2
+        writingBtn.isAddShadow = true
+        writingBtn.buttonColor = .primary
+        self.view.addSubview(writingBtn)
+    }
+    
+    private func presentWritingView() {
+        guard let writeVC = self.storyboard?.instantiateViewController(withIdentifier: "WriteQuestionViewController") as? WriteQuestionViewController else { return }
+        self.navigationController?.pushViewController(writeVC, animated: true)
+    }
 }
 
 extension MyQuestionViewController: UITableViewDelegate, UITableViewDataSource {
@@ -48,7 +73,7 @@ extension MyQuestionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myQuestionList.count
     }
@@ -62,7 +87,7 @@ extension MyQuestionViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let myQDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "MyQuestionDetailViewController") as? MyQuestionDetailViewController else { return }
         myQDetailVC.isAnswered = myQuestionList[indexPath.row].answered

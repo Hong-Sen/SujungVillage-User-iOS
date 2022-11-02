@@ -21,7 +21,7 @@ class FAQTableViewCell: UITableViewCell {
     func setUI() {
         cellView.layer.borderWidth = 3
         cellView.layer.borderColor = UIColor(hexString: "FFEAAE").cgColor
-        cellView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 30)
+        cellView.roundCorners(corners: [.allCorners], radius: 30)
         cellView.backgroundColor = .white
         cellView.addShadow(location: .bottom, opacity: 0.2, radius: 3)
         cellView.frame.size.height = 97
