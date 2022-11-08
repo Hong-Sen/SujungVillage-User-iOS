@@ -73,6 +73,7 @@
 		74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */; };
 		74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */; };
 		7496929D29117424008CBB33 /* WriteQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496929C29117424008CBB33 /* WriteQuestionViewController.swift */; };
+		74A45C1B291AA8340044683A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A45C1A291AA8340044683A /* Date+Extension.swift */; };
 		74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */; };
 		74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */; };
 		74D0E06D2900ECEC0040C462 /* RollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */; };
@@ -159,6 +160,7 @@
 		74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		7496929C29117424008CBB33 /* WriteQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteQuestionViewController.swift; sourceTree = "<group>"; };
+		74A45C1A291AA8340044683A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallAlertViewController.swift; sourceTree = "<group>"; };
 		74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollCallAlertViewController.xib; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				74008EEC28F2B323008A609F /* UIView+Extension.swift */,
 				74008EF128F302D4008A609F /* UITextField+Extension.swift */,
 				7469D7B92902FB3000168FFA /* String+Extension.swift */,
+				74A45C1A291AA8340044683A /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				7483C7AA28E82DA500CCF70A /* LoginResponse.swift in Sources */,
 				746AF5DD28F06F0E0027ADAA /* ExeatResponse.swift in Sources */,
 				7496929D29117424008CBB33 /* WriteQuestionViewController.swift in Sources */,
+				74A45C1B291AA8340044683A /* Date+Extension.swift in Sources */,
 				74680B6928F55F57006E289F /* AESUtil.swift in Sources */,
 				741E062E290E2E4600417519 /* MyQCell.swift in Sources */,
 			);

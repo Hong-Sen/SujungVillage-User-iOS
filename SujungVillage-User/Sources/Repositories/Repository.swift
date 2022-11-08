@@ -117,7 +117,26 @@ extension Repository {
             encoding: JSONEncoding.default,
             headers: API.shared.getContentTypeHeaders()
         )
-        .responseDecodable(of: CreateRollCallResponse.self) { response in
+        .responseDecodable(of: GetAppliedExeatResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode))
+            }
+        }
+    }
+    
+    func applyLongTermExeat(applyModel: ApplyLongTermExeatModel, completion: @escaping (HTTPStatusCode)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/applyLongTermExeat",
+            method: .post,
+            parameters: ["destination": applyModel.destination,
+                         "reason": applyModel.reason,
+                         "emergencyPhoneNumber": applyModel.emergencyPhoneNumber,
+                         "startDate": applyModel.startDate,
+                         "endDate": applyModel.endDate],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: GetAppliedLongTermExeatResponse.self) { response in
             if let statusCode = response.response?.statusCode {
                 completion(HTTPStatusCode.init(rawValue: statusCode))
             }

@@ -89,22 +89,39 @@ class ApplyExeatViewController: UIViewController {
     
     @IBAction func applyBtnSelected(_ sender: Any) {
         if let destination = destinationTextField.text,
-           let reson = resonTextField.text,
+           let reason = resonTextField.text,
            let emergencyNum = emergencyNumberTextField.text,
            let dateToStart = periodStartTextField.text,
            let dateToEnd = periodEndTextField.text {
-            let model = ApplyExeatModel(destination: destination, reason: reson, emergencyPhoneNumber: emergencyNum, dateToStart: dateToStart, dateToEnd: dateToEnd)
-            Repository.shared.applyExeat(applyModel: model) { status in
-                switch status {
-                case .ok:
-                    self.homeViewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
-                    print("외박신청 제출 완료")
-                default:
-                    print("error: \(status)")
-                    break
+            if typeTextField.text == "장기 외박" {
+                let model = ApplyLongTermExeatModel(destination: destination, reason: reason, emergencyPhoneNumber: emergencyNum, startDate: dateToStart, endDate: dateToEnd)
+                Repository.shared.applyLongTermExeat(applyModel: model) { status in
+                    switch status {
+                    case .ok:
+                        self.homeViewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
+                        print("장기 외박신청 제출 완료")
+                    default:
+                        print("error: \(status)")
+                        break
+                    }
                 }
             }
+            else {
+                let model = ApplyExeatModel(destination: destination, reason: reason, emergencyPhoneNumber: emergencyNum, dateToStart: dateToStart, dateToEnd: dateToEnd)
+                Repository.shared.applyExeat(applyModel: model) { status in
+                    switch status {
+                    case .ok:
+                        self.homeViewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
+                        print("단기 외박신청 제출 완료")
+                    default:
+                        print("error: \(status)")
+                        break
+                    }
+                }
+            }
+            
         }
+        
         self.navigationController?.popViewController(animated: true)
     }
 }

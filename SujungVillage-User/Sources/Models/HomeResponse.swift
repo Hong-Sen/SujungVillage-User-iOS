@@ -10,10 +10,16 @@ import Foundation
 struct HomeResponse: Codable {
     let residentInfo: ResidentInfo
     let rollcallDays, appliedRollcallDays, appliedExeatDays: [Day]
+    let appliedLongTermExeatDays: [AppliedLongTermExeatDay]
 }
 
 struct Day: Codable {
-    var id, day: Int
+    let id, day: Int
+}
+
+struct AppliedLongTermExeatDay: Codable {
+    let id: Int
+    let startDate, endDate: String
 }
 
 struct ResidentInfo: Codable {

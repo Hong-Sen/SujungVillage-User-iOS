@@ -71,6 +71,20 @@ class UserInfoViewModel {
         }
     }
     
+    var appliedLongTermExeatDays: [AppliedLongTermExeatDay] = []
+    {
+        didSet {
+            onUpdated()
+        }
+    }
+    
+    var appliedLongTermExeatDaysOnlyDate: [String] = []
+    {
+        didSet {
+            onUpdated()
+        }
+    }
+    
     func fetchResidentInfo(year: Int, month: Int) {
         self.repository.getHomeInfo(year: year, month: month) { status, userInfoResponse in
             switch status {
@@ -82,7 +96,8 @@ class UserInfoViewModel {
                    let minus = userInfoResponse?.residentInfo.minusLMP,
                    let rollcallDays = userInfoResponse?.rollcallDays,
                    let appliedRollcallDays = userInfoResponse?.appliedRollcallDays,
-                   let appliedExeatDays = userInfoResponse?.appliedExeatDays {
+                   let appliedExeatDays = userInfoResponse?.appliedExeatDays,
+                   let appliedLongTermExeatDays = userInfoResponse?.appliedLongTermExeatDays {
                     self.userName = name
                     self.dormitoryName = dormitory
                     self.detailedAddress = detail
@@ -91,6 +106,23 @@ class UserInfoViewModel {
                     self.rollcallDays = rollcallDays
                     self.appliedRollcallDays = appliedRollcallDays
                     self.appliedExeatDays = appliedExeatDays
+                    self.appliedLongTermExeatDays = appliedLongTermExeatDays
+                    for days in appliedLongTermExeatDays {
+                        var startDate = days.startDate.toDate()
+                        var endDate = days.endDate.toDate()
+                        var dateComponent = DateComponents()
+                        dateComponent.day = -1
+                        startDate = Calendar.current.date(byAdding: dateComponent, to: startDate!)
+                        endDate = Calendar.current.date(byAdding: dateComponent, to: endDate!)
+                        dateComponent.day = 1
+                        while true {
+                            self.appliedLongTermExeatDaysOnlyDate.append((startDate?.toString())!)
+                            if startDate == endDate { break }
+                            startDate = Calendar.current.date(byAdding: dateComponent, to: startDate!)
+                        }
+                    }
+                    
+                    
                 }
             default:
                 print("home viewmodel error: \(status)")
