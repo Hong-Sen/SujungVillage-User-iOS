@@ -78,7 +78,7 @@ class UserInfoViewModel {
         }
     }
     
-    var appliedLongTermExeatDaysOnlyDate: [String] = []
+    var appliedLongTermExeatDaysAllDates: [LongTermExeatModel] = []
     {
         didSet {
             onUpdated()
@@ -108,6 +108,7 @@ class UserInfoViewModel {
                     self.appliedExeatDays = appliedExeatDays
                     self.appliedLongTermExeatDays = appliedLongTermExeatDays
                     for days in appliedLongTermExeatDays {
+                        var id = days.id
                         var startDate = days.startDate.toDate()
                         var endDate = days.endDate.toDate()
                         var dateComponent = DateComponents()
@@ -116,7 +117,8 @@ class UserInfoViewModel {
                         endDate = Calendar.current.date(byAdding: dateComponent, to: endDate!)
                         dateComponent.day = 1
                         while true {
-                            self.appliedLongTermExeatDaysOnlyDate.append((startDate?.toString())!)
+                            let model = LongTermExeatModel(date: (startDate?.toString())!, id: id)
+                            self.appliedLongTermExeatDaysAllDates.append(model)
                             if startDate == endDate { break }
                             startDate = Calendar.current.date(byAdding: dateComponent, to: startDate!)
                         }

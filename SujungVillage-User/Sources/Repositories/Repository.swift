@@ -157,6 +157,20 @@ extension Repository {
         }
     }
     
+    func getAppliedLongTermExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, GetAppliedLongTermExeatResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/getApplieLongTermExeat?exeatId=\(exeatId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: GetAppliedLongTermExeatResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
     func cancleExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
         AF.request(
             "\(baseUrl)/student/exeat/cancelExeat?exeatId=\(exeatId)",

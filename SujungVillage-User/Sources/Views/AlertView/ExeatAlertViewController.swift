@@ -22,13 +22,14 @@ class ExeatAlertViewController: UIViewController {
     var date: String = ""
     var exeatId: Int = -101
     private var viewModel = GetExeatInfoViewModel.shared
+    var type: ExeatType = .short
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.exeatId = exeatId
         setUI()
         fetchView()
-        viewModel.fetchExeatAlert()
+        viewModel.fetchExeatAlert(type: type)
     }
     
     func setUI() {

@@ -41,7 +41,7 @@ class HomeTabViewController: UIViewController {
     private var appliedRollcallDayList: [Day] = []
     private var appliedExeatDayList: [Day] = []
     private var appliedLongTermExeatDayList: [AppliedLongTermExeatDay] = []
-    private var appliedLongTermExeatDaysOnlyDateList: [String] = []
+    private var appliedLongTermExeatDaysAllDateList: [LongTermExeatModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,12 +187,12 @@ class HomeTabViewController: UIViewController {
                    let appliedRollcalls = self?.viewModel.appliedRollcallDays,
                    let appliedExeats = self?.viewModel.appliedExeatDays,
                    let appliedLongTermExeats = self?.viewModel.appliedLongTermExeatDays,
-                   let appliedLongTermExeatsOnlyDate = self?.viewModel.appliedLongTermExeatDaysOnlyDate {
+                   let appliedLongTermExeatDaysAllDates = self?.viewModel.appliedLongTermExeatDaysAllDates {
                     self?.rollcallDayList = rollcalls
                     self?.appliedRollcallDayList = appliedRollcalls
                     self?.appliedExeatDayList = appliedExeats
                     self?.appliedLongTermExeatDayList = appliedLongTermExeats
-                    self?.appliedLongTermExeatDaysOnlyDateList = appliedLongTermExeatsOnlyDate
+                    self?.appliedLongTermExeatDaysAllDateList = appliedLongTermExeatDaysAllDates
                     self?.calendarView.reloadData()
                 }
             }
@@ -256,23 +256,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         
         viewModel.fetchResidentInfo(year: curYear, month: curMonth)
     }
-    
-//    func toStringExceptZero(date: Date) -> String {
-//        var day = dateFormatter.string(from: date)
-//
-//        if day[day.index(day.startIndex, offsetBy: 8)] == "0" {
-//            var idx = day.index(day.startIndex, offsetBy: 8)
-//            day.remove(at: idx)
-//        }
-//
-//        if day[day.index(day.startIndex, offsetBy: 5)] == "0" {
-//            var idx = day.index(day.startIndex, offsetBy: 5)
-//            day.remove(at: idx)
-//        }
-//
-//        return day
-//    }
-    
+
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
         var day = date.toStringExceptZero()
         
@@ -292,7 +276,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
         
         // 장기 외박
-        else if appliedLongTermExeatDaysOnlyDateList.contains(date.toString()) {
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
             return .green
         }
         
@@ -319,7 +303,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
         
         // 장기 외박
-        else if appliedLongTermExeatDaysOnlyDateList.contains(date.toString()) {
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
             return .green
         }
         
@@ -350,6 +334,17 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
             let exeatVC = ExeatAlertViewController()
             exeatVC.exeatId = appliedExeatDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
             exeatVC.date = dateFormatter.string(from: date)
+            exeatVC.type = .short
+            exeatVC.modalPresentationStyle = .overFullScreen
+            exeatVC.modalTransitionStyle = .crossDissolve
+            present(exeatVC, animated: true, completion: nil)
+        }
+        
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
+            let exeatVC = ExeatAlertViewController()
+            exeatVC.exeatId = appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()})[0].id
+            exeatVC.date = dateFormatter.string(from: date)
+            exeatVC.type = .long
             exeatVC.modalPresentationStyle = .overFullScreen
             exeatVC.modalTransitionStyle = .crossDissolve
             present(exeatVC, animated: true, completion: nil)

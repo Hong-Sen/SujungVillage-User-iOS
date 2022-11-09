@@ -15,6 +15,10 @@ struct ApplyLongTermExeatModel: Codable {
     let destination, reason, emergencyPhoneNumber, startDate, endDate: String
 }
 
+struct LongTermExeatModel {
+    let date: String
+    let id: Int
+}
 
 struct GetAppliedExeatResponse: Codable {
     let id: Int
