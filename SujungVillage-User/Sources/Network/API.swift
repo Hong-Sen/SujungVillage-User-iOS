@@ -33,10 +33,19 @@ class API {
         return headers
     }
     
-    func deleteHeaders() -> HTTPHeaders? {
+    func deleteAcceptHeaders() -> HTTPHeaders? {
         var headers: HTTPHeaders = []
         if let jwtToken = UserDefaults.standard.string(forKey: "jwtToken") {
             headers = [ "Accept": "text/plain",
+                        "jwt_token": jwtToken ]
+        }
+        return headers
+    }
+    
+    func deleteContentTypeHeaders() -> HTTPHeaders? {
+        var headers: HTTPHeaders = []
+        if let jwtToken = UserDefaults.standard.string(forKey: "jwtToken") {
+            headers = [ "Content-type": "application/json",
                         "jwt_token": jwtToken ]
         }
         return headers

@@ -107,6 +107,7 @@ class UserInfoViewModel {
                     self.appliedRollcallDays = appliedRollcallDays
                     self.appliedExeatDays = appliedExeatDays
                     self.appliedLongTermExeatDays = appliedLongTermExeatDays
+                    self.appliedLongTermExeatDaysAllDates.removeAll()
                     for days in appliedLongTermExeatDays {
                         var id = days.id
                         var startDate = days.startDate.toDate()

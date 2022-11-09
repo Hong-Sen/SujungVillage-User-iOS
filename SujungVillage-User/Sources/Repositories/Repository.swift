@@ -176,7 +176,21 @@ extension Repository {
             "\(baseUrl)/student/exeat/cancelExeat?exeatId=\(exeatId)",
             method: .delete,
             encoding: JSONEncoding.default,
-            headers: API.shared.deleteHeaders()
+            headers: API.shared.deleteAcceptHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
+    
+    func cancleLongTermExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/cancelLongTermExeat?exeatId=\(exeatId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.deleteContentTypeHeaders()
         )
         .responseString { response in
             if let statusCode = response.response?.statusCode, let result = response.value {
