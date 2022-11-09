@@ -117,7 +117,26 @@ extension Repository {
             encoding: JSONEncoding.default,
             headers: API.shared.getContentTypeHeaders()
         )
-        .responseDecodable(of: CreateRollCallResponse.self) { response in
+        .responseDecodable(of: GetAppliedExeatResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode))
+            }
+        }
+    }
+    
+    func applyLongTermExeat(applyModel: ApplyLongTermExeatModel, completion: @escaping (HTTPStatusCode)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/applyLongTermExeat",
+            method: .post,
+            parameters: ["destination": applyModel.destination,
+                         "reason": applyModel.reason,
+                         "emergencyPhoneNumber": applyModel.emergencyPhoneNumber,
+                         "startDate": applyModel.startDate,
+                         "endDate": applyModel.endDate],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: GetAppliedLongTermExeatResponse.self) { response in
             if let statusCode = response.response?.statusCode {
                 completion(HTTPStatusCode.init(rawValue: statusCode))
             }
@@ -138,12 +157,40 @@ extension Repository {
         }
     }
     
+    func getAppliedLongTermExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, GetAppliedLongTermExeatResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/getApplieLongTermExeat?exeatId=\(exeatId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: GetAppliedLongTermExeatResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
     func cancleExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
         AF.request(
             "\(baseUrl)/student/exeat/cancelExeat?exeatId=\(exeatId)",
             method: .delete,
             encoding: JSONEncoding.default,
-            headers: API.shared.deleteHeaders()
+            headers: API.shared.deleteAcceptHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
+    
+    func cancleLongTermExeat(exeatId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/student/exeat/cancelLongTermExeat?exeatId=\(exeatId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.deleteContentTypeHeaders()
         )
         .responseString { response in
             if let statusCode = response.response?.statusCode, let result = response.value {

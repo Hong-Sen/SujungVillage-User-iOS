@@ -35,10 +35,13 @@ class HomeTabViewController: UIViewController {
     private var curYear = Calendar.current.component(.year, from: Date())
     private var curMonth = Calendar.current.component(.month, from: Date())
     private let userDefault = UserDefaults.standard
+    private var isLongTermExeatDay: Bool = false
     
     private var rollcallDayList: [Day] = []
     private var appliedRollcallDayList: [Day] = []
     private var appliedExeatDayList: [Day] = []
+    private var appliedLongTermExeatDayList: [AppliedLongTermExeatDay] = []
+    private var appliedLongTermExeatDaysAllDateList: [LongTermExeatModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,10 +185,14 @@ class HomeTabViewController: UIViewController {
                 }
                 if let rollcalls = self?.viewModel.rollcallDays,
                    let appliedRollcalls = self?.viewModel.appliedRollcallDays,
-                   let appliedExeats = self?.viewModel.appliedExeatDays {
+                   let appliedExeats = self?.viewModel.appliedExeatDays,
+                   let appliedLongTermExeats = self?.viewModel.appliedLongTermExeatDays,
+                   let appliedLongTermExeatDaysAllDates = self?.viewModel.appliedLongTermExeatDaysAllDates {
                     self?.rollcallDayList = rollcalls
                     self?.appliedRollcallDayList = appliedRollcalls
                     self?.appliedExeatDayList = appliedExeats
+                    self?.appliedLongTermExeatDayList = appliedLongTermExeats
+                    self?.appliedLongTermExeatDaysAllDateList = appliedLongTermExeatDaysAllDates
                     self?.calendarView.reloadData()
                 }
             }
@@ -249,25 +256,9 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         
         viewModel.fetchResidentInfo(year: curYear, month: curMonth)
     }
-    
-    func dateToStr(date: Date) -> String {
-        var day = dateFormatter.string(from: date)
-        
-        if day[day.index(day.startIndex, offsetBy: 8)] == "0" {
-            var idx = day.index(day.startIndex, offsetBy: 8)
-            day.remove(at: idx)
-        }
-        
-        if day[day.index(day.startIndex, offsetBy: 5)] == "0" {
-            var idx = day.index(day.startIndex, offsetBy: 5)
-            day.remove(at: idx)
-        }
-        
-        return day
-    }
-    
+
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        var day = dateToStr(date: date)
+        var day = date.toStringExceptZero()
         
         // 무단 외박일
         if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0  && appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count == 0 {
@@ -282,6 +273,11 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         // 외박
         else if appliedExeatDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
             return .primary
+        }
+        
+        // 장기 외박
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
+            return .green
         }
         
         return .white
@@ -289,7 +285,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
     
     // select시 색상 변경 방지
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
-        var day = dateToStr(date: date)
+        var day = date.toStringExceptZero()
         
         // 무단 외박일
         if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0  && appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count == 0 {
@@ -306,11 +302,16 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
             return .primary
         }
         
+        // 장기 외박
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
+            return .green
+        }
+        
         return .white
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        var day = dateToStr(date: date)
+        var day = date.toStringExceptZero()
 
         if rollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0  && appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count == 0 {
             let unRollCallVC = UnRollCallAlertViewController()
@@ -333,6 +334,17 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
             let exeatVC = ExeatAlertViewController()
             exeatVC.exeatId = appliedExeatDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
             exeatVC.date = dateFormatter.string(from: date)
+            exeatVC.type = .short
+            exeatVC.modalPresentationStyle = .overFullScreen
+            exeatVC.modalTransitionStyle = .crossDissolve
+            present(exeatVC, animated: true, completion: nil)
+        }
+        
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
+            let exeatVC = ExeatAlertViewController()
+            exeatVC.exeatId = appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()})[0].id
+            exeatVC.date = dateFormatter.string(from: date)
+            exeatVC.type = .long
             exeatVC.modalPresentationStyle = .overFullScreen
             exeatVC.modalTransitionStyle = .crossDissolve
             present(exeatVC, animated: true, completion: nil)

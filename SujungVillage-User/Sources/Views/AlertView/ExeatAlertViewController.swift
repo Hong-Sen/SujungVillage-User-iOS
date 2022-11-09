@@ -22,13 +22,14 @@ class ExeatAlertViewController: UIViewController {
     var date: String = ""
     var exeatId: Int = -101
     private var viewModel = GetExeatInfoViewModel.shared
+    var type: ExeatType = .short
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.exeatId = exeatId
         setUI()
         fetchView()
-        viewModel.fetchExeatAlert()
+        viewModel.fetchExeatAlert(type: type)
     }
     
     func setUI() {
@@ -81,28 +82,56 @@ class ExeatAlertViewController: UIViewController {
         }
     }
     
+    func presentCancleAlert(iscancleAccepted: Bool) {
+        if iscancleAccepted {
+            let alert = UIAlertController(title: "외박신청 취소 완료", message: nil, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { UIAlertAction in
+                UserInfoViewModel.shared.fetchResidentInfo(year: Int(self.date.substring(from: 0, to: 3))!, month: Int(self.date.substring(from: 5, to: 6))!)
+                self.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true)
+        }
+        else {
+            let alert = UIAlertController(title: "외박신청 취소 실패", message: nil, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { UIAlertAction in
+                self.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    
     @IBAction func cancleBtnSelected(_ sender: Any) {
-        Repository.shared.cancleExeat(exeatId: exeatId) { status, result in
-            switch status {
-            case .ok:
-                if result == "외박신청 취소 완료" {
-                    let alert = UIAlertController(title: "외박신청 취소 완료", message: nil, preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { UIAlertAction in
-                        UserInfoViewModel.shared.fetchResidentInfo(year: Int(self.date.substring(from: 0, to: 3))!, month: Int(self.date.substring(from: 5, to: 6))!)
-                        self.dismiss(animated: true)
-                    }))
-                    self.present(alert, animated: true)
+        switch type {
+        case .short:
+            Repository.shared.cancleExeat(exeatId: exeatId) { status, result in
+                switch status {
+                case .ok:
+                    if result == "외박신청 취소 완료" {
+                        self.presentCancleAlert(iscancleAccepted: true)
+                    }
+                    else {
+                        self.presentCancleAlert(iscancleAccepted: false)
+                    }
+                default:
+                    print("cancle exeat error: \(status)")
+                    break
                 }
-                else {
-                    let alert = UIAlertController(title: "외박신청 취소 실패", message: nil, preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { UIAlertAction in
-                        self.dismiss(animated: true)
-                    }))
-                    self.present(alert, animated: true)
+            }
+        case .long:
+            Repository.shared.cancleLongTermExeat(exeatId: exeatId) { status, result in
+                switch status {
+                case .ok:
+                    if result == "장기 외박신청 취소 완료" {
+                        self.presentCancleAlert(iscancleAccepted: true)
+                    }
+                    else {
+                        self.presentCancleAlert(iscancleAccepted: false)
+                    }
+                default:
+                    print("cancle exeat error: \(status)")
+                    break
                 }
-            default:
-                print("cancle exeat error: \(status)")
-                break
             }
         }
     }
