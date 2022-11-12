@@ -871,6 +871,7 @@
 				DEVELOPMENT_TEAM = JSGY6C3D99;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "수정마을";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -902,6 +903,7 @@
 				DEVELOPMENT_TEAM = JSGY6C3D99;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "수정마을";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
