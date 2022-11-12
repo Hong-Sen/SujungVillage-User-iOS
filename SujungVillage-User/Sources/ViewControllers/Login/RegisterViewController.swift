@@ -162,6 +162,26 @@ class RegisterViewController: UIViewController {
            let name = nameTextField.text,
            let dormitory = dormitoryTextField.text,
            let room = roomTextField.text {
+            if id == "" || pwd == "" || name == "" || phoneNumber == "" || dormitory == "" || room == "" {
+                let alert = UIAlertController(title: "모든 정보를 입력해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+            
+            if resultOverlapIdLabel.text == "" || resultOverlapIdLabel.text == "이미 존재하는 아이디입니다." {
+                let alert = UIAlertController(title: "아이디 중복확인을 해주세요.", message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+            if resultCheckPwdLabel.text == "비밀번호가 다릅니다." {
+                let alert = UIAlertController(title: "비밀번호가 다릅니다.", message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+            
             let aes = AESUtil()
             let securePwd = aes.setAES256Encrypt(string: pwd)
             let model =  SignUpModel(id: id, password: securePwd, name: name, dormitoryName: dormitory, detailedAddress: room, phoneNumber: phoneNumber)

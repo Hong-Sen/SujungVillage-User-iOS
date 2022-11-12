@@ -397,7 +397,8 @@ class SettingViewController: UIViewController {
             case 1003:
                 let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { UIAlertAction in
-                    UserDefaults.standard.isLogedIn = false
+                    UserDefaults.standard.autoLogin = false
+                    UserDefaults.standard.needLogin = true
                     self.tabBarController?.selectedIndex = 0
                 }))
                 alert.addAction(UIAlertAction(title: "취소", style: .destructive, handler: nil))

@@ -264,9 +264,9 @@
 				742D13BA28E2C6FE00150673 /* SceneDelegate.swift */,
 				74680B6728F55F42006E289F /* Utils */,
 				742D13F028E447A800150673 /* Views */,
+				742D13D028E4345600150673 /* Network */,
 				742D13D328E434A500150673 /* Repositories */,
 				742D13D128E4346300150673 /* Extensions */,
-				742D13D028E4345600150673 /* Network */,
 				742D13CF28E4344E00150673 /* ViewControllers */,
 				742D13CE28E4341100150673 /* ViewModels */,
 				742D13D228E4349000150673 /* Models */,
@@ -871,6 +871,7 @@
 				DEVELOPMENT_TEAM = JSGY6C3D99;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -901,6 +902,7 @@
 				DEVELOPMENT_TEAM = JSGY6C3D99;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

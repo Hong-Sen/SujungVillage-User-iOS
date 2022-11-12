@@ -11,34 +11,70 @@ class UserLoginManager {
     static let shared = UserLoginManager()
     
     func setUser(
+        id: String? = nil,
         jwtToken: String? = nil,
         refreshToken: String? = nil
     ) {
         let defaults = UserDefaults.standard
-        if let jwtToken = jwtToken {
-            defaults.set(jwtToken, forKey: "jwtToken")
-        }
-        defaults.isLogedIn = true
+        if let id = id,
+        let jwtToken = jwtToken,
+            let refreshToken = refreshToken {
+                defaults.set(id, forKey: "id")
+                defaults.set(jwtToken, forKey: "jwtToken")
+                defaults.set(refreshToken, forKey: "refreshToken")
+            }
     }
     
-    func doLogin(id: String, pwd: String, fcmToken: String) {
+    func doLoginInVC(id: String, pwd: String, fcmToken: String, completion: @escaping(Bool)->Void)  {
         Repository.shared.doLogin(id: id, pwd: pwd, fcmToken: fcmToken) { status, loginResponse in
             switch status {
             case .ok:
-                if let jwtToken = loginResponse?.jwtToken {
-                    print("jwtToken: \(jwtToken)")
-                    self.setUser(jwtToken: jwtToken)
+                if let jwtToken = loginResponse?.jwtToken ,
+                   let refreshToken = loginResponse?.refreshToken {
+                    self.setUser(id: id, jwtToken: jwtToken, refreshToken: refreshToken)
                 }
+                completion(true)
             default:
-                UserDefaults.standard.isLogedIn = false
-                print("error: \(status)")
+                completion(false)
+                print("do login error: \(status)")
                 break
             }
         }
     }
     
     func doLogout() {
+        UserDefaults.standard.removeObject(forKey: "id")
         UserDefaults.standard.removeObject(forKey: "jwtToken")
-        UserDefaults.standard.isLogedIn = false
+        UserDefaults.standard.removeObject(forKey: "refreshToken")
+        UserDefaults.standard.autoLogin = false
+    }
+    
+    func isValidToken(token: String, completion: @escaping (Bool)->Void) {
+        Repository.shared.checkTokenValid(token: token) { status, result in
+            switch status {
+            case .ok:
+                if result == "true" { completion(true) }
+                else { completion(false) }
+            default:
+                print("check valid token error: \(status)")
+            }
+        }
+    }
+    
+    func doRefresh() {
+        let defaults = UserDefaults.standard
+        if let id = defaults.string(forKey: "id"),
+           let refreshToken = defaults.string(forKey: "refreshToken") {
+            Repository.shared.doRefresh(id: id, refreshToken: refreshToken) { status, response in
+                switch status {
+                case .ok:
+                    if let jwtToken = response?.jwtToken {
+                        defaults.set(jwtToken, forKey: "jwtToken")
+                    }
+                default:
+                    print("do refresh error: \(status)")
+                }
+            }
+        }
     }
 }

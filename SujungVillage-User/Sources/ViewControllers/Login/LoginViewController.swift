@@ -20,18 +20,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signUpBtn: UIButton!
     private var isAutoLogined: Bool = false
     var observer: NSKeyValueObservation?
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        
-        observer = UserDefaults.standard.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
-            if UserDefaults.standard.isLogedIn {
-                UserInfoViewModel.shared.fetchResidentInfo(year: 2022, month: 10)
+        observer = defaults.observe(\.needLogin, options: [.initial, .new], changeHandler: { (default, change) in
+            if !self.defaults.needLogin {
+                UserInfoViewModel.shared.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
                 self.dismiss(animated: true)
             }
         })
-
+        
         autoLoginBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.autoLoginTapped)))
         autoLoginBtn.isUserInteractionEnabled = true
     }
@@ -39,7 +39,6 @@ class LoginViewController: UIViewController {
     func setView() {
         self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .plight
-        
         logoImg.image = UIImage(named: "logo")
         bottomView.layer.cornerRadius = 20
         bottomView.addShadow(location: .top, opacity: 0.12, radius: 20)
@@ -65,8 +64,10 @@ class LoginViewController: UIViewController {
         loginBtn.backgroundColor = .primary
         loginBtn.layer.cornerRadius = 10
         
-        signUpBtn.tintColor = .primary
-        signUpBtn.titleLabel?.font = UIFont.suit(size: 10, family: .Bold)
+        signUpBtn.tintColor = .white
+        signUpBtn.titleLabel?.font = UIFont.suit(size: 14, family: .Bold)
+        signUpBtn.backgroundColor = .primary
+        signUpBtn.layer.cornerRadius = 10
         
     }
     
@@ -80,14 +81,24 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginBtnSelected(_ sender: Any) {
-        // FIX: 자동로그인 기능 추가
-        
         if let id = idTextField.text, let pwd = pwdTextField.text {
             let aes = AESUtil()
             let encodedPwd = aes.setAES256Encrypt(string: pwd)
-            UserLoginManager.shared.doLogin(id: id, pwd: encodedPwd, fcmToken: "")
+            
+            UserLoginManager.shared.doLoginInVC(id: id, pwd: encodedPwd, fcmToken: "") { result in
+                if result {
+                    self.defaults.autoLogin = self.isAutoLogined
+                    self.defaults.needLogin = false
+                }
+                else {
+                    let alert = UIAlertController(title: "일치하는 계정이 없습니다.", message: nil, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
         }
     }
+    
     
     @IBAction func signUpBtnSelected(_ sender: Any) {
         guard let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else { return }

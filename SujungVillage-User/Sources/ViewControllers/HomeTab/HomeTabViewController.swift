@@ -45,14 +45,10 @@ class HomeTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !userDefault.isLogedIn {
+        if userDefault.needLogin {
+            print("home view did load")
             presentLoginVC()
         }
-        observer = userDefault.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
-            if self.userDefault.isLogedIn {
-                self.viewModel.fetchResidentInfo(year: self.curYear, month: self.curMonth)
-            }
-        })
         
         fetchView()
         setUI()
@@ -61,14 +57,14 @@ class HomeTabViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if !userDefault.isLogedIn {
+        if userDefault.needLogin {
             guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController") as? UINavigationController else { return }
             loginVC.modalPresentationStyle = .fullScreen
             loginVC.modalTransitionStyle = .coverVertical
             self.present(loginVC, animated: true)
         }
-        observer = userDefault.observe(\.isLogedIn, options: [.initial, .new], changeHandler: { (defaults, change) in
-            if self.userDefault.isLogedIn {
+        observer = userDefault.observe(\.needLogin, options: [.initial, .new], changeHandler: { (defaults, change) in
+            if self.userDefault.needLogin {
                 self.viewModel.fetchResidentInfo(year: self.curYear, month: self.curMonth)
             }
         })
