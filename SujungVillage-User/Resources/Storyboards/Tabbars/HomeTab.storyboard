@@ -1133,9 +1133,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axF-QT-9dH">
-                                        <rect key="frame" x="170.5" y="385" width="73" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="회원가입"/>
+                                        <rect key="frame" x="33" y="385" width="348" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="n2p-RI-Qbm"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="회원가입"/>
                                         <connections>
                                             <action selector="signUpBtnSelected:" destination="XaQ-Rv-A9S" eventType="touchUpInside" id="hyk-dz-ShQ"/>
                                         </connections>
@@ -1147,6 +1150,8 @@
                                     <constraint firstItem="JZr-Sv-rSt" firstAttribute="top" secondItem="VTP-Kd-UXp" secondAttribute="top" constant="52" id="4b1-KA-KPR"/>
                                     <constraint firstAttribute="trailing" secondItem="BaQ-5C-pam" secondAttribute="trailing" constant="84" id="511-7V-8eW"/>
                                     <constraint firstAttribute="trailing" secondItem="3oh-rw-aoL" secondAttribute="trailing" constant="84" id="E6H-T7-Ois"/>
+                                    <constraint firstItem="axF-QT-9dH" firstAttribute="leading" secondItem="VTP-Kd-UXp" secondAttribute="leading" constant="33" id="MGJ-NR-e7B"/>
+                                    <constraint firstAttribute="trailing" secondItem="axF-QT-9dH" secondAttribute="trailing" constant="33" id="OH9-YE-EsP"/>
                                     <constraint firstItem="axF-QT-9dH" firstAttribute="top" secondItem="hVR-Qw-wjQ" secondAttribute="bottom" constant="20" id="PsV-na-HOP"/>
                                     <constraint firstItem="3oh-rw-aoL" firstAttribute="leading" secondItem="VTP-Kd-UXp" secondAttribute="leading" constant="84" id="Rt8-Ew-v2X"/>
                                     <constraint firstItem="hVR-Qw-wjQ" firstAttribute="top" secondItem="gCL-m5-kwH" secondAttribute="bottom" constant="91" id="Rti-al-FvV"/>

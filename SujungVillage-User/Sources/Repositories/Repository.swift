@@ -50,6 +50,35 @@ extension Repository {
             }
         }
     }
+    
+    func doRefresh(id: String, refreshToken: String, completion: @escaping (HTTPStatusCode, RefreshResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/refresh",
+            method: .post,
+            parameters: ["userId": id,
+                         "refreshToken": refreshToken],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: RefreshResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    func checkTokenValid(token: String, completion: @escaping(HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+        "\(baseUrl)/api/common/validateToken?token=\(token)",
+    method: .get,
+        encoding: JSONEncoding.default
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
 }
 
 // MARK: Home

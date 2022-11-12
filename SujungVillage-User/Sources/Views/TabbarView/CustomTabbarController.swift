@@ -46,6 +46,4 @@ class CustomTabbarController: UITabBarController {
         item.selectedImage = UIImage(named: selectedImageName)
         item.title = ""
     }
-    
-
 }

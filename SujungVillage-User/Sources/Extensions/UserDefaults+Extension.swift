@@ -8,8 +8,13 @@
 import Foundation
 
 extension UserDefaults {
-    @objc dynamic var isLogedIn: Bool {
-        get { self.bool(forKey: "isLogedIn") ?? false }
-        set { self.setValue(newValue, forKey: "isLogedIn") }
+    @objc dynamic var autoLogin: Bool { // 자동로그인
+        get { self.bool(forKey: "autoLogin") ?? false }
+        set { self.setValue(newValue, forKey: "autoLogin") }
+    }
+    
+    @objc dynamic var needLogin: Bool { // 로그인 창 유무
+        get { self.bool(forKey: "needLogin") ?? true }
+        set { self.setValue(newValue, forKey: "needLogin") }
     }
 }
