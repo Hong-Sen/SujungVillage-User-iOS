@@ -229,6 +229,13 @@
 			path = QnA;
 			sourceTree = "<group>";
 		};
+		7426AE6E2920D65200906DB5 /* CommunityView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommunityView;
+			sourceTree = "<group>";
+		};
 		742D13AC28E2C6FE00150673 = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +432,7 @@
 		742D13F028E447A800150673 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7426AE6E2920D65200906DB5 /* CommunityView */,
 				741A2666290B83DB004FF508 /* Q&AView */,
 				74D2615C28FEA5C8008BC5BE /* AlertView */,
 				742F33E028F6EA6900DA8478 /* NoticeTableView */,

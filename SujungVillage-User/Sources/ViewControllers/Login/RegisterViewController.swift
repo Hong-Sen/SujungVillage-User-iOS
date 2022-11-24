@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var registerBtn: UIButton!
     let dropdown = DropDown()
     private var isdropdownBtnClicked: Bool = false
-    let menuList = ["성미관", "000", "000", "000", "000"]
+    let menuList = ["성미관", "000", "000", "000", "000"] // FIX: Server에서 List 받기
     
     override func viewDidLoad() {
         super.viewDidLoad()
