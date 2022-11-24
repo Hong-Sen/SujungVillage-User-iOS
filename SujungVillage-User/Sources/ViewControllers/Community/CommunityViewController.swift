@@ -13,13 +13,12 @@ class CommunityViewController: UIViewController {
     let dropdown = DropDown()
     private var isdropdownBtnClicked: Bool = false
     let menuList = ["전체", "성미관", "000", "000", "000", "000"] // FIX: Server에서 List 받기
-
+    
     private var navigationView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .primary
         view.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 30)
-        view.addShadow(location: .bottom, color: .black, opacity: 0.1, radius: 3)
         return view
     }()
     
@@ -31,7 +30,7 @@ class CommunityViewController: UIViewController {
     }()
     
     private lazy var dormitoryLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "전체"
         label.font = .systemFont(ofSize: 22, weight: .semibold)
@@ -67,18 +66,37 @@ class CommunityViewController: UIViewController {
         return btn
     }()
     
+    private var tableView = UITableView()
+    private var postingList: [CommunityPostResponse] = []
+    private let viewModel = CommunityViewModel.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTableView()
         setUpViews()
         setDropDown()
+        setTable()
+        viewModel.fetchCommunityPostList(dormitoryName: dormitoryLabel.text!)
     }
+    
+    func fetchTableView() {
+        viewModel.onUpdated = {[weak self] in
+            DispatchQueue.main.async {
+                self?.postingList = self?.viewModel.postList ?? []
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
     func setUpViews() {
+        self.view.backgroundColor = UIColor(hexString: "FBFBFB")
         setUpnavigationView()
         setUpDormitorySelectionView()
         setUpDormitoryLabel()
         setUpDropDownImg()
         setUpSearchBtn()
         setUpAlarmBtn()
+        setUpTableView()
     }
     
     private func setUpnavigationView() {
@@ -90,7 +108,7 @@ class CommunityViewController: UIViewController {
             navigationView.heightAnchor.constraint(equalToConstant: 114)
         ])
     }
-
+    
     private func setUpDormitorySelectionView() {
         view.addSubview(dormitorySelectionView)
         NSLayoutConstraint.activate([
@@ -136,6 +154,18 @@ class CommunityViewController: UIViewController {
         ])
     }
     
+    func setUpTableView() {
+        tableView.backgroundColor = UIColor(hexString: "FBFBFB")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: navigationView.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+        ])
+    }
+    
     @objc func dropDownBtnSelected() {
         isdropdownBtnClicked = !isdropdownBtnClicked
         dropDownBtn.setImage(isdropdownBtnClicked ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down"), for: .normal)
@@ -160,6 +190,7 @@ extension CommunityViewController {
             self!.dormitoryLabel.text = item
             self!.isdropdownBtnClicked = !self!.isdropdownBtnClicked
             self!.dropDownBtn.setImage(self!.isdropdownBtnClicked ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down"), for: .normal)
+            self!.viewModel.fetchCommunityPostList(dormitoryName: item)
         }
         
         dropdown.backgroundColor = .primary
@@ -176,6 +207,34 @@ extension CommunityViewController {
             self!.isdropdownBtnClicked = !self!.isdropdownBtnClicked
             self!.dropDownBtn.setImage(self!.isdropdownBtnClicked ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down"), for: .normal)
         }
+    }
+}
+
+extension CommunityViewController:UITableViewDelegate, UITableViewDataSource {
+    func setTable() {
+        tableView.register(CommunityCell.classForCoder(), forCellReuseIdentifier: CommunityCell.cellId)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return postingList.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 133
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommunityCell.cellId, for: indexPath) as! CommunityCell
+        cell.titleLabel.text = postingList[indexPath.row].title
+        var date = postingList[indexPath.row].regDate.substring(from: 0, to: 9)
+        cell.dateLabel.text = date
+        cell.contentLabel.text =  postingList[indexPath.row].content
+        cell.numOfCommentsLabel.text =  String(postingList[indexPath.row].numOfComments)
+        cell.selectionStyle = .none
+        return cell
     }
 }
 

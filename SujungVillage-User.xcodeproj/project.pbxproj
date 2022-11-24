@@ -16,6 +16,7 @@
 		741E0631290E3A0400417519 /* MyQResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E0630290E3A0400417519 /* MyQResponse.swift */; };
 		741E0633290EB06000417519 /* MyQuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E0632290EB06000417519 /* MyQuestionDetailViewController.swift */; };
 		741E0636290EB88300417519 /* MyQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E0635290EB88300417519 /* MyQuestionViewModel.swift */; };
+		74280080292FB6DA0006BD23 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428007F292FB6DA0006BD23 /* CommunityViewModel.swift */; };
 		742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13B828E2C6FE00150673 /* AppDelegate.swift */; };
 		742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13BA28E2C6FE00150673 /* SceneDelegate.swift */; };
 		742D13C028E2C6FE00150673 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 742D13BE28E2C6FE00150673 /* Main.storyboard */; };
@@ -87,6 +88,8 @@
 		74E9AF912911049C0009D481 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */; };
 		74E9AF9329110A8E0009D481 /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9AF9229110A8E0009D481 /* FAQViewModel.swift */; };
 		74F3FA6C2901796F00226A42 /* GetRollCallInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F3FA6B2901796F00226A42 /* GetRollCallInfoViewModel.swift */; };
+		74FA0096292F60E100A01244 /* CommunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA0095292F60E100A01244 /* CommunityCell.swift */; };
+		74FA0099292F68FC00A01244 /* CommunityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA0098292F68FC00A01244 /* CommunityResponse.swift */; };
 		B10842AAE8EB0DDC70A062F0 /* Pods_SujungVillage_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792CE14483603D06C8B3F308 /* Pods_SujungVillage_User.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +104,7 @@
 		741E0630290E3A0400417519 /* MyQResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQResponse.swift; sourceTree = "<group>"; };
 		741E0632290EB06000417519 /* MyQuestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionDetailViewController.swift; sourceTree = "<group>"; };
 		741E0635290EB88300417519 /* MyQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionViewModel.swift; sourceTree = "<group>"; };
+		7428007F292FB6DA0006BD23 /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		742D13B528E2C6FE00150673 /* SujungVillage-User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SujungVillage-User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		742D13B828E2C6FE00150673 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		742D13BA28E2C6FE00150673 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
 		74E9AF9229110A8E0009D481 /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
 		74F3FA6B2901796F00226A42 /* GetRollCallInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRollCallInfoViewModel.swift; sourceTree = "<group>"; };
+		74FA0095292F60E100A01244 /* CommunityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCell.swift; sourceTree = "<group>"; };
+		74FA0098292F68FC00A01244 /* CommunityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityResponse.swift; sourceTree = "<group>"; };
 		792CE14483603D06C8B3F308 /* Pods_SujungVillage_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SujungVillage_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D146AC24FAB5177AAB88A014 /* Pods-SujungVillage-User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SujungVillage-User.debug.xcconfig"; path = "Target Support Files/Pods-SujungVillage-User/Pods-SujungVillage-User.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,8 +238,17 @@
 		7426AE6E2920D65200906DB5 /* CommunityView */ = {
 			isa = PBXGroup;
 			children = (
+				74FA0090292F5F1100A01244 /* CommunityCell */,
 			);
 			path = CommunityView;
+			sourceTree = "<group>";
+		};
+		7428007E292FB6C90006BD23 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				7428007F292FB6DA0006BD23 /* CommunityViewModel.swift */,
+			);
+			path = Community;
 			sourceTree = "<group>";
 		};
 		742D13AC28E2C6FE00150673 = {
@@ -295,6 +310,7 @@
 			children = (
 				741E0634290EB75800417519 /* QnA */,
 				74F3FA69290178D700226A42 /* Home */,
+				7428007E292FB6C90006BD23 /* Community */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -346,6 +362,7 @@
 				7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */,
 				743D888E290D28C400D601E0 /* FAQResponse.swift */,
 				741E0630290E3A0400417519 /* MyQResponse.swift */,
+				74FA0098292F68FC00A01244 /* CommunityResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -537,6 +554,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		74FA0090292F5F1100A01244 /* CommunityCell */ = {
+			isa = PBXGroup;
+			children = (
+				74FA0095292F60E100A01244 /* CommunityCell.swift */,
+			);
+			path = CommunityCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -689,6 +714,7 @@
 				7469D7BA2902FB3000168FFA /* String+Extension.swift in Sources */,
 				742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */,
 				74E9AF9329110A8E0009D481 /* FAQViewModel.swift in Sources */,
+				74FA0099292F68FC00A01244 /* CommunityResponse.swift in Sources */,
 				74008EF228F302D4008A609F /* UITextField+Extension.swift in Sources */,
 				7483C7AE28E8320000CCF70A /* UserLoginManager.swift in Sources */,
 				74840A6528E55EB4002AF1BC /* CustomTabBar.swift in Sources */,
@@ -701,7 +727,9 @@
 				74F3FA6C2901796F00226A42 /* GetRollCallInfoViewModel.swift in Sources */,
 				74E9AF902911049C0009D481 /* FAQTableViewCell.swift in Sources */,
 				742D13E628E4399C00150673 /* SettingViewController.swift in Sources */,
+				74280080292FB6DA0006BD23 /* CommunityViewModel.swift in Sources */,
 				7483C7A628E74F3800CCF70A /* API.swift in Sources */,
+				74FA0096292F60E100A01244 /* CommunityCell.swift in Sources */,
 				74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */,
 				74008EF428F31314008A609F /* RegisterViewController.swift in Sources */,
 				742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */,

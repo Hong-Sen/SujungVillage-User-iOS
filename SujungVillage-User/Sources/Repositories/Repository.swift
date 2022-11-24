@@ -229,7 +229,6 @@ extension Repository {
     }
 }
 
-
 // MARK: LMP history
 extension Repository {
     func getLMPHistory(completion: @escaping (HTTPStatusCode, [LMPHistoryResponse]?)->Void) {
@@ -352,6 +351,25 @@ extension Repository {
             headers: API.shared.getContentTypeHeaders()
         )
         .responseDecodable(of: WriteQuestionResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+}
+
+// MARK: Community
+extension Repository {
+    func getAllPost(dormitoryName: String, completion: @escaping (HTTPStatusCode, [CommunityPostResponse]?)->Void) {
+        let url = "\(baseUrl)/common/community/getAllPost?dormitoryName=\(dormitoryName)"
+        guard let encodingUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        AF.request(
+            encodingUrl,
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: [CommunityPostResponse].self) { response in
             if let statusCode = response.response?.statusCode {
                 completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
             }

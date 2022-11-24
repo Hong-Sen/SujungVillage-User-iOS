@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
         if let id = idTextField.text, let pwd = pwdTextField.text {
             let aes = AESUtil()
             let encodedPwd = aes.setAES256Encrypt(string: pwd)
-            
+ 
             UserLoginManager.shared.doLoginInVC(id: id, pwd: encodedPwd, fcmToken: "") { result in
                 if result {
                     self.defaults.autoLogin = self.isAutoLogined
