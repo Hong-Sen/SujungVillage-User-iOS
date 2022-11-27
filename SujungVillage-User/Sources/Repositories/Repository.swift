@@ -375,4 +375,20 @@ extension Repository {
             }
         }
     }
+    
+    func writePost(writeModel: CommunityWritePostModel, completion: @escaping (HTTPStatusCode, CommunityWritePostResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/writePost",
+            method: .post,
+            parameters: [ "title": writeModel.title,
+                          "content": writeModel.content],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: CommunityWritePostResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
 }

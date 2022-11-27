@@ -55,6 +55,7 @@
 		7477DACA28F1C60500E3C865 /* LMPHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7477DAC828F1C60500E3C865 /* LMPHistoryTableViewCell.xib */; };
 		7477DACE28F1CD0A00E3C865 /* LMPHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */; };
 		7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479AF9E28EECF3000FF1FE8 /* ApplyRollCallViewController.swift */; };
+		747DEFA12933A47400BB2871 /* CommunityWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747DEFA02933A47400BB2871 /* CommunityWritingViewController.swift */; };
 		7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */; };
 		7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */; };
 		7483C7A628E74F3800CCF70A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7483C7A528E74F3800CCF70A /* API.swift */; };
@@ -145,6 +146,7 @@
 		7477DAC828F1C60500E3C865 /* LMPHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMPHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		7477DACD28F1CD0A00E3C865 /* LMPHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPHistoryResponse.swift; sourceTree = "<group>"; };
 		7479AF9E28EECF3000FF1FE8 /* ApplyRollCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyRollCallViewController.swift; sourceTree = "<group>"; };
+		747DEFA02933A47400BB2871 /* CommunityWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityWritingViewController.swift; sourceTree = "<group>"; };
 		7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPStaus+Enum.swift"; sourceTree = "<group>"; };
 		7483C7A528E74F3800CCF70A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				742D13E128E4398400150673 /* CommunityViewController.swift */,
+				747DEFA02933A47400BB2871 /* CommunityWritingViewController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */,
 				742F33E328F6EAC400DA8478 /* NoticeTableViewCell.swift in Sources */,
 				7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */,
+				747DEFA12933A47400BB2871 /* CommunityWritingViewController.swift in Sources */,
 				74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */,
 				7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */,
 				744FE44A290C3B5700EA04C4 /* FAQViewController.swift in Sources */,

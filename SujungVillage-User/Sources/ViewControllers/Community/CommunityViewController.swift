@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import DropDown
+import DTZFloatingActionButton
 
 class CommunityViewController: UIViewController {
     let dropdown = DropDown()
@@ -79,6 +80,11 @@ class CommunityViewController: UIViewController {
         viewModel.fetchCommunityPostList(dormitoryName: dormitoryLabel.text!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchTableView()
+        viewModel.fetchCommunityPostList(dormitoryName: dormitoryLabel.text!)
+    }
+    
     func fetchTableView() {
         viewModel.onUpdated = {[weak self] in
             DispatchQueue.main.async {
@@ -97,6 +103,7 @@ class CommunityViewController: UIViewController {
         setUpSearchBtn()
         setUpAlarmBtn()
         setUpTableView()
+        createWritingBtn()
     }
     
     private func setUpnavigationView() {
@@ -178,6 +185,28 @@ class CommunityViewController: UIViewController {
     
     @objc func alarmBtnSelected() {
         print("alarm!!")
+    }
+    
+    private func createWritingBtn() {
+        let writingBtn = DTZFloatingActionButton(frame:CGRect(x: view.frame.size.width - 56 - 16, y: view.frame.size.height - 56 - 16 - 130, width: 56, height: 56))
+        writingBtn.handler = {
+            button in
+            self.presentWritingView()
+        }
+        writingBtn.isScrollView = true
+        writingBtn.buttonImage = UIImage(named: "icon_write_post")
+        writingBtn.shadowCircleColor = .black
+        writingBtn.shadowCircleOffSet = CGSize(width: 0, height: 2)
+        writingBtn.shadowCircleOpacity = 0.2
+        writingBtn.shadowCircleRadius = 2
+        writingBtn.isAddShadow = true
+        writingBtn.buttonColor = .primary
+        self.view.addSubview(writingBtn)
+    }
+    
+    private func presentWritingView() {
+        guard let writeVC = self.storyboard?.instantiateViewController(withIdentifier: "CommunityWritingViewController") as? CommunityWritingViewController else { return }
+        self.navigationController?.pushViewController(writeVC, animated: true)
     }
 }
 
