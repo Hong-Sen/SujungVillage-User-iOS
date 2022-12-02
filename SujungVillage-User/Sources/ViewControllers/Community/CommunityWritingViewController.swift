@@ -27,6 +27,7 @@ class CommunityWritingViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setDropDown()
+        hideKeyboard()
     }
     
     func setUI() {

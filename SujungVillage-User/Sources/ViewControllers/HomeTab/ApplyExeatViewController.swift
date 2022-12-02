@@ -32,11 +32,11 @@ class ApplyExeatViewController: UIViewController {
     private let menuList = ["단기 외박","장기 외박"]
     private let homeViewModel = UserInfoViewModel.shared
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setDropDown()
+        hideKeyboard()
     }
     
     func setUI() {

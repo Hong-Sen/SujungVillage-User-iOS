@@ -43,8 +43,9 @@ class RegisterViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         setUI()
         setDropDown()
-        
+
         checkPwdTextField.addTarget(self, action: #selector(checkPwdTextFieldValueChanged(textField:)), for: .editingChanged)
+        hideKeyboard()
     }
     
     func setUI() {
