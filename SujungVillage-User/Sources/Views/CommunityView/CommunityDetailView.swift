@@ -87,10 +87,19 @@ class CommunityDetailView: UIView {
         return view
     }()
     
+    lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.backgroundColor = .white
+        return table
+    }()
+    
+    lazy var commentList: [CommunityComment] = []
     var popVCHandler: (() -> Void)?
     
     init() {
         super.init(frame: .zero)
+        setTableView()
         setupViews()
     }
     
@@ -102,7 +111,16 @@ class CommunityDetailView: UIView {
         popVCHandler = handler
     }
     
+    private func setTableView() {
+        tableView.register(CommunityCommentCell.classForCoder(), forCellReuseIdentifier: CommunityCommentCell.identifier)
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 150
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
     private func setupViews() {
+        self.backgroundColor = .white
         setupNaviBar()
         setupContentView()
         setupTitleLabel()
@@ -112,10 +130,10 @@ class CommunityDetailView: UIView {
         setupCommentCntLabel()
         setupDeleteBtn()
         setupLineView()
+        setupCommentView()
     }
     
     private func setupNaviBar() {
-        self.backgroundColor = .white
         addSubview(navigationBar)
         let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -199,8 +217,45 @@ class CommunityDetailView: UIView {
         ])
     }
     
+    private func setupCommentView() {
+        addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: lineView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+    
     @objc func backBtnSelected() {
         popVCHandler?()
+    }
+    
+}
+
+extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 80
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommunityCommentCell.identifier, for: indexPath) as! CommunityCommentCell
+        cell.nameLabel.text = "익명\(indexPath.row + 1)"
+        var formatTime = commentList[indexPath.row].modDate.replacingOccurrences(of: "T", with: " ")
+        formatTime = formatTime.replacingOccurrences(of: "-", with: "/")
+        cell.dateLabel.text = String(formatTime.prefix(16))
+        cell.contentLabel.text = commentList[indexPath.row].content
+        if commentList[indexPath.row].writerID != UserDefaults.standard.string(forKey: "id") {
+            cell.deleteBtn.isEnabled = true
+            cell.deleteBtn.setTitle("", for: .normal)
+        }
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.selectionStyle = .none
+        return cell
     }
     
 }

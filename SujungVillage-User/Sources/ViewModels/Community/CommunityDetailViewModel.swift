@@ -12,7 +12,14 @@ class CommunityDetailViewModel {
     private init() {}
     let repository =  Repository()
      var onUpdated: () -> Void = {}
-     
+    
+    var writerId: String = ""
+    {
+        didSet {
+            onUpdated()
+        }
+    }
+    
     var title: String = ""
     {
         didSet {
@@ -45,13 +52,16 @@ class CommunityDetailViewModel {
         self.repository.getCommunityDetailPost(postId: postId) { status, detailResponse in
             switch status {
             case .ok:
-                if let title = detailResponse?.title,
+                if let writer = detailResponse?.writerID,
+                   let title = detailResponse?.title,
                    let date = detailResponse?.modDate,
                    let content = detailResponse?.content,
                    let comments = detailResponse?.comments {
+                    self.writerId = writer
                     self.title = title
                     var formatTime = date.replacingOccurrences(of: "T", with: " ")
-                    self.date = String(formatTime.prefix(19))
+                    formatTime = formatTime.replacingOccurrences(of: "-", with: "/")
+                    self.date = String(formatTime.prefix(16))
                     self.content = content
                     self.commentList = comments
                 }

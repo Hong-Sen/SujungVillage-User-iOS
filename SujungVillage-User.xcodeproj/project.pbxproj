@@ -87,6 +87,7 @@
 		74D0E0782900ED660040C462 /* UnRollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E0762900ED660040C462 /* UnRollCallAlertViewController.swift */; };
 		74D0E0792900ED660040C462 /* UnRollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E0772900ED660040C462 /* UnRollCallAlertViewController.xib */; };
 		74D2DB7B29028AA600695F62 /* GetExeatInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D2DB7A29028AA600695F62 /* GetExeatInfoViewModel.swift */; };
+		74DF1D4B293B336E002A4EB5 /* CommunityCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DF1D4A293B336E002A4EB5 /* CommunityCommentCell.swift */; };
 		74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E4243728EF342F00ADD295 /* RollCallResponse.swift */; };
 		74E9AF902911049C0009D481 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9AF8E2911049C0009D481 /* FAQTableViewCell.swift */; };
 		74E9AF912911049C0009D481 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */; };
@@ -181,6 +182,7 @@
 		74D0E0762900ED660040C462 /* UnRollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnRollCallAlertViewController.swift; sourceTree = "<group>"; };
 		74D0E0772900ED660040C462 /* UnRollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnRollCallAlertViewController.xib; sourceTree = "<group>"; };
 		74D2DB7A29028AA600695F62 /* GetExeatInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExeatInfoViewModel.swift; sourceTree = "<group>"; };
+		74DF1D4A293B336E002A4EB5 /* CommunityCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCommentCell.swift; sourceTree = "<group>"; };
 		74E4243728EF342F00ADD295 /* RollCallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallResponse.swift; sourceTree = "<group>"; };
 		74E9AF8E2911049C0009D481 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
 		74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				74FA0095292F60E100A01244 /* CommunityCell.swift */,
+				74DF1D4A293B336E002A4EB5 /* CommunityCommentCell.swift */,
 			);
 			path = CommunityCell;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				7477DACE28F1CD0A00E3C865 /* LMPHistoryResponse.swift in Sources */,
 				7457204B28EAEAFA00699184 /* UserInfoViewModel.swift in Sources */,
 				742D13E428E4399100150673 /* QnAViewController.swift in Sources */,
+				74DF1D4B293B336E002A4EB5 /* CommunityCommentCell.swift in Sources */,
 				742F33E628F6EF0D00DA8478 /* GetNoticeViewController.swift in Sources */,
 				7471BF96293B015C000728BA /* CommunityDetailViewModel.swift in Sources */,
 				74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */,

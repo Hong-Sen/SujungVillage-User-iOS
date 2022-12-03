@@ -24,10 +24,16 @@ class CommunityDetailViewController: UIViewController {
     func fetchView() {
         viewModel.onUpdated = {[weak self] in
             DispatchQueue.main.async { [self] in
+                if UserDefaults.standard.string(forKey: "id") != self?.viewModel.writerId {
+                    self?.detailView.deleteBtn.isEnabled = true
+                    self?.detailView.deleteBtn.setTitle("", for: .normal)
+                }
                 self?.detailView.titleLabel.text = self?.viewModel.title
                 self?.detailView.dateLabel.text = self?.viewModel.date
                 self?.detailView.contentLable.text = self?.viewModel.content
                 self?.commentList = self?.viewModel.commentList ?? []
+                self?.detailView.commentList = self?.commentList ?? []
+                self?.detailView.tableView.reloadData()
                 if let commentCnt = self?.commentList.count {
                     self?.detailView.commentCtnLabel.text = "\(commentCnt)"
                 }
