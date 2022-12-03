@@ -11,9 +11,6 @@ import DropDown
 import DTZFloatingActionButton
 
 class CommunityViewController: UIViewController {
-    let dropdown = DropDown()
-    private var isdropdownBtnClicked: Bool = false
-    let menuList = ["전체", "성미관", "000", "000", "000", "000"] // FIX: Server에서 List 받기
     
     private var navigationView: UIView = {
         let view = UIView()
@@ -67,6 +64,9 @@ class CommunityViewController: UIViewController {
         return btn
     }()
     
+    let dropdown = DropDown()
+    private var isdropdownBtnClicked: Bool = false
+    let menuList = ["전체", "성미관", "000", "000", "000", "000"] // FIX: Server에서 List 받기
     private var tableView = UITableView()
     private var postingList: [CommunityPostResponse] = []
     private let viewModel = CommunityViewModel.shared
@@ -264,6 +264,12 @@ extension CommunityViewController:UITableViewDelegate, UITableViewDataSource {
         cell.numOfCommentsLabel.text =  String(postingList[indexPath.row].numOfComments)
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = CommunityDetailViewController()
+        detailVC.postId = postingList[indexPath.row].id
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

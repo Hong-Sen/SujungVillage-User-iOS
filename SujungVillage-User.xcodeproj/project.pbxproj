@@ -48,6 +48,9 @@
 		7469D7BA2902FB3000168FFA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7469D7B92902FB3000168FFA /* String+Extension.swift */; };
 		746AF5D928F044590027ADAA /* ApplyExeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */; };
 		746AF5DD28F06F0E0027ADAA /* ExeatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */; };
+		7471BF91293A58E2000728BA /* CommunityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7471BF90293A58E2000728BA /* CommunityDetailViewController.swift */; };
+		7471BF93293A6DB7000728BA /* CommunityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7471BF92293A6DB7000728BA /* CommunityDetailView.swift */; };
+		7471BF96293B015C000728BA /* CommunityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7471BF95293B015C000728BA /* CommunityDetailViewModel.swift */; };
 		7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */; };
 		7476EF9828F7FDA8008B7ABF /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */; };
 		7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */; };
@@ -139,6 +142,9 @@
 		7469D7B92902FB3000168FFA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		746AF5D828F044590027ADAA /* ApplyExeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyExeatViewController.swift; sourceTree = "<group>"; };
 		746AF5DC28F06F0E0027ADAA /* ExeatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExeatResponse.swift; sourceTree = "<group>"; };
+		7471BF90293A58E2000728BA /* CommunityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailViewController.swift; sourceTree = "<group>"; };
+		7471BF92293A6DB7000728BA /* CommunityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailView.swift; sourceTree = "<group>"; };
+		7471BF95293B015C000728BA /* CommunityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailViewModel.swift; sourceTree = "<group>"; };
 		7476EF9528F7FD63008B7ABF /* GetNoticeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNoticeDetailViewController.swift; sourceTree = "<group>"; };
 		7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		7477DAC528F1C5A800E3C865 /* GetLmpHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLmpHistoryViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				74FA0090292F5F1100A01244 /* CommunityCell */,
+				7471BF92293A6DB7000728BA /* CommunityDetailView.swift */,
 			);
 			path = CommunityView;
 			sourceTree = "<group>";
@@ -249,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				7428007F292FB6DA0006BD23 /* CommunityViewModel.swift */,
+				7471BF95293B015C000728BA /* CommunityDetailViewModel.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -434,6 +442,7 @@
 			children = (
 				742D13E128E4398400150673 /* CommunityViewController.swift */,
 				747DEFA02933A47400BB2871 /* CommunityWritingViewController.swift */,
+				7471BF90293A58E2000728BA /* CommunityDetailViewController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -706,10 +715,12 @@
 				746AF5D928F044590027ADAA /* ApplyExeatViewController.swift in Sources */,
 				7477DAC628F1C5A800E3C865 /* GetLmpHistoryViewController.swift in Sources */,
 				7477DAC928F1C60500E3C865 /* LMPHistoryTableViewCell.swift in Sources */,
+				7471BF91293A58E2000728BA /* CommunityDetailViewController.swift in Sources */,
 				7477DACE28F1CD0A00E3C865 /* LMPHistoryResponse.swift in Sources */,
 				7457204B28EAEAFA00699184 /* UserInfoViewModel.swift in Sources */,
 				742D13E428E4399100150673 /* QnAViewController.swift in Sources */,
 				742F33E628F6EF0D00DA8478 /* GetNoticeViewController.swift in Sources */,
+				7471BF96293B015C000728BA /* CommunityDetailViewModel.swift in Sources */,
 				74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */,
 				742D13D928E438FB00150673 /* HomeTabViewController.swift in Sources */,
 				742D13F228E447CD00150673 /* CustomTabbarController.swift in Sources */,
@@ -737,6 +748,7 @@
 				74008EF428F31314008A609F /* RegisterViewController.swift in Sources */,
 				742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */,
 				742F33E828F6EFEB00DA8478 /* NoticeViewModel.swift in Sources */,
+				7471BF93293A6DB7000728BA /* CommunityDetailView.swift in Sources */,
 				7476EF9828F7FDA8008B7ABF /* PaddingLabel.swift in Sources */,
 				74D2DB7B29028AA600695F62 /* GetExeatInfoViewModel.swift in Sources */,
 				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,

@@ -63,6 +63,19 @@ class CommunityWritingViewController: UIViewController {
     
     @IBAction func registerBtnSelected(_ sender: Any) {
         if let title = titleTextField.text, let content = contentTextView.text {
+            if title.count == 0 {
+                let alert = UIAlertController(title: "제목을 입력해주세요", message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+            if content.count == 0 {
+                let alert = UIAlertController(title: "내용을 입력해주세요", message: nil, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
+                            
             let writePostModel = CommunityWritePostModel(title: title, content: content)
             Repository.shared.writePost(writeModel: writePostModel) { status, response in
                 switch status {

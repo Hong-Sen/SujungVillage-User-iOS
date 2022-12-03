@@ -391,4 +391,18 @@ extension Repository {
             }
         }
     }
+    
+    func getCommunityDetailPost(postId: Int, completion: @escaping (HTTPStatusCode, CommunityDetailResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/getPost?postId=\(postId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: CommunityDetailResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
 }
