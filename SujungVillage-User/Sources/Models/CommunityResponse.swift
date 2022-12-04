@@ -60,3 +60,19 @@ struct CommunityComment: Codable {
     }
 }
 
+struct WriteCommentModel: Codable {
+    let postId: Int
+    let content: String
+}
+
+struct WriteCommentResponse: Codable {
+    let id, postID: Int
+    let writerID, content, regDate, modDate: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case postID = "postId"
+        case writerID = "writerId"
+        case content, regDate, modDate
+    }
+}

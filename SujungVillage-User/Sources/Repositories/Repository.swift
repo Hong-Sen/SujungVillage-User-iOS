@@ -405,4 +405,48 @@ extension Repository {
             }
         }
     }
+    
+    func writeComment(writeModel: WriteCommentModel, completion: @escaping (HTTPStatusCode, WriteCommentResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/writeComment",
+            method: .post,
+            parameters: [ "postId": writeModel.postId,
+                          "content": writeModel.content],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: WriteCommentResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    func deleteCommunityPost(postId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/deletePost?postId=\(postId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
+    
+    func deleteComment(commentId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/deleteComment?commentId=\(commentId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
 }

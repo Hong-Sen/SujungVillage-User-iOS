@@ -10,7 +10,7 @@ import UIKit
 class CommunityCommentCell: UITableViewCell {
     
     static let identifier = "commentCell"
-    var height = 0
+    var commentId: Int = -1
     
     private lazy var cellView: UIView = {
         let view = UIView()
@@ -77,7 +77,7 @@ class CommunityCommentCell: UITableViewCell {
     }
     
     private func setUpCellView() {
-        addSubview(cellView)
+        contentView.addSubview(cellView) //* contentView안에 넣어줘야 addTarget 먹힘 *
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: topAnchor),
             cellView.leadingAnchor.constraint(equalTo: leadingAnchor),

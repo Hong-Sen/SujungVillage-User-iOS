@@ -269,6 +269,9 @@ extension CommunityViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = CommunityDetailViewController()
         detailVC.postId = postingList[indexPath.row].id
+        if let dormitory = self.dormitoryLabel.text {
+            detailVC.dormitoryName = "\(dormitory) 게시판"
+        }
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
