@@ -10,7 +10,7 @@ import Foundation
 import DropDown
 import DTZFloatingActionButton
 
-class CommunityViewController: UIViewController {
+class CommunityViewController: UIViewController, UITextFieldDelegate {
     
     private var navigationView: UIView = {
         let view = UIView()
@@ -35,6 +35,21 @@ class CommunityViewController: UIViewController {
         label.textColor = .white
         label.textAlignment = .center
         return label
+    }()
+    
+    private lazy var searchView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.roundCorners(corners: [.allCorners], radius: 6)
+        return view
+    }()
+    
+    private lazy var searchTextField: UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.setPadding(left: 5, right: 5)
+        return tf
     }()
     
     private var dropDownBtn: UIButton = {
@@ -66,9 +81,11 @@ class CommunityViewController: UIViewController {
     
     let dropdown = DropDown()
     private var isdropdownBtnClicked: Bool = false
+    private var isSearchBtnClicked: Bool = false
     let menuList = ["전체", "성미관", "000", "000", "000", "000"] // FIX: Server에서 List 받기
     private var tableView = UITableView()
     private var postingList: [CommunityPostResponse] = []
+    private var searchList: [CommunityPostResponse] = []
     private let viewModel = CommunityViewModel.shared
     
     override func viewDidLoad() {
@@ -96,6 +113,7 @@ class CommunityViewController: UIViewController {
     
     func setUpViews() {
         self.view.backgroundColor = UIColor(hexString: "FBFBFB")
+        self.searchTextField.delegate = self
         setUpnavigationView()
         setUpDormitorySelectionView()
         setUpDormitoryLabel()
@@ -104,6 +122,9 @@ class CommunityViewController: UIViewController {
         setUpAlarmBtn()
         setUpTableView()
         createWritingBtn()
+        setUpSearchView()
+        setUpSearchTextField()
+        showDormitoryInfo()
     }
     
     private func setUpnavigationView() {
@@ -161,6 +182,25 @@ class CommunityViewController: UIViewController {
         ])
     }
     
+    private func setUpSearchView() {
+        navigationView.addSubview(searchView)
+        NSLayoutConstraint.activate([
+            searchView.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor, constant: 28),
+            searchView.bottomAnchor.constraint(equalTo: navigationView.bottomAnchor, constant: -18),
+            searchView.widthAnchor.constraint(equalToConstant: 237),
+            searchView.heightAnchor.constraint(equalToConstant: 39)
+        ])
+    }
+    
+    private func setUpSearchTextField() {
+        searchView.addSubview(searchTextField)
+        NSLayoutConstraint.activate([
+            searchTextField.centerYAnchor.constraint(equalTo: searchView.centerYAnchor),
+            searchTextField.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
+            searchTextField.trailingAnchor.constraint(equalTo: searchView.trailingAnchor)
+        ])
+    }
+    
     func setUpTableView() {
         tableView.backgroundColor = UIColor(hexString: "FBFBFB")
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -173,6 +213,27 @@ class CommunityViewController: UIViewController {
         ])
     }
     
+    private func showSearchView() {
+        UIView.animate(withDuration: 0, animations: {
+            self.dormitorySelectionView.alpha = 0
+            self.dormitoryLabel.alpha = 0
+            self.dropDownBtn.alpha = 0
+            self.searchView.alpha = 1
+            self.searchTextField.alpha = 1
+        })
+    }
+    
+    private func showDormitoryInfo() {
+        UIView.animate(withDuration: 0, animations: {
+            self.dormitorySelectionView.alpha = 1
+            self.dormitoryLabel.alpha = 1
+            self.dropDownBtn.alpha = 1
+            self.searchView.alpha = 0
+            self.searchTextField.alpha = 0
+        })
+        searchTextField.text = ""
+    }
+    
     @objc func dropDownBtnSelected() {
         isdropdownBtnClicked = !isdropdownBtnClicked
         dropDownBtn.setImage(isdropdownBtnClicked ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down"), for: .normal)
@@ -180,7 +241,16 @@ class CommunityViewController: UIViewController {
     }
     
     @objc func searchBtnSelected() {
-        print("SEARCH!!")
+        isSearchBtnClicked = !isSearchBtnClicked
+        searchBtn.setImage(isSearchBtnClicked ? UIImage(systemName: "xmark") : UIImage(systemName: "magnifyingglass"), for: .normal)
+        searchBtn.tintColor = .white
+        if isSearchBtnClicked {
+            showSearchView()
+        }
+        else {
+            showDormitoryInfo()
+            tableView.reloadData()
+        }
     }
     
     @objc func alarmBtnSelected() {
@@ -208,6 +278,20 @@ class CommunityViewController: UIViewController {
         guard let writeVC = self.storyboard?.instantiateViewController(withIdentifier: "CommunityWritingViewController") as? CommunityWritingViewController else { return }
         self.navigationController?.pushViewController(writeVC, animated: true)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if isSearchBtnClicked {
+            if let keyword = searchTextField.text {
+                searchList = postingList.filter{$0.title.contains(keyword) || $0.content.contains(keyword)}
+                tableView.reloadData()
+            }
+        }
+        else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
 }
 
 extension CommunityViewController {
@@ -248,6 +332,9 @@ extension CommunityViewController:UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearchBtnClicked {
+            return searchList.count
+        }
         return postingList.count
     }
     
@@ -257,22 +344,36 @@ extension CommunityViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommunityCell.cellId, for: indexPath) as! CommunityCell
-        cell.titleLabel.text = postingList[indexPath.row].title
-        var date = postingList[indexPath.row].regDate.substring(from: 0, to: 9)
-        cell.dateLabel.text = date
-        cell.contentLabel.text =  postingList[indexPath.row].content
-        cell.numOfCommentsLabel.text =  String(postingList[indexPath.row].numOfComments)
+        
+        if isSearchBtnClicked {
+            cell.titleLabel.text = searchList[indexPath.row].title
+            let date = searchList[indexPath.row].regDate.substring(from: 0, to: 9)
+            cell.dateLabel.text = date
+            cell.contentLabel.text =  searchList[indexPath.row].content
+            cell.numOfCommentsLabel.text =  String(searchList[indexPath.row].numOfComments)
+        }
+        else {
+            cell.titleLabel.text = postingList[indexPath.row].title
+            let date = postingList[indexPath.row].regDate.substring(from: 0, to: 9)
+            cell.dateLabel.text = date
+            cell.contentLabel.text =  postingList[indexPath.row].content
+            cell.numOfCommentsLabel.text =  String(postingList[indexPath.row].numOfComments)
+        }
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = CommunityDetailViewController()
-        detailVC.postId = postingList[indexPath.row].id
+        if isSearchBtnClicked {
+            detailVC.postId = searchList[indexPath.row].id
+        }
+        else {
+            detailVC.postId = postingList[indexPath.row].id
+        }
         if let dormitory = self.dormitoryLabel.text {
             detailVC.dormitoryName = "\(dormitory) 게시판"
         }
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-

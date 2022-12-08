@@ -250,8 +250,8 @@
 		7426AE6E2920D65200906DB5 /* CommunityView */ = {
 			isa = PBXGroup;
 			children = (
-				74FA0090292F5F1100A01244 /* CommunityCell */,
 				7471BF92293A6DB7000728BA /* CommunityDetailView.swift */,
+				74FA0090292F5F1100A01244 /* CommunityCell */,
 			);
 			path = CommunityView;
 			sourceTree = "<group>";
