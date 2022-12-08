@@ -229,7 +229,6 @@ extension Repository {
     }
 }
 
-
 // MARK: LMP history
 extension Repository {
     func getLMPHistory(completion: @escaping (HTTPStatusCode, [LMPHistoryResponse]?)->Void) {
@@ -354,6 +353,99 @@ extension Repository {
         .responseDecodable(of: WriteQuestionResponse.self) { response in
             if let statusCode = response.response?.statusCode {
                 completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+}
+
+// MARK: Community
+extension Repository {
+    func getAllPost(dormitoryName: String, completion: @escaping (HTTPStatusCode, [CommunityPostResponse]?)->Void) {
+        let url = "\(baseUrl)/common/community/getAllPost?dormitoryName=\(dormitoryName)"
+        guard let encodingUrl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        AF.request(
+            encodingUrl,
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: [CommunityPostResponse].self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    func writePost(writeModel: CommunityWritePostModel, completion: @escaping (HTTPStatusCode, CommunityWritePostResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/writePost",
+            method: .post,
+            parameters: [ "title": writeModel.title,
+                          "content": writeModel.content],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: CommunityWritePostResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    func getCommunityDetailPost(postId: Int, completion: @escaping (HTTPStatusCode, CommunityDetailResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/getPost?postId=\(postId)",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: CommunityDetailResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    func writeComment(writeModel: WriteCommentModel, completion: @escaping (HTTPStatusCode, WriteCommentResponse?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/writeComment",
+            method: .post,
+            parameters: [ "postId": writeModel.postId,
+                          "content": writeModel.content],
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseDecodable(of: WriteCommentResponse.self) { response in
+            if let statusCode = response.response?.statusCode {
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
+            }
+        }
+    }
+    
+    func deleteCommunityPost(postId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/deletePost?postId=\(postId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
+    
+    func deleteComment(commentId: Int, completion: @escaping (HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+            "\(baseUrl)/common/community/deleteComment?commentId=\(commentId)",
+            method: .delete,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getContentTypeHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
             }
         }
     }

@@ -21,6 +21,7 @@ class WriteQuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        hideKeyboard()
     }
     
     func setUI() {

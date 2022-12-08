@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
         
         autoLoginBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.autoLoginTapped)))
         autoLoginBtn.isUserInteractionEnabled = true
+        hideKeyboard()
     }
     
     func setView() {
@@ -84,7 +85,7 @@ class LoginViewController: UIViewController {
         if let id = idTextField.text, let pwd = pwdTextField.text {
             let aes = AESUtil()
             let encodedPwd = aes.setAES256Encrypt(string: pwd)
-            
+ 
             UserLoginManager.shared.doLoginInVC(id: id, pwd: encodedPwd, fcmToken: "") { result in
                 if result {
                     self.defaults.autoLogin = self.isAutoLogined
@@ -98,7 +99,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     
     @IBAction func signUpBtnSelected(_ sender: Any) {
         guard let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else { return }

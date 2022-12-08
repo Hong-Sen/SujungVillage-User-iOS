@@ -46,7 +46,6 @@ class HomeTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if userDefault.needLogin {
-            print("home view did load")
             presentLoginVC()
         }
         
@@ -62,7 +61,7 @@ class HomeTabViewController: UIViewController {
             loginVC.modalPresentationStyle = .fullScreen
             loginVC.modalTransitionStyle = .coverVertical
             self.present(loginVC, animated: true)
-        }
+        } 
         observer = userDefault.observe(\.needLogin, options: [.initial, .new], changeHandler: { (defaults, change) in
             if self.userDefault.needLogin {
                 self.viewModel.fetchResidentInfo(year: self.curYear, month: self.curMonth)
@@ -151,6 +150,7 @@ class HomeTabViewController: UIViewController {
         
         calendarView.backgroundColor = .white
         calendarView.scrollEnabled = false
+        calendarView.locale = Locale(identifier: "ko_KR")
         
         calendarView.appearance.titleSelectionColor = .black
         calendarView.appearance.headerTitleFont = UIFont.suit(size: 22, family: .Bold)

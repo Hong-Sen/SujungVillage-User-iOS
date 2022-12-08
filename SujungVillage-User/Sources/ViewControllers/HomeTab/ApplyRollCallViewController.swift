@@ -26,6 +26,7 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
         setUI()
         setImagePicker()
         setLocationManager()
+        hideKeyboard()
     }
     
     func setUI(){
