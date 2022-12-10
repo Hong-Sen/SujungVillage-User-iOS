@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import AVFoundation
 
 class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -60,10 +61,24 @@ class ApplyRollCallViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func cameraAreaTapped(sender: UITapGestureRecognizer) {
-//        self.imagePicker.sourceType = .camera // simulator 작동시 오류(test시 .photoLibrary로 변경)
-        self.imagePicker.sourceType = .photoLibrary
-        self.imagePicker.modalPresentationStyle = .overFullScreen
-        self.present(self.imagePicker, animated: true, completion: nil)
+        switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
+        case .authorized:
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.modalPresentationStyle = .overFullScreen
+            self.present(self.imagePicker, animated: true, completion: nil)
+            print("카메라 권한 허용")
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.imagePicker.sourceType = .camera
+                    self.imagePicker.modalPresentationStyle = .overFullScreen
+                    self.present(self.imagePicker, animated: true, completion: nil)
+                }
+            }
+            print("카메라 권한 허용하지 않음")
+        default:
+            return
+        }
     }
     
     @objc func refreshViewTapped(sender: UITapGestureRecognizer) {
