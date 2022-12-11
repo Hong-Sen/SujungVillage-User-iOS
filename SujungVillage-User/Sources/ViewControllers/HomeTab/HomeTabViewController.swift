@@ -164,7 +164,7 @@ class HomeTabViewController: UIViewController {
         calendarView.appearance.titleFont = UIFont.suit(size: 14, family: .Medium)
         calendarView.appearance.titleDefaultColor = UIColor(hexString: "0E0E0E")
         calendarView.appearance.titleTodayColor = .primary
-        calendarView.appearance.todayColor = nil
+        calendarView.appearance.todayColor = .white
         
         calendarView.placeholderType = .none
     }

@@ -25,5 +25,8 @@ target 'SujungVillage-User' do
   # Floating Button
   pod 'DTZFloatingActionButton'
 
+  # Lottie
+  pod 'lottie-ios'
+
 
 end

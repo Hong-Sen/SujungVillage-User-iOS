@@ -80,6 +80,7 @@
 		7496929D29117424008CBB33 /* WriteQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496929C29117424008CBB33 /* WriteQuestionViewController.swift */; };
 		74A1011E293C52F70022DAF9 /* CommunityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A1011D293C52F70022DAF9 /* CommunityManager.swift */; };
 		74A45C1B291AA8340044683A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A45C1A291AA8340044683A /* Date+Extension.swift */; };
+		74B270B72945B9D7007AA812 /* splash.json.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 74B270B62945B9D7007AA812 /* splash.json.rtf */; };
 		74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */; };
 		74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */; };
 		74D0E06D2900ECEC0040C462 /* RollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */; };
@@ -176,6 +177,7 @@
 		7496929C29117424008CBB33 /* WriteQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteQuestionViewController.swift; sourceTree = "<group>"; };
 		74A1011D293C52F70022DAF9 /* CommunityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityManager.swift; sourceTree = "<group>"; };
 		74A45C1A291AA8340044683A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		74B270B62945B9D7007AA812 /* splash.json.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = splash.json.rtf; sourceTree = "<group>"; };
 		74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallAlertViewController.swift; sourceTree = "<group>"; };
 		74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollCallAlertViewController.xib; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		742D13CD28E433F800150673 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				74B270B62945B9D7007AA812 /* splash.json.rtf */,
 				742D13D528E4352800150673 /* Assets */,
 				742D13D428E4352000150673 /* Storyboards */,
 			);
@@ -667,6 +670,7 @@
 				74E9AF912911049C0009D481 /* FAQTableViewCell.xib in Resources */,
 				742D13E028E4395600150673 /* CommunityTab.storyboard in Resources */,
 				742D13EA28E439B400150673 /* SettingTab.storyboard in Resources */,
+				74B270B72945B9D7007AA812 /* splash.json.rtf in Resources */,
 				741E062F290E2E4600417519 /* MyQCell.xib in Resources */,
 				74840A7628E5B577002AF1BC /* SUIT-SemiBold.otf in Resources */,
 				743D8898290D2F7600D601E0 /* FAQDetailTableViewCell.xib in Resources */,
