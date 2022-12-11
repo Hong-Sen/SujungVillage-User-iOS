@@ -50,15 +50,15 @@ class LoginViewController: UIViewController {
         idTextField.layer.masksToBounds = true
         idTextField.placeholder = "ID"
         idTextField.backgroundColor = UIColor(hexString: "EAEAEA")
-        idTextField.setPadding(left: 10, right: 10)
+        idTextField.setPadding(left: 15, right: 10)
         
         pwdTextField.layer.cornerRadius = pwdTextField.frame.size.height/2
         pwdTextField.layer.masksToBounds = true
         pwdTextField.placeholder = "PW"
         pwdTextField.backgroundColor = UIColor(hexString: "EAEAEA")
-        pwdTextField.setPadding(left: 10, right: 10)
+        pwdTextField.setPadding(left: 15, right: 10)
         
-        autoLoginLabel.font = UIFont.suit(size: 12, family: .Medium)
+        autoLoginLabel.font = UIFont.suit(size: 14, family: .Medium)
         
         loginBtn.tintColor = .white
         loginBtn.titleLabel?.font = UIFont.suit(size: 14, family: .Bold)
