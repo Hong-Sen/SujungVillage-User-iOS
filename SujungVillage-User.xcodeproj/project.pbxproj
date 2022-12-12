@@ -80,7 +80,6 @@
 		7496929D29117424008CBB33 /* WriteQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496929C29117424008CBB33 /* WriteQuestionViewController.swift */; };
 		74A1011E293C52F70022DAF9 /* CommunityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A1011D293C52F70022DAF9 /* CommunityManager.swift */; };
 		74A45C1B291AA8340044683A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A45C1A291AA8340044683A /* Date+Extension.swift */; };
-		74B270B72945B9D7007AA812 /* splash.json.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 74B270B62945B9D7007AA812 /* splash.json.rtf */; };
 		74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */; };
 		74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */; };
 		74D0E06D2900ECEC0040C462 /* RollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */; };
@@ -94,6 +93,8 @@
 		74E9AF902911049C0009D481 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9AF8E2911049C0009D481 /* FAQTableViewCell.swift */; };
 		74E9AF912911049C0009D481 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */; };
 		74E9AF9329110A8E0009D481 /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9AF9229110A8E0009D481 /* FAQViewModel.swift */; };
+		74F3A14C29470BA60077CB43 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F3A14B29470BA60077CB43 /* SplashViewController.swift */; };
+		74F3A14E29470C060077CB43 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 74F3A14D29470C060077CB43 /* splash.json */; };
 		74F3FA6C2901796F00226A42 /* GetRollCallInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F3FA6B2901796F00226A42 /* GetRollCallInfoViewModel.swift */; };
 		74FA0096292F60E100A01244 /* CommunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA0095292F60E100A01244 /* CommunityCell.swift */; };
 		74FA0099292F68FC00A01244 /* CommunityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA0098292F68FC00A01244 /* CommunityResponse.swift */; };
@@ -177,7 +178,6 @@
 		7496929C29117424008CBB33 /* WriteQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteQuestionViewController.swift; sourceTree = "<group>"; };
 		74A1011D293C52F70022DAF9 /* CommunityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityManager.swift; sourceTree = "<group>"; };
 		74A45C1A291AA8340044683A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		74B270B62945B9D7007AA812 /* splash.json.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = splash.json.rtf; sourceTree = "<group>"; };
 		74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallAlertViewController.swift; sourceTree = "<group>"; };
 		74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollCallAlertViewController.xib; sourceTree = "<group>"; };
@@ -191,6 +191,8 @@
 		74E9AF8E2911049C0009D481 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
 		74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
 		74E9AF9229110A8E0009D481 /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
+		74F3A14B29470BA60077CB43 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		74F3A14D29470C060077CB43 /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		74F3FA6B2901796F00226A42 /* GetRollCallInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRollCallInfoViewModel.swift; sourceTree = "<group>"; };
 		74FA0095292F60E100A01244 /* CommunityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCell.swift; sourceTree = "<group>"; };
 		74FA0098292F68FC00A01244 /* CommunityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityResponse.swift; sourceTree = "<group>"; };
@@ -323,7 +325,6 @@
 		742D13CD28E433F800150673 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				74B270B62945B9D7007AA812 /* splash.json.rtf */,
 				742D13D528E4352800150673 /* Assets */,
 				742D13D428E4352000150673 /* Storyboards */,
 			);
@@ -343,6 +344,7 @@
 		742D13CF28E4344E00150673 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				74F3A14A29470B9B0077CB43 /* Splash */,
 				7479AF9D28EEC99A00FF1FE8 /* Login */,
 				742D13DA28E4390000150673 /* HomeTab */,
 				742D13DD28E4391F00150673 /* Community */,
@@ -414,6 +416,7 @@
 		742D13D528E4352800150673 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				74F3A14D29470C060077CB43 /* splash.json */,
 				74840A6628E5B565002AF1BC /* Fonts */,
 				742D13C128E2C70300150673 /* Assets.xcassets */,
 			);
@@ -561,6 +564,14 @@
 			path = AlertView;
 			sourceTree = "<group>";
 		};
+		74F3A14A29470B9B0077CB43 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				74F3A14B29470BA60077CB43 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		74F3FA69290178D700226A42 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,10 +678,10 @@
 				74840A7828E5B577002AF1BC /* SUIT-Thin.otf in Resources */,
 				74D0E0792900ED660040C462 /* UnRollCallAlertViewController.xib in Resources */,
 				742D13C228E2C70300150673 /* Assets.xcassets in Resources */,
+				74F3A14E29470C060077CB43 /* splash.json in Resources */,
 				74E9AF912911049C0009D481 /* FAQTableViewCell.xib in Resources */,
 				742D13E028E4395600150673 /* CommunityTab.storyboard in Resources */,
 				742D13EA28E439B400150673 /* SettingTab.storyboard in Resources */,
-				74B270B72945B9D7007AA812 /* splash.json.rtf in Resources */,
 				741E062F290E2E4600417519 /* MyQCell.xib in Resources */,
 				74840A7628E5B577002AF1BC /* SUIT-SemiBold.otf in Resources */,
 				743D8898290D2F7600D601E0 /* FAQDetailTableViewCell.xib in Resources */,
@@ -749,6 +760,7 @@
 				74E9AF9329110A8E0009D481 /* FAQViewModel.swift in Sources */,
 				74FA0099292F68FC00A01244 /* CommunityResponse.swift in Sources */,
 				74008EF228F302D4008A609F /* UITextField+Extension.swift in Sources */,
+				74F3A14C29470BA60077CB43 /* SplashViewController.swift in Sources */,
 				7483C7AE28E8320000CCF70A /* UserLoginManager.swift in Sources */,
 				74840A6528E55EB4002AF1BC /* CustomTabBar.swift in Sources */,
 				74008EED28F2B323008A609F /* UIView+Extension.swift in Sources */,
