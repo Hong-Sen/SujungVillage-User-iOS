@@ -56,7 +56,8 @@ class QnAViewController: TabmanViewController {
     }
     
     @IBAction func alarmBtnSelected(_ sender: Any) {
-        //
+        let notificationVC = NotificationViewController()
+        self.navigationController?.pushViewController(notificationVC, animated: true)
     }
 }
 
