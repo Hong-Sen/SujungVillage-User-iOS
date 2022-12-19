@@ -134,12 +134,16 @@ extension ApplyRollCallViewController: UIImagePickerControllerDelegate, UINaviga
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            cameraAreaImg.contentMode = .scaleAspectFill
+            cameraAreaImg.backgroundColor = .white
             cameraAreaImg.image = image
             guard let data = image.jpegData(compressionQuality: 0.1) else { return }
             photoArr = data.map{Int8(bitPattern: $0)}
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    
 }
 
 extension ApplyRollCallViewController {
