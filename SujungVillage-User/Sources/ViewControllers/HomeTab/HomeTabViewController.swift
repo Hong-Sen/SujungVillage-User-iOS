@@ -262,7 +262,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
         
         // 점호
-        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day + 1)" == day}).count > 0 {
             return UIColor(hexString: "FFDB73")
         }
         
@@ -289,7 +289,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
         
         // 점호
-        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day + 1)" == day}).count > 0 {
             return UIColor(hexString: "FFDB73")
         }
         
@@ -317,9 +317,9 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
             present(unRollCallVC, animated: true, completion: nil)
         }
         
-        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day)" == day}).count > 0 {
+        else if appliedRollcallDayList.filter({"\(curYear)-\(curMonth)-\($0.day + 1)" == day}).count > 0 {
             let rollcallVC = RollCallAlertViewController()
-            rollcallVC.rollcallId = appliedRollcallDayList.filter({("\(curYear)-\(curMonth)-\($0.day)" == day)})[0].id
+            rollcallVC.rollcallId = appliedRollcallDayList.filter({("\(curYear)-\(curMonth)-\($0.day + 1)" == day)})[0].id
             rollcallVC.date = dateFormatter.string(from: date)
             rollcallVC.modalPresentationStyle = .overFullScreen
             rollcallVC.modalTransitionStyle = .crossDissolve
