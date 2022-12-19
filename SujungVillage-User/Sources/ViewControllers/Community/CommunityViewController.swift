@@ -82,7 +82,7 @@ class CommunityViewController: UIViewController, UITextFieldDelegate {
     let dropdown = DropDown()
     private var isdropdownBtnClicked: Bool = false
     private var isSearchBtnClicked: Bool = false
-    let menuList = ["전체", "성미관", "000", "000", "000", "000"] // FIX: Server에서 List 받기
+    let menuList = ["전체", "성미료", "성미관", "엠시티", "그레이스", "이율", "운정빌", "장수", "풍림"] 
     private var tableView = UITableView()
     private var postingList: [CommunityPostResponse] = []
     private var searchList: [CommunityPostResponse] = []

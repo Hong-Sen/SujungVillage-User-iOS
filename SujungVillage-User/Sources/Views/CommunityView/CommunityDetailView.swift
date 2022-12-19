@@ -97,7 +97,7 @@ class CommunityDetailView: UIView {
         btn.setTitle("삭제하기", for: .normal)
         btn.setTitleColor(.text_gray, for: .normal)
         btn.titleLabel?.font = UIFont.suit(size: 14, family: .Light)
-        btn.addTarget(self, action: #selector(deletePost), for: .touchUpInside) // FIX
+        btn.addTarget(self, action: #selector(deletePost), for: .touchUpInside) 
         return btn
     }()
     
