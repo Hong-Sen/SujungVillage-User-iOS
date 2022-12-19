@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,15 +14,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        FirebaseApp.configure()
+        
         let defaults = UserDefaults.standard
         if defaults.autoLogin {
             if let jwtToken = defaults.string(forKey: "jwtToken") {
                 UserLoginManager.shared.isValidToken(token: jwtToken) { isValid in
-                    if isValid { return }
+                    if isValid {
+                        return
+                    }
                     if let refreshToken = defaults.string(forKey: "refreshToken") {
                         UserLoginManager.shared.isValidToken(token: refreshToken) { isValid in
                             if isValid {
-                                UserLoginManager.shared.doRefresh()
+                                UserLoginManager.shared.doRefresh { finish in
+                                    if finish {
+                                        return
+                                    }
+                                    else {
+                                        defaults.needLogin = true
+                                    }
+                                }
                             }
                             else {
                                 defaults.autoLogin = false
@@ -33,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         else {
+            print("#6")
             defaults.needLogin = true
         }
         return true

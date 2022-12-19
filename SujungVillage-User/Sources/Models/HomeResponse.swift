@@ -7,6 +7,25 @@
 
 import Foundation
 
+//struct HomeResponse: Codable {
+//    let residentInfo: ResidentInfo
+//    let rollcallDays, appliedRollcallDays, appliedExeatDays: [Day]
+//    let appliedLongTermExeatDays: [AppliedLongTermExeatDay]
+//}
+//
+//struct Day: Codable {
+//    let id, day: Int
+//}
+//
+//struct AppliedLongTermExeatDay: Codable {
+//    let id: Int
+//    let startDate, endDate: String
+//}
+//
+//struct ResidentInfo: Codable {
+//    let name, dormitoryName, detailedAddress: String
+//    let plusLMP, minusLMP: Int
+//}
 struct HomeResponse: Codable {
     let residentInfo: ResidentInfo
     let rollcallDays, appliedRollcallDays, appliedExeatDays: [Day]
@@ -19,7 +38,7 @@ struct Day: Codable {
 
 struct AppliedLongTermExeatDay: Codable {
     let id: Int
-    let startDate, endDate: String
+    let days: [Int]
 }
 
 struct ResidentInfo: Codable {
