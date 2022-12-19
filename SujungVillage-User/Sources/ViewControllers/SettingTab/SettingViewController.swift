@@ -376,7 +376,8 @@ class SettingViewController: UIViewController {
     
     
     @objc func alarmBtnSelected() {
-        //
+        let notificationVC = NotificationViewController()
+        self.navigationController?.pushViewController(notificationVC, animated: true)
     }
     
     @objc func viewTapped(sender: UITapGestureRecognizer) {

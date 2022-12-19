@@ -109,23 +109,13 @@ class UserInfoViewModel {
                     self.appliedLongTermExeatDays = appliedLongTermExeatDays
                     self.appliedLongTermExeatDaysAllDates.removeAll()
                     for days in appliedLongTermExeatDays {
-                        var id = days.id
-                        var startDate = days.startDate.toDate()
-                        var endDate = days.endDate.toDate()
-                        var dateComponent = DateComponents()
-                        dateComponent.day = -1
-                        startDate = Calendar.current.date(byAdding: dateComponent, to: startDate!)
-                        endDate = Calendar.current.date(byAdding: dateComponent, to: endDate!)
-                        dateComponent.day = 1
-                        while true {
-                            let model = LongTermExeatModel(date: (startDate?.toString())!, id: id)
+                        let id = days.id
+                        for i in days.days {
+                            let date = "\(year)-\(month)-\(i)"
+                            let model = LongTermExeatModel(date: date, id: id)
                             self.appliedLongTermExeatDaysAllDates.append(model)
-                            if startDate == endDate { break }
-                            startDate = Calendar.current.date(byAdding: dateComponent, to: startDate!)
                         }
                     }
-                    
-                    
                 }
             default:
                 print("home viewmodel error: \(status)")

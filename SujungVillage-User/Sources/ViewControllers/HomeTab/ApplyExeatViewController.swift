@@ -95,9 +95,10 @@ class ApplyExeatViewController: UIViewController {
            let dateToEnd = periodEndTextField.text {
             if typeTextField.text == "장기 외박" {
                 let model = ApplyLongTermExeatModel(destination: destination, reason: reason, emergencyPhoneNumber: emergencyNum, startDate: dateToStart, endDate: dateToEnd)
-                Repository.shared.applyLongTermExeat(applyModel: model) { status in
+                Repository.shared.applyLongTermExeat(applyModel: model) { status, response in
                     switch status {
                     case .ok:
+                        print(response)
                         self.homeViewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
                         print("장기 외박신청 제출 완료")
                     default:

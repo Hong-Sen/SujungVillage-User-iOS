@@ -69,7 +69,7 @@ extension Repository {
     
     func checkTokenValid(token: String, completion: @escaping(HTTPStatusCode, _ result: String)->Void) {
         AF.request(
-        "\(baseUrl)/api/common/validateToken?token=\(token)",
+        "\(baseUrl)/common/validateToken?token=\(token)",
     method: .get,
         encoding: JSONEncoding.default
         )
@@ -153,7 +153,7 @@ extension Repository {
         }
     }
     
-    func applyLongTermExeat(applyModel: ApplyLongTermExeatModel, completion: @escaping (HTTPStatusCode)->Void) {
+    func applyLongTermExeat(applyModel: ApplyLongTermExeatModel, completion: @escaping (HTTPStatusCode, GetAppliedLongTermExeatResponse?)->Void) {
         AF.request(
             "\(baseUrl)/student/exeat/applyLongTermExeat",
             method: .post,
@@ -167,7 +167,7 @@ extension Repository {
         )
         .responseDecodable(of: GetAppliedLongTermExeatResponse.self) { response in
             if let statusCode = response.response?.statusCode {
-                completion(HTTPStatusCode.init(rawValue: statusCode))
+                completion(HTTPStatusCode.init(rawValue: statusCode), response.value)
             }
         }
     }

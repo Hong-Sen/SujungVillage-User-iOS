@@ -254,7 +254,8 @@ class CommunityViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func alarmBtnSelected() {
-        print("alarm!!")
+        let notificationVC = NotificationViewController()
+        self.navigationController?.pushViewController(notificationVC, animated: true)
     }
     
     private func createWritingBtn() {

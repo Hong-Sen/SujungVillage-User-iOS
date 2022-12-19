@@ -396,6 +396,11 @@ class CommunityDetailView: UIView {
     @objc func deletePost() {
         deletePostHandler?()
     }
+    
+    @objc func deleteBtnSelected(_ sender: UIButton) {
+        UserDefaults.standard.set(sender.tag, forKey: "deleteCommentId")
+        deleteCommentHandler?()
+    }
 }
 
 extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
@@ -424,10 +429,5 @@ extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
         cell.separatorInset = UIEdgeInsets.zero
         cell.selectionStyle = .none
         return cell
-    }
-    
-    @objc func deleteBtnSelected(_ sender: UIButton) {
-        UserDefaults.standard.set(sender.tag, forKey: "deleteCommentId")
-        deleteCommentHandler?()
     }
 }

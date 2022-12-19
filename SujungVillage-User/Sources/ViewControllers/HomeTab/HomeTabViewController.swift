@@ -45,7 +45,7 @@ class HomeTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if userDefault.needLogin {
+        if userDefault.needLogin { 
             presentLoginVC()
         }
         
@@ -249,7 +249,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         
         curYear = _calendar.component(.year, from: calendarView.currentPage)
         curMonth =  _calendar.component(.month, from: calendarView.currentPage)
-        
+        print("YEAR: \(curYear) / Month: \(curMonth)")
         viewModel.fetchResidentInfo(year: curYear, month: curMonth)
     }
 
@@ -272,7 +272,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
         
         // 장기 외박
-        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == day}).count > 0 {
             return .green
         }
         
@@ -299,7 +299,7 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
         }
         
         // 장기 외박
-        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == day}).count > 0 {
             return .green
         }
         
@@ -336,9 +336,9 @@ extension HomeTabViewController: FSCalendarDelegate, FSCalendarDataSource, FSCal
             present(exeatVC, animated: true, completion: nil)
         }
         
-        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()}).count > 0 {
+        else if appliedLongTermExeatDaysAllDateList.filter({$0.date == day}).count > 0 {
             let exeatVC = ExeatAlertViewController()
-            exeatVC.exeatId = appliedLongTermExeatDaysAllDateList.filter({$0.date == date.toString()})[0].id
+            exeatVC.exeatId = appliedLongTermExeatDaysAllDateList.filter({$0.date == day})[0].id
             exeatVC.date = dateFormatter.string(from: date)
             exeatVC.type = .long
             exeatVC.modalPresentationStyle = .overFullScreen

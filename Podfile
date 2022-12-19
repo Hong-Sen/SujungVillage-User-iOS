@@ -28,5 +28,8 @@ target 'SujungVillage-User' do
   # Lottie
   pod 'lottie-ios'
 
+  # Add the Firebase pod for Google Analytics
+  pod 'FirebaseAnalytics'
+
 
 end
