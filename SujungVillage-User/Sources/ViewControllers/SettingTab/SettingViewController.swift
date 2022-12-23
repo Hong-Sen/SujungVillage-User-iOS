@@ -400,7 +400,7 @@ class SettingViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { UIAlertAction in
                     UserDefaults.standard.autoLogin = false
                     UserDefaults.standard.needLogin = true
-                    self.tabBarController?.selectedIndex = 0
+                    NotificationCenter.default.post(name: Notification.Name("showHomeTab"), object: nil)
                 }))
                 alert.addAction(UIAlertAction(title: "취소", style: .destructive, handler: nil))
                 present(alert, animated: true)

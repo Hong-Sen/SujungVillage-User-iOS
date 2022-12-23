@@ -61,23 +61,6 @@ class UserLoginManager {
         }
     }
     
-//    func doRefresh() {
-//        let defaults = UserDefaults.standard
-//        if let id = defaults.string(forKey: "id"),
-//           let refreshToken = defaults.string(forKey: "refreshToken") {
-//            Repository.shared.doRefresh(id: id, refreshToken: refreshToken) { status, response in
-//                switch status {
-//                case .ok:
-//                    if let jwtToken = response?.jwtToken {
-//                        defaults.set(jwtToken, forKey: "jwtToken")
-//                    }
-//                default:
-//                    print("do refresh error: \(status)")
-//                }
-//            }
-//        }
-//    }
-    
     func doRefresh(completion: @escaping (Bool)->Void) {
         let defaults = UserDefaults.standard
         if let id = defaults.string(forKey: "id"),

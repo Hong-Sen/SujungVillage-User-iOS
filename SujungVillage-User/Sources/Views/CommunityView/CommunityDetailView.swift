@@ -97,7 +97,7 @@ class CommunityDetailView: UIView {
         btn.setTitle("삭제하기", for: .normal)
         btn.setTitleColor(.text_gray, for: .normal)
         btn.titleLabel?.font = UIFont.suit(size: 14, family: .Light)
-        btn.addTarget(self, action: #selector(deletePost), for: .touchUpInside) 
+        btn.addTarget(self, action: #selector(deletePost), for: .touchUpInside)
         return btn
     }()
     
@@ -109,8 +109,9 @@ class CommunityDetailView: UIView {
         return view
     }()
     
-    lazy var tableView: UITableView = {
-        let table = UITableView()
+    lazy var tableView: DynamicHeightTableView = {
+        let table = DynamicHeightTableView()
+        table.isDynamicSizeRequired = true
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = .white
         return table
@@ -189,8 +190,6 @@ class CommunityDetailView: UIView {
     
     private func setTableView() {
         tableView.register(CommunityCommentCell.classForCoder(), forCellReuseIdentifier: CommunityCommentCell.identifier)
-        //        tableView.rowHeight = UITableView.automaticDimension
-        //        tableView.estimatedRowHeight = 150
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
@@ -430,4 +429,27 @@ extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
+}
+
+
+class DynamicHeightTableView: UITableView {
+    var isDynamicSizeRequired = false
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if bounds.size != self.intrinsicContentSize {
+            if self.intrinsicContentSize.height > frame.size.height {
+                self.invalidateIntrinsicContentSize()
+            }
+        }
+        
+        if isDynamicSizeRequired {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return contentSize
+    }
+    
 }

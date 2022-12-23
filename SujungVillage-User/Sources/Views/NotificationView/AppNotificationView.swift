@@ -9,7 +9,7 @@ import UIKit
 
 class AppNotificationView: UIView {
 
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -22,12 +22,7 @@ class AppNotificationView: UIView {
         return view
     }()
     
-    let appNotiList = [NotificationResponse(type: "새로운 공지사항이 올라왔어요!", content: "[공지사항] 10월 24일 성미관 4층 공사 예정", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 공지사항이 올라왔어요!", content: "[공지사항] 10월 24일 성미관 4층 공사 예정", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 공지사항이 올라왔어요!", content: "[공지사항] 10월 24일 성미관 4층 공사 예정", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 공지사항이 올라왔어요!", content: "[공지사항] 10월 24일 성미관 4층 공사 예정", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 공지사항이 올라왔어요!", content: "[공지사항] 10월 24일 성미관 4층 공사 예정", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 공지사항이 올라왔어요!", content: "[공지사항] 10월 24일 성미관 4층 공사 예정", regDate: "2022-12-16 03:22")]
+    var appNotiList: [NotificationResponse] = []
     
     init() {
         super.init(frame: .zero)

@@ -16,6 +16,11 @@ class AppNotificationViewController: UIViewController {
         setUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        appNotiView.appNotiList =  UserDefaultsManager.shared.load(type: .app)
+        appNotiView.tableView.reloadData()
+    }
+    
     private func setUI() {
         appNotiView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(appNotiView)
