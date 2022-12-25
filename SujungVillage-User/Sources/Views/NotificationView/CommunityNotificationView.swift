@@ -9,7 +9,7 @@ import UIKit
 
 class CommunityNotificationView: UIView {
 
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -22,10 +22,7 @@ class CommunityNotificationView: UIView {
         return view
     }()
     
-    let appNotiList = [NotificationResponse(type: "새로운 댓글이 달렸어요!", content: "댓글: 나도 나눔받고 싶은데 가능할까?", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 댓글이 달렸어요!", content: "댓글: 나도 나눔받고 싶은데 가능할까?", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 댓글이 달렸어요!", content: "댓글: 나도 나눔받고 싶은데 가능할까?", regDate: "2022-12-16 03:22"),
-                       NotificationResponse(type: "새로운 댓글이 달렸어요!", content: "댓글: 나도 나눔받고 싶은데 가능할까?", regDate: "2022-12-16 03:22")]
+    var communityNotiList: [NotificationResponse] = []
     
     init() {
         super.init(frame: .zero)
@@ -70,14 +67,14 @@ extension CommunityNotificationView: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appNotiList.count
+        return communityNotiList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NotificationCell.cellId, for: indexPath) as! NotificationCell
         
-        cell.typeLabel.text = appNotiList[indexPath.row].type
-        cell.contentLabel.text = appNotiList[indexPath.row].content
-        cell.dateLabel.text = appNotiList[indexPath.row].regDate
+        cell.typeLabel.text = communityNotiList[indexPath.row].type
+        cell.contentLabel.text = communityNotiList[indexPath.row].content
+        cell.dateLabel.text = communityNotiList[indexPath.row].regDate
         
         cell.separatorInset = UIEdgeInsets.zero
         cell.selectionStyle = .none

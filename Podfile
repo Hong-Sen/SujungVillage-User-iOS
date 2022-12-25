@@ -30,6 +30,9 @@ target 'SujungVillage-User' do
 
   # Add the Firebase pod for Google Analytics
   pod 'FirebaseAnalytics'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'Firebase/Messaging'
 
 
 end

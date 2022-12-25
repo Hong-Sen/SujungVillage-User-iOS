@@ -16,6 +16,11 @@ class CommunityNotificationViewController: UIViewController {
         setUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        communityNotiView.communityNotiList = UserDefaultsManager.shared.load(type: .community)
+        communityNotiView.tableView.reloadData()
+    }
+    
     private func setUI() {
         communityNotiView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(communityNotiView)

@@ -82,11 +82,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginBtnSelected(_ sender: Any) {
-        if let id = idTextField.text, let pwd = pwdTextField.text {
+        if let id = idTextField.text, let pwd = pwdTextField.text, let fcmToken = UserDefaults.standard.string(forKey: "fcmToken") {
             let aes = AESUtil()
             let encodedPwd = aes.setAES256Encrypt(string: pwd)
  
-            UserLoginManager.shared.doLoginInVC(id: id, pwd: encodedPwd, fcmToken: "") { result in
+            UserLoginManager.shared.doLoginInVC(id: id, pwd: encodedPwd, fcmToken: fcmToken) { result in
                 if result {
                     self.defaults.autoLogin = self.isAutoLogined
                     self.defaults.needLogin = false

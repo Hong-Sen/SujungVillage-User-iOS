@@ -115,7 +115,8 @@ class CommunityCommentCell: UITableViewCell {
         NSLayoutConstraint.activate([
             contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 7),
             contentLabel.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 42),
-            contentLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -40)
+            contentLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -40),
+//            contentLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -10)
         ])
     }
 }

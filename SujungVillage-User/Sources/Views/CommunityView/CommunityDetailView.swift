@@ -97,7 +97,7 @@ class CommunityDetailView: UIView {
         btn.setTitle("삭제하기", for: .normal)
         btn.setTitleColor(.text_gray, for: .normal)
         btn.titleLabel?.font = UIFont.suit(size: 14, family: .Light)
-        btn.addTarget(self, action: #selector(deletePost), for: .touchUpInside) 
+        btn.addTarget(self, action: #selector(deletePost), for: .touchUpInside)
         return btn
     }()
     
@@ -109,11 +109,21 @@ class CommunityDetailView: UIView {
         return view
     }()
     
-    lazy var tableView: UITableView = {
-        let table = UITableView()
+    lazy var tableView: DynamicHeightTableView = {
+        let table = DynamicHeightTableView()
+        table.isDynamicSizeRequired = true
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = .white
+        table.rowHeight = UITableView.automaticDimension
+            table.estimatedRowHeight = 80
         return table
+    }()
+    
+    private lazy var emptyView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
     }()
     
     private lazy var writeCommentView: UIView = {
@@ -189,8 +199,6 @@ class CommunityDetailView: UIView {
     
     private func setTableView() {
         tableView.register(CommunityCommentCell.classForCoder(), forCellReuseIdentifier: CommunityCommentCell.identifier)
-        //        tableView.rowHeight = UITableView.automaticDimension
-        //        tableView.estimatedRowHeight = 150
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
@@ -211,6 +219,7 @@ class CommunityDetailView: UIView {
         setupDeleteBtn()
         setupLineView()
         setupCommentView()
+        setupEmptyView()
         setupBottomView()
         setupRegisterBtn()
         setupWriteCommentView()
@@ -340,8 +349,17 @@ class CommunityDetailView: UIView {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: lineView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: allView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: allView.bottomAnchor)
+            tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor)
+        ])
+    }
+    
+    private func setupEmptyView() {
+        allView.addSubview(emptyView)
+        NSLayoutConstraint.activate([
+            emptyView.topAnchor.constraint(equalTo: tableView.bottomAnchor),
+            emptyView.leadingAnchor.constraint(equalTo: allView.leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: allView.trailingAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: allView.bottomAnchor)
         ])
     }
     
@@ -404,8 +422,9 @@ class CommunityDetailView: UIView {
 }
 
 extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return CGFloat(80 + (commentList[indexPath.row].content.count / 26) *  10)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

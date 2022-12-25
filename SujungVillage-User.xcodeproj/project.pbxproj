@@ -43,6 +43,8 @@
 		743D888F290D28C400D601E0 /* FAQResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743D888E290D28C400D601E0 /* FAQResponse.swift */; };
 		743D8897290D2F7600D601E0 /* FAQDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743D8895290D2F7600D601E0 /* FAQDetailTableViewCell.swift */; };
 		743D8898290D2F7600D601E0 /* FAQDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743D8896290D2F7600D601E0 /* FAQDetailTableViewCell.xib */; };
+		74488C0F2955E45B008DE6C8 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74488C0E2955E45B008DE6C8 /* UserDefaultsManager.swift */; };
+		74488C1129576A23008DE6C8 /* DynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74488C1029576A23008DE6C8 /* DynamicHeightTableView.swift */; };
 		744FE448290C390200EA04C4 /* MyQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744FE447290C390200EA04C4 /* MyQuestionViewController.swift */; };
 		744FE44A290C3B5700EA04C4 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744FE449290C3B5700EA04C4 /* FAQViewController.swift */; };
 		7457204928E9642500699184 /* HomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457204828E9642500699184 /* HomeResponse.swift */; };
@@ -92,9 +94,9 @@
 		74D0E0782900ED660040C462 /* UnRollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E0762900ED660040C462 /* UnRollCallAlertViewController.swift */; };
 		74D0E0792900ED660040C462 /* UnRollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E0772900ED660040C462 /* UnRollCallAlertViewController.xib */; };
 		74D2DB7B29028AA600695F62 /* GetExeatInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D2DB7A29028AA600695F62 /* GetExeatInfoViewModel.swift */; };
-		74D7D5A7294C86DF004A8941 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74D7D5A6294C86DF004A8941 /* GoogleService-Info.plist */; };
 		74DF1D4B293B336E002A4EB5 /* CommunityCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DF1D4A293B336E002A4EB5 /* CommunityCommentCell.swift */; };
 		74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E4243728EF342F00ADD295 /* RollCallResponse.swift */; };
+		74E5A26929545C0C00DCCBCB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74E5A26829545C0B00DCCBCB /* GoogleService-Info.plist */; };
 		74E9AF902911049C0009D481 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9AF8E2911049C0009D481 /* FAQTableViewCell.swift */; };
 		74E9AF912911049C0009D481 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */; };
 		74E9AF9329110A8E0009D481 /* FAQViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E9AF9229110A8E0009D481 /* FAQViewModel.swift */; };
@@ -150,6 +152,8 @@
 		743D888E290D28C400D601E0 /* FAQResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQResponse.swift; sourceTree = "<group>"; };
 		743D8895290D2F7600D601E0 /* FAQDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQDetailTableViewCell.swift; sourceTree = "<group>"; };
 		743D8896290D2F7600D601E0 /* FAQDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQDetailTableViewCell.xib; sourceTree = "<group>"; };
+		74488C0E2955E45B008DE6C8 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		74488C1029576A23008DE6C8 /* DynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTableView.swift; sourceTree = "<group>"; };
 		744FE447290C390200EA04C4 /* MyQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQuestionViewController.swift; sourceTree = "<group>"; };
 		744FE449290C3B5700EA04C4 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		7457204828E9642500699184 /* HomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResponse.swift; sourceTree = "<group>"; };
@@ -199,9 +203,10 @@
 		74D0E0762900ED660040C462 /* UnRollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnRollCallAlertViewController.swift; sourceTree = "<group>"; };
 		74D0E0772900ED660040C462 /* UnRollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnRollCallAlertViewController.xib; sourceTree = "<group>"; };
 		74D2DB7A29028AA600695F62 /* GetExeatInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExeatInfoViewModel.swift; sourceTree = "<group>"; };
-		74D7D5A6294C86DF004A8941 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74DF1D4A293B336E002A4EB5 /* CommunityCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCommentCell.swift; sourceTree = "<group>"; };
 		74E4243728EF342F00ADD295 /* RollCallResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallResponse.swift; sourceTree = "<group>"; };
+		74E5A2672951BEA300DCCBCB /* SujungVillage-User.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SujungVillage-User.entitlements"; sourceTree = "<group>"; };
+		74E5A26829545C0B00DCCBCB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74E9AF8E2911049C0009D481 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
 		74E9AF8F2911049C0009D481 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
 		74E9AF9229110A8E0009D481 /* FAQViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				7476EF9728F7FDA8008B7ABF /* PaddingLabel.swift */,
+				74488C1029576A23008DE6C8 /* DynamicHeightTableView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -316,8 +322,9 @@
 		742D13B728E2C6FE00150673 /* SujungVillage-User */ = {
 			isa = PBXGroup;
 			children = (
+				74E5A2672951BEA300DCCBCB /* SujungVillage-User.entitlements */,
 				742D13C628E2C70300150673 /* Info.plist */,
-				74D7D5A6294C86DF004A8941 /* GoogleService-Info.plist */,
+				74E5A26829545C0B00DCCBCB /* GoogleService-Info.plist */,
 				742D13CD28E433F800150673 /* Resources */,
 				742D13CC28E4339D00150673 /* Sources */,
 			);
@@ -381,6 +388,7 @@
 				7483C7A328E70D8A00CCF70A /* HTTPStaus+Enum.swift */,
 				7483C7AD28E8320000CCF70A /* UserLoginManager.swift */,
 				74A1011D293C52F70022DAF9 /* CommunityManager.swift */,
+				74488C0E2955E45B008DE6C8 /* UserDefaultsManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -718,7 +726,7 @@
 				74D0E0752900ED500040C462 /* ExeatAlertViewController.xib in Resources */,
 				742D13D728E4380500150673 /* HomeTab.storyboard in Resources */,
 				74D0E06D2900ECEC0040C462 /* RollCallAlertViewController.xib in Resources */,
-				74D7D5A7294C86DF004A8941 /* GoogleService-Info.plist in Resources */,
+				74E5A26929545C0C00DCCBCB /* GoogleService-Info.plist in Resources */,
 				74840A7828E5B577002AF1BC /* SUIT-Thin.otf in Resources */,
 				74D0E0792900ED660040C462 /* UnRollCallAlertViewController.xib in Resources */,
 				742D13C228E2C70300150673 /* Assets.xcassets in Resources */,
@@ -794,10 +802,12 @@
 				7457204B28EAEAFA00699184 /* UserInfoViewModel.swift in Sources */,
 				742D13E428E4399100150673 /* QnAViewController.swift in Sources */,
 				74F3A158294781020077CB43 /* NotificationViewController.swift in Sources */,
+				74488C0F2955E45B008DE6C8 /* UserDefaultsManager.swift in Sources */,
 				74DF1D4B293B336E002A4EB5 /* CommunityCommentCell.swift in Sources */,
 				742F33E628F6EF0D00DA8478 /* GetNoticeViewController.swift in Sources */,
 				7471BF96293B015C000728BA /* CommunityDetailViewModel.swift in Sources */,
 				74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */,
+				74488C1129576A23008DE6C8 /* DynamicHeightTableView.swift in Sources */,
 				742D13D928E438FB00150673 /* HomeTabViewController.swift in Sources */,
 				742D13F228E447CD00150673 /* CustomTabbarController.swift in Sources */,
 				744FE448290C390200EA04C4 /* MyQuestionViewController.swift in Sources */,
@@ -1002,25 +1012,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SujungVillage-User/SujungVillage-User.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WYMZZ4Z5Z5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "수정마을";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"카메라 사용 권한을 허용하시겠습니까?\"";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hongseeun.SujungVillage-User";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hongseeun.sujungvillage.user.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1034,25 +1047,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SujungVillage-User/SujungVillage-User.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WYMZZ4Z5Z5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "수정마을";
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"카메라 사용 권한을 허용하시겠습니까?\"";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hongseeun.SujungVillage-User";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hongseeun.sujungvillage.user.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

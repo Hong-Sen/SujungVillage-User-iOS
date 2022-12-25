@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>40678640607-lu45gjasj8q9df4n59u4i429tq2oursb.apps.googleusercontent.com</string>
+	<string>40678640607-ehgkbvk4j0dbbm1gg74g0p22ss4kbeuv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.40678640607-lu45gjasj8q9df4n59u4i429tq2oursb</string>
+	<string>com.googleusercontent.apps.40678640607-ehgkbvk4j0dbbm1gg74g0p22ss4kbeuv</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>40678640607-20mk13j1mtjllrv7q740gfs4me8tjjqk.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.hongseeun.SujungVillage-User</string>
+	<string>com.hongseeun.sujungvillage.user.ios</string>
 	<key>PROJECT_ID</key>
 	<string>sujungvillage-1660023039079</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:40678640607:ios:5e4ff571f8a6814571526a</string>
+	<string>1:40678640607:ios:a0f0bcdc363a493c71526a</string>
 </dict>
 </plist>
