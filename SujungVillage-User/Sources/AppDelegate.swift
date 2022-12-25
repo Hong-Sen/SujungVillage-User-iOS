@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { granted, error in
             if granted {
-                print("알림 등록이 완료되었습니다.")
+                UserDefaults.standard.pushNotification = true
+                print("알림 허용")
             }
         }
         application.registerForRemoteNotifications()
@@ -104,8 +105,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let userInfo = response.notification.request.content
         let time = Date().toStringIncludeTime()
         saveNotification(title: userInfo.title, content: userInfo.body, time: time)
-      
-        NotificationCenter.default.post(name: Notification.Name("showCommunityTab"), object: nil)
         
         let application = UIApplication.shared
         //앱이 켜져있는 상태에서 푸쉬 알림을 눌렀을 때
@@ -124,7 +123,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             var notificationList: [NotificationResponse] = UserDefaultsManager.shared.load(type: .community)
             notificationList.append(NotificationResponse(type: title, content: content, regDate: time))
             UserDefaultsManager.shared.save(type: .community, notificationList)
-            print("Appdelegate: \(UserDefaultsManager.shared.load(type: .community))")
         }
         else {
             var notificationList: [NotificationResponse] = UserDefaultsManager.shared.load(type: .app)

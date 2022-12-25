@@ -73,6 +73,7 @@ class SettingViewController: UIViewController {
         let swt = UISwitch()
         swt.translatesAutoresizingMaskIntoConstraints = false
         swt.onTintColor = .primary
+        swt.addTarget(self, action: #selector(onClickAlarmSwitch(sender:)), for: .valueChanged)
         return swt
     }()
     
@@ -97,12 +98,14 @@ class SettingViewController: UIViewController {
     var logoutNextImg = UIImageView()
     
     private let viewModel = UserInfoViewModel.shared
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchView()
         setUI()
         viewModel.fetchResidentInfo(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()))
+        setNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -374,6 +377,31 @@ class SettingViewController: UIViewController {
         }
     }
     
+    func setNotification() {
+        if UserDefaults.standard.pushNotification {
+            alarmSwitch.isOn = true
+        }
+        else {
+            alarmSwitch.isOn = false
+        }
+    }
+    
+    @objc func onClickAlarmSwitch(sender: UISwitch) {
+        if sender.isOn {
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { granted, error in
+                if granted {
+                    UserDefaults.standard.pushNotification = true
+                    print("알림 허용")
+                }
+            }
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+        else {
+            defaults.pushNotification = false
+            UIApplication.shared.unregisterForRemoteNotifications()
+        }
+    }
     
     @objc func alarmBtnSelected() {
         let notificationVC = NotificationViewController()

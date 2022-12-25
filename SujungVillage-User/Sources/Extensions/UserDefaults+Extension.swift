@@ -17,4 +17,9 @@ extension UserDefaults {
         get { self.bool(forKey: "needLogin") ?? true }
         set { self.setValue(newValue, forKey: "needLogin") }
     }
+    
+    @objc dynamic var pushNotification: Bool { // 푸쉬 알림
+        get { self.bool(forKey: "pushNotification") ?? false }
+        set { self.setValue(newValue, forKey: "pushNotification") }
+    }
 }

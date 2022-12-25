@@ -114,7 +114,16 @@ class CommunityDetailView: UIView {
         table.isDynamicSizeRequired = true
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = .white
+        table.rowHeight = UITableView.automaticDimension
+            table.estimatedRowHeight = 80
         return table
+    }()
+    
+    private lazy var emptyView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
     }()
     
     private lazy var writeCommentView: UIView = {
@@ -210,6 +219,7 @@ class CommunityDetailView: UIView {
         setupDeleteBtn()
         setupLineView()
         setupCommentView()
+        setupEmptyView()
         setupBottomView()
         setupRegisterBtn()
         setupWriteCommentView()
@@ -339,8 +349,17 @@ class CommunityDetailView: UIView {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: lineView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: allView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: allView.bottomAnchor)
+            tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor)
+        ])
+    }
+    
+    private func setupEmptyView() {
+        allView.addSubview(emptyView)
+        NSLayoutConstraint.activate([
+            emptyView.topAnchor.constraint(equalTo: tableView.bottomAnchor),
+            emptyView.leadingAnchor.constraint(equalTo: allView.leadingAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: allView.trailingAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: allView.bottomAnchor)
         ])
     }
     
@@ -403,8 +422,9 @@ class CommunityDetailView: UIView {
 }
 
 extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return CGFloat(80 + (commentList[indexPath.row].content.count / 26) *  10)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -429,27 +449,4 @@ extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-}
-
-
-class DynamicHeightTableView: UITableView {
-    var isDynamicSizeRequired = false
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if bounds.size != self.intrinsicContentSize {
-            if self.intrinsicContentSize.height > frame.size.height {
-                self.invalidateIntrinsicContentSize()
-            }
-        }
-        
-        if isDynamicSizeRequired {
-            self.invalidateIntrinsicContentSize()
-        }
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        return contentSize
-    }
-    
 }
