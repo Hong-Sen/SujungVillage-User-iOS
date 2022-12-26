@@ -87,6 +87,7 @@ class CommunityViewController: UIViewController, UITextFieldDelegate {
     private var postingList: [CommunityPostResponse] = []
     private var searchList: [CommunityPostResponse] = []
     private let viewModel = CommunityViewModel.shared
+    private var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +96,8 @@ class CommunityViewController: UIViewController, UITextFieldDelegate {
         setDropDown()
         setTable()
         viewModel.fetchCommunityPostList(dormitoryName: dormitoryLabel.text!)
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshCommunity), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -232,6 +235,15 @@ class CommunityViewController: UIViewController, UITextFieldDelegate {
             self.searchTextField.alpha = 0
         })
         searchTextField.text = ""
+    }
+    
+    @objc func refreshCommunity() {
+        DispatchQueue.main.async {
+            self.viewModel.fetchCommunityPostList(dormitoryName: self.dormitoryLabel.text!)
+            self.fetchTableView()
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
     
     @objc func dropDownBtnSelected() {
