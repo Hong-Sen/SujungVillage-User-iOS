@@ -9,7 +9,7 @@ import UIKit
 
 class CommunityDetailView: UIView {
     
-    private let scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
@@ -206,11 +206,11 @@ class CommunityDetailView: UIView {
     
     private func setupViews() {
         self.backgroundColor = .white
-        setupScrollView()
-        setupAllView()
         setupNaviBar()
         setupBackBtn()
         setupDormitoryLabel()
+        setupScrollView()
+        setupAllView()
         setupTitleLabel()
         setupDateLabel()
         setupContentLabel()
@@ -226,10 +226,36 @@ class CommunityDetailView: UIView {
         setupCommentTextField()
     }
     
+    private func setupNaviBar() {
+        addSubview(navigationBarView)
+        NSLayoutConstraint.activate([
+            navigationBarView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            navigationBarView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            navigationBarView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            navigationBarView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func setupBackBtn() {
+        navigationBarView.addSubview(backBtn)
+        NSLayoutConstraint.activate([
+            backBtn.bottomAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: -10),
+            backBtn.leadingAnchor.constraint(equalTo: navigationBarView.leadingAnchor, constant: 15)
+        ])
+    }
+    
+    private func setupDormitoryLabel() {
+        navigationBarView.addSubview(dormitoryLabel)
+        NSLayoutConstraint.activate([
+            dormitoryLabel.bottomAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: -10),
+            dormitoryLabel.centerXAnchor.constraint(equalTo: navigationBarView.centerXAnchor)
+        ])
+    }
+    
     private func setupScrollView() {
         addSubview(scrollView)
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -80)
@@ -258,36 +284,11 @@ class CommunityDetailView: UIView {
         ])
     }
     
-    private func setupNaviBar() {
-        allView.addSubview(navigationBarView)
-        NSLayoutConstraint.activate([
-            navigationBarView.topAnchor.constraint(equalTo: allView.topAnchor, constant: 0),
-            navigationBarView.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 0),
-            navigationBarView.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: 0),
-            navigationBarView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    private func setupBackBtn() {
-        navigationBarView.addSubview(backBtn)
-        NSLayoutConstraint.activate([
-            backBtn.bottomAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: -10),
-            backBtn.leadingAnchor.constraint(equalTo: navigationBarView.leadingAnchor, constant: 15)
-        ])
-    }
-    
-    private func setupDormitoryLabel() {
-        navigationBarView.addSubview(dormitoryLabel)
-        NSLayoutConstraint.activate([
-            dormitoryLabel.bottomAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: -10),
-            dormitoryLabel.centerXAnchor.constraint(equalTo: navigationBarView.centerXAnchor)
-        ])
-    }
-    
     private func setupTitleLabel() {
         allView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: 19),
+//            titleLabel.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: 19),
+            titleLabel.topAnchor.constraint(equalTo: allView.topAnchor, constant: 19),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 39),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -39)
         ])

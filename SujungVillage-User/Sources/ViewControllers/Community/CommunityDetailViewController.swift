@@ -14,6 +14,7 @@ class CommunityDetailViewController: UIViewController {
     var postId: Int = -1
     private let viewModel = CommunityDetailViewModel.shared
     var commentList: [CommunityComment] = []
+    private var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,9 @@ class CommunityDetailViewController: UIViewController {
         setAction()
         viewModel.fetchCommunityDetail(postId: postId)
         hideKeyboard()
+        
+        detailView.scrollView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshComment), for: .valueChanged)
         
         NotificationCenter.default.addObserver(self, selector: #selector(CommunityDetailViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -105,6 +109,15 @@ class CommunityDetailViewController: UIViewController {
                 self.fetchView()
                 self.detailView.tableView.reloadData()
             }
+        }
+    }
+    
+    @objc func refreshComment() {
+        DispatchQueue.main.async {
+            self.viewModel.fetchCommunityDetail(postId: self.postId)
+            self.fetchView()
+            self.detailView.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     
