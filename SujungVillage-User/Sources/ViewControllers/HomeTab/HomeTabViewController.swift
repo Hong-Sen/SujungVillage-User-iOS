@@ -205,9 +205,24 @@ class HomeTabViewController: UIViewController {
                 return
                 
             case 1001:
-                guard let rollcallVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyRollCallViewController") as? ApplyRollCallViewController else { return }
-                rollcallVC.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(rollcallVC, animated: true)
+                Repository.shared.isRollcallAvailableNow { status, result in
+                    switch status {
+                    case .ok:
+                        if result == "true" {
+                            guard let rollcallVC = self.storyboard?.instantiateViewController(withIdentifier: "ApplyRollCallViewController") as? ApplyRollCallViewController else { return }
+                            rollcallVC.hidesBottomBarWhenPushed = true
+                            self.navigationController?.pushViewController(rollcallVC, animated: true)
+                        }
+                        else {
+                            let alert = UIAlertController(title: "현재 점호를 진행하고 있지 않습니다.", message: nil, preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+                            self.present(alert, animated: true)
+                        }
+                    default:
+                        print("isRollcallAvailbaleNow error: \(status)")
+                    }
+                }
+
                 return
                 
             case 1002:

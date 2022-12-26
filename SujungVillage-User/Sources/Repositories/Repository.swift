@@ -129,6 +129,20 @@ extension Repository {
             }
         }
     }
+    
+    func isRollcallAvailableNow(completion: @escaping (HTTPStatusCode, _ result: String?)->Void) {
+        AF.request(
+            "\(baseUrl)/common/rollcall/isRollcallAvailableNow",
+            method: .get,
+            encoding: JSONEncoding.default,
+            headers: API.shared.getTextResultHeaders()
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
 }
 
 

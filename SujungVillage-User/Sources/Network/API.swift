@@ -50,4 +50,13 @@ class API {
         }
         return headers
     }
+    
+    func getTextResultHeaders() -> HTTPHeaders? {
+        var headers: HTTPHeaders = []
+        if let jwtToken = UserDefaults.standard.string(forKey: "jwtToken") {
+            headers = [ "Content-type": "text/plain",
+                        "jwt_token": jwtToken ]
+        }
+        return headers
+    }
 }
