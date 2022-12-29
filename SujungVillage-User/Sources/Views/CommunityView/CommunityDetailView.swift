@@ -101,6 +101,16 @@ class CommunityDetailView: UIView {
         return btn
     }()
     
+    lazy var declarationBtn: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("신고하기", for: .normal)
+        btn.setTitleColor(.text_gray, for: .normal)
+        btn.titleLabel?.font = UIFont.suit(size: 14, family: .Light)
+        btn.addTarget(self, action: #selector(declarationBtnSelected), for: .touchUpInside)
+        return btn
+    }()
+    
     
     private lazy var lineView: UIView = {
         let view = UIView()
@@ -169,6 +179,7 @@ class CommunityDetailView: UIView {
     var registerCommentHandler: (() -> Void)?
     var deletePostHandler: (() -> Void)?
     var deleteCommentHandler: (()->Void)?
+    var declarationHandler: (() -> Void)?
     var postId: Int = -1
     
     init() {
@@ -197,6 +208,10 @@ class CommunityDetailView: UIView {
         deleteCommentHandler = handler
     }
     
+    func setupDeclarationHandler(_ handler: @escaping() -> Void) {
+        declarationHandler = handler
+    }
+    
     private func setTableView() {
         tableView.register(CommunityCommentCell.classForCoder(), forCellReuseIdentifier: CommunityCommentCell.identifier)
         tableView.delegate = self
@@ -216,6 +231,7 @@ class CommunityDetailView: UIView {
         setupContentLabel()
         setupCommentImg()
         setupCommentCntLabel()
+        setupDeclarationBtn()
         setupDeleteBtn()
         setupLineView()
         setupCommentView()
@@ -287,7 +303,6 @@ class CommunityDetailView: UIView {
     private func setupTitleLabel() {
         allView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-//            titleLabel.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: 19),
             titleLabel.topAnchor.constraint(equalTo: allView.topAnchor, constant: 19),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 39),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -39)
@@ -327,11 +342,19 @@ class CommunityDetailView: UIView {
         ])
     }
     
+    private func setupDeclarationBtn() {
+        allView.addSubview(declarationBtn)
+        NSLayoutConstraint.activate([
+            declarationBtn.topAnchor.constraint(equalTo: contentLable.bottomAnchor, constant: 34),
+            declarationBtn.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -20)
+        ])
+    }
+    
     private func setupDeleteBtn() {
         allView.addSubview(deleteBtn)
         NSLayoutConstraint.activate([
             deleteBtn.topAnchor.constraint(equalTo: contentLable.bottomAnchor, constant: 34),
-            deleteBtn.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -34)
+            deleteBtn.trailingAnchor.constraint(equalTo: declarationBtn.leadingAnchor, constant: -15)
         ])
     }
     
@@ -419,6 +442,10 @@ class CommunityDetailView: UIView {
     @objc func deleteBtnSelected(_ sender: UIButton) {
         UserDefaults.standard.set(sender.tag, forKey: "deleteCommentId")
         deleteCommentHandler?()
+    }
+    
+    @objc func declarationBtnSelected() {
+        declarationHandler?()
     }
 }
 

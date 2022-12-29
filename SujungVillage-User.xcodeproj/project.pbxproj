@@ -1019,6 +1019,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "수정마을";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"카메라 사용 권한을 허용하시겠습니까?\"";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1037,7 +1038,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1054,6 +1055,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SujungVillage-User/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "수정마을";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"카메라 사용 권한을 허용하시겠습니까?\"";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치를 사용을 허용 하시겠습니까?\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1072,7 +1074,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
