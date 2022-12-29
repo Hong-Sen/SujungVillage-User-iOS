@@ -420,7 +420,9 @@ class SettingViewController: UIViewController {
                 return
                 
             case 1002:
-                //
+                let alert = UIAlertController(title: "해당 이메일로 문의 주세요.", message: "sujungvillage@gmail.com", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                present(alert, animated: true)
                 return
                 
             case 1003:
