@@ -11,6 +11,9 @@
 		74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */; };
 		74008EF228F302D4008A609F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF128F302D4008A609F /* UITextField+Extension.swift */; };
 		74008EF428F31314008A609F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF328F31314008A609F /* RegisterViewController.swift */; };
+		74180BFC29680A5D0096754C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74180BFB29680A5D0096754C /* RegisterView.swift */; };
+		74180BFE29680B410096754C /* RegisterTmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74180BFD29680B410096754C /* RegisterTmpViewController.swift */; };
+		74180C0029685CF40096754C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74180BFF29685CF40096754C /* UIButton+Extension.swift */; };
 		741E062E290E2E4600417519 /* MyQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E062C290E2E4600417519 /* MyQCell.swift */; };
 		741E062F290E2E4600417519 /* MyQCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741E062D290E2E4600417519 /* MyQCell.xib */; };
 		741E0631290E3A0400417519 /* MyQResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E0630290E3A0400417519 /* MyQResponse.swift */; };
@@ -118,6 +121,9 @@
 		74008EEF28F2D1E1008A609F /* LMPHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMPHistoryViewModel.swift; sourceTree = "<group>"; };
 		74008EF128F302D4008A609F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		74008EF328F31314008A609F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		74180BFB29680A5D0096754C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		74180BFD29680B410096754C /* RegisterTmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTmpViewController.swift; sourceTree = "<group>"; };
+		74180BFF29685CF40096754C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		741E062C290E2E4600417519 /* MyQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQCell.swift; sourceTree = "<group>"; };
 		741E062D290E2E4600417519 /* MyQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQCell.xib; sourceTree = "<group>"; };
 		741E0630290E3A0400417519 /* MyQResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQResponse.swift; sourceTree = "<group>"; };
@@ -250,6 +256,14 @@
 				792CE14483603D06C8B3F308 /* Pods_SujungVillage_User.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		74180BF729680A260096754C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				74180BFB29680A5D0096754C /* RegisterView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		741A2666290B83DB004FF508 /* Q&AView */ = {
@@ -403,6 +417,7 @@
 				74008EF128F302D4008A609F /* UITextField+Extension.swift */,
 				7469D7B92902FB3000168FFA /* String+Extension.swift */,
 				74A45C1A291AA8340044683A /* Date+Extension.swift */,
+				74180BFF29685CF40096754C /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -509,6 +524,7 @@
 		742D13F028E447A800150673 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				74180BF729680A260096754C /* Login */,
 				74F3A14F29477D620077CB43 /* NotificationView */,
 				74275D6B293BAC830077BA4E /* Components */,
 				7426AE6E2920D65200906DB5 /* CommunityView */,
@@ -561,6 +577,7 @@
 			children = (
 				7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */,
 				74008EF328F31314008A609F /* RegisterViewController.swift */,
+				74180BFD29680B410096754C /* RegisterTmpViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -687,6 +704,7 @@
 				TargetAttributes = {
 					742D13B428E2C6FE00150673 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -807,6 +825,7 @@
 				742F33E628F6EF0D00DA8478 /* GetNoticeViewController.swift in Sources */,
 				7471BF96293B015C000728BA /* CommunityDetailViewModel.swift in Sources */,
 				74008EF028F2D1E1008A609F /* LMPHistoryViewModel.swift in Sources */,
+				74180C0029685CF40096754C /* UIButton+Extension.swift in Sources */,
 				74488C1129576A23008DE6C8 /* DynamicHeightTableView.swift in Sources */,
 				742D13D928E438FB00150673 /* HomeTabViewController.swift in Sources */,
 				742D13F228E447CD00150673 /* CustomTabbarController.swift in Sources */,
@@ -850,6 +869,7 @@
 				7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */,
 				7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */,
 				7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */,
+				74180BFE29680B410096754C /* RegisterTmpViewController.swift in Sources */,
 				74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */,
 				742F33E328F6EAC400DA8478 /* NoticeTableViewCell.swift in Sources */,
 				7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */,
@@ -857,6 +877,7 @@
 				74E4243828EF342F00ADD295 /* RollCallResponse.swift in Sources */,
 				7479AF9F28EECF3000FF1FE8 /* ApplyRollCallViewController.swift in Sources */,
 				744FE44A290C3B5700EA04C4 /* FAQViewController.swift in Sources */,
+				74180BFC29680A5D0096754C /* RegisterView.swift in Sources */,
 				74D0E0742900ED500040C462 /* ExeatAlertViewController.swift in Sources */,
 				741E0631290E3A0400417519 /* MyQResponse.swift in Sources */,
 				74A1011E293C52F70022DAF9 /* CommunityManager.swift in Sources */,
@@ -1012,6 +1033,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "SujungVillage-User/SujungVillage-User.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1037,6 +1059,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hongseeun.sujungvillage.user.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1048,6 +1071,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "SujungVillage-User/SujungVillage-User.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
