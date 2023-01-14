@@ -86,6 +86,8 @@
 		74840A7828E5B577002AF1BC /* SUIT-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */; };
 		74840A7A28E5B6C3002AF1BC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */; };
 		74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */; };
+		7484D0D02972EDA700B07E7C /* 수정마을_개인정보처리방침.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7484D0CE2972EDA600B07E7C /* 수정마을_개인정보처리방침.txt */; };
+		7484D0D12972EDA700B07E7C /* 수정마을_이용약관.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7484D0CF2972EDA700B07E7C /* 수정마을_이용약관.txt */; };
 		7496929D29117424008CBB33 /* WriteQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496929C29117424008CBB33 /* WriteQuestionViewController.swift */; };
 		74A1011E293C52F70022DAF9 /* CommunityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A1011D293C52F70022DAF9 /* CommunityManager.swift */; };
 		74A45C1B291AA8340044683A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A45C1A291AA8340044683A /* Date+Extension.swift */; };
@@ -198,6 +200,8 @@
 		74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.otf"; sourceTree = "<group>"; };
 		74840A7928E5B6C3002AF1BC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		7484D0CE2972EDA600B07E7C /* 수정마을_개인정보처리방침.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "수정마을_개인정보처리방침.txt"; sourceTree = "<group>"; };
+		7484D0CF2972EDA700B07E7C /* 수정마을_이용약관.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "수정마을_이용약관.txt"; sourceTree = "<group>"; };
 		7496929C29117424008CBB33 /* WriteQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteQuestionViewController.swift; sourceTree = "<group>"; };
 		74A1011D293C52F70022DAF9 /* CommunityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityManager.swift; sourceTree = "<group>"; };
 		74A45C1A291AA8340044683A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -460,6 +464,7 @@
 		742D13D528E4352800150673 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				7484D0C92972EB9400B07E7C /* TermsOfUse */,
 				74F3A14D29470C060077CB43 /* splash.json */,
 				74840A6628E5B565002AF1BC /* Fonts */,
 				742D13C128E2C70300150673 /* Assets.xcassets */,
@@ -596,6 +601,15 @@
 				74840A6F28E5B577002AF1BC /* SUIT-Thin.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7484D0C92972EB9400B07E7C /* TermsOfUse */ = {
+			isa = PBXGroup;
+			children = (
+				7484D0CE2972EDA600B07E7C /* 수정마을_개인정보처리방침.txt */,
+				7484D0CF2972EDA700B07E7C /* 수정마을_이용약관.txt */,
+			);
+			path = TermsOfUse;
 			sourceTree = "<group>";
 		};
 		74D2615C28FEA5C8008BC5BE /* AlertView */ = {
@@ -752,10 +766,12 @@
 				74E9AF912911049C0009D481 /* FAQTableViewCell.xib in Resources */,
 				742D13E028E4395600150673 /* CommunityTab.storyboard in Resources */,
 				742D13EA28E439B400150673 /* SettingTab.storyboard in Resources */,
+				7484D0D02972EDA700B07E7C /* 수정마을_개인정보처리방침.txt in Resources */,
 				741E062F290E2E4600417519 /* MyQCell.xib in Resources */,
 				74840A7628E5B577002AF1BC /* SUIT-SemiBold.otf in Resources */,
 				743D8898290D2F7600D601E0 /* FAQDetailTableViewCell.xib in Resources */,
 				742D13C028E2C6FE00150673 /* Main.storyboard in Resources */,
+				7484D0D12972EDA700B07E7C /* 수정마을_이용약관.txt in Resources */,
 				74840A7028E5B577002AF1BC /* SUIT-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,7 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupViews() {
+        view.backgroundColor = .white
         view.addSubview(registerView)
         registerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

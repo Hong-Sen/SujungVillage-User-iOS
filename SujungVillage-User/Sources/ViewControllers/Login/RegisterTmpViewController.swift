@@ -148,7 +148,7 @@
 //            dormitoryDropDownBtn.setImage(isdropdownBtnClicked ? UIImage(systemName: "arrowtriangle.up.fill") : UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
 //            dropdown.show()
 //        }
-//
+////
 //        @IBAction func registerBtnSelected(_ sender: Any) {
 //            var phoneNumber = ""
 //            if let pn1 = pn1TextField.text,
@@ -212,7 +212,7 @@
 //
 //            }
 //        }
-//
+
 //    }
 //
 //    extension RegisterViewController {

@@ -101,7 +101,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUpBtnSelected(_ sender: Any) {
-        guard let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else { return }
+        let signUpVC = RegisterViewController()
         self.navigationController?.pushViewController(signUpVC, animated: true)
     }
 }

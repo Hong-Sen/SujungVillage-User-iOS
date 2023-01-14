@@ -247,6 +247,7 @@ class RegisterView: UIView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         btn.tintColor = UIColor.textField_gray
+        btn.addTarget(self, action: #selector(termAllAgree), for: .touchUpInside)
         return btn
     }()
     
@@ -254,7 +255,7 @@ class RegisterView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "네, 모든 약관에 동의합니다."
-        label.tintColor = UIColor(hexString: "818181")
+        label.textColor = UIColor(hexString: "818181")
         label.font = UIFont.suit(size: 14, family: .Medium)
         return label
     }()
@@ -264,6 +265,7 @@ class RegisterView: UIView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         btn.tintColor = UIColor.textField_gray
+        btn.addTarget(self, action: #selector(term1IsAgree), for: .touchUpInside)
         return btn
     }()
     
@@ -271,7 +273,7 @@ class RegisterView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "이용 약관 동의"
-        label.tintColor = UIColor(hexString: "818181")
+        label.textColor = UIColor(hexString: "818181")
         label.font = UIFont.suit(size: 14, family: .Regular)
         return label
     }()
@@ -280,7 +282,7 @@ class RegisterView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = " (필수) "
-        label.tintColor = .pdark
+        label.textColor = .pdark
         label.font = UIFont.suit(size: 14, family: .Regular)
         return label
     }()
@@ -294,11 +296,36 @@ class RegisterView: UIView {
         return btn
     }()
     
+    lazy var term1ContentScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = UIColor(hexString: "E8E8E8")
+        return scrollView
+    }()
+    
+    private lazy var term1ContentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(hexString: "E8E8E8")
+        return view
+    }()
+    
+    private lazy var term1ContentLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = readTextFile(filename: "수정마을_이용약관.txt")
+        label.textColor = .text_black
+        label.numberOfLines = 0
+        label.font = UIFont.suit(size: 14, family: .Regular)
+        return label
+    }()
+    
     private lazy var checkTerm2Btn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         btn.tintColor = UIColor.textField_gray
+        btn.addTarget(self, action: #selector(term2IsAgree), for: .touchUpInside)
         return btn
     }()
     
@@ -306,7 +333,7 @@ class RegisterView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "개인정보 처리 방침 동의"
-        label.tintColor = UIColor(hexString: "818181")
+        label.textColor = UIColor(hexString: "818181")
         label.font = UIFont.suit(size: 14, family: .Regular)
         return label
     }()
@@ -315,7 +342,7 @@ class RegisterView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = " (필수) "
-        label.tintColor = .pdark
+        label.textColor = .pdark
         label.font = UIFont.suit(size: 14, family: .Regular)
         return label
     }()
@@ -327,6 +354,30 @@ class RegisterView: UIView {
         btn.tintColor = .pdark
         btn.titleLabel?.font = UIFont.suit(size: 14, family: .Regular)
         return btn
+    }()
+    
+    private lazy var term2ContentScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = UIColor(hexString: "E8E8E8")
+        return scrollView
+    }()
+    
+    private lazy var term2ContentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(hexString: "E8E8E8")
+        return view
+    }()
+    
+    private lazy var term2ContentLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = readTextFile(filename: "수정마을_개인정보처리방침.txt")
+        label.textColor = .text_black
+        label.numberOfLines = 0
+        label.font = UIFont.suit(size: 14, family: .Regular)
+        return label
     }()
     
     private lazy var registerBtn: UIButton = {
@@ -342,11 +393,21 @@ class RegisterView: UIView {
     
     let dropdown = DropDown()
     private var isdropdownBtnClicked: Bool = false
+    private var showTerm1Content: Bool = false
+    private var showTerm2Content: Bool = false
+    private var term1AgreeBtnClicked: Bool = false
+    private var term2AgreeBtnClicked: Bool = false
+    private var allTermAgreeBtnClicked: Bool = false
     let menuList = ["전체", "성미료", "성미관", "엠시티", "그레이스", "이율", "운정빌", "장수", "풍림"]
     var popVCHandler: (() -> Void)?
+    var presentAlertHandler: (() -> Void)?
     
     func setupPopVCHandler(_ handler: @escaping() -> Void) {
         popVCHandler = handler
+    }
+    
+    func setupPresentAlertHandler(_ handler: @escaping() -> Void) {
+        presentAlertHandler = handler
     }
     
     init() {
@@ -389,11 +450,17 @@ class RegisterView: UIView {
         setupCheckTerm1Btn()
         setupTerm1Label()
         setupTerm1EssentialLabel()
-        setupTerm1ViewMoreBtn()
+        //        setupTerm1ViewMoreBtn()
+        setupTerm1ScrollView()
+        setupTerm1ContentView()
+        setupTerm1ContentLabel()
         setupCheckTerm2Btn()
         setupTerm2Label()
         setupTerm2EssentialLabel()
-        setupTerm2ViewMoreBtn()
+        //        setupTerm2ViewMoreBtn()
+        setupTerm2ScrollView()
+        setupTerm2ContentView()
+        setupTerm2ContentLabel()
         setupRegisterBtn()
     }
     
@@ -415,23 +482,25 @@ class RegisterView: UIView {
     }
     
     private func setupScrollView() {
-        addSubview(scrollView)
+        self.addSubview(scrollView)
         NSLayoutConstraint.activate([
+            scrollView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
             scrollView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
     private func setupAllView() {
         scrollView.addSubview(allView)
+        
         NSLayoutConstraint.activate([
             allView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            allView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            allView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            allView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            allView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             allView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
+        
         
         let contentViewCenterY = allView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
         contentViewCenterY.priority = .defaultLow
@@ -519,7 +588,7 @@ class RegisterView: UIView {
             pwdSameResultLabel.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 44)
         ])
     }
-
+    
     private func setupNameLabel() {
         allView.addSubview(nameLabel)
         NSLayoutConstraint.activate([
@@ -607,7 +676,7 @@ class RegisterView: UIView {
             roomTextField.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
-
+    
     private func setupAgreeTermsLabel() {
         allView.addSubview(agreeTermsLabel)
         NSLayoutConstraint.activate([
@@ -679,7 +748,7 @@ class RegisterView: UIView {
     private func setupCheckTerm2Btn() {
         allView.addSubview(checkTerm2Btn)
         NSLayoutConstraint.activate([
-            checkTerm2Btn.topAnchor.constraint(equalTo: checkTerm1Btn.bottomAnchor, constant: 16),
+            checkTerm2Btn.topAnchor.constraint(equalTo: term1ContentScrollView.bottomAnchor, constant: 16),
             checkTerm2Btn.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 44),
             checkTerm2Btn.widthAnchor.constraint(equalToConstant: 17)
         ])
@@ -712,10 +781,95 @@ class RegisterView: UIView {
     private func setupRegisterBtn() {
         allView.addSubview(registerBtn)
         NSLayoutConstraint.activate([
-            registerBtn.topAnchor.constraint(equalTo: term2Label.bottomAnchor, constant: 60),
+            registerBtn.topAnchor.constraint(equalTo: term2ContentScrollView.bottomAnchor, constant: 60),
             registerBtn.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 107),
             registerBtn.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -107),
+            registerBtn.bottomAnchor.constraint(equalTo: allView.bottomAnchor, constant: -50),
             registerBtn.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func setupTerm1ScrollView() {
+        allView.addSubview(term1ContentScrollView)
+        NSLayoutConstraint.activate([
+            term1ContentScrollView.topAnchor.constraint(equalTo: checkTerm1Btn.bottomAnchor, constant: 16),
+            term1ContentScrollView.leadingAnchor.constraint(equalTo: checkTerm1Btn.leadingAnchor),
+            term1ContentScrollView.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -40),
+            term1ContentScrollView.heightAnchor.constraint(equalToConstant: 162)
+        ])
+    }
+    
+    private func setupTerm1ContentView() {
+        term1ContentScrollView.addSubview(term1ContentView)
+        NSLayoutConstraint.activate([
+            term1ContentView.topAnchor.constraint(equalTo: term1ContentScrollView.topAnchor),
+            term1ContentView.leadingAnchor.constraint(equalTo: term1ContentScrollView.leadingAnchor),
+            term1ContentView.trailingAnchor.constraint(equalTo: term1ContentScrollView.trailingAnchor),
+            term1ContentView.bottomAnchor.constraint(equalTo: term1ContentScrollView.bottomAnchor)
+        ])
+        
+        let contentViewCenterY = term1ContentView.centerYAnchor.constraint(equalTo: term1ContentScrollView.centerYAnchor)
+        contentViewCenterY.priority = .defaultLow
+        
+        let contentViewHeight = term1ContentView.heightAnchor.constraint(greaterThanOrEqualTo: self.heightAnchor)
+        contentViewHeight.priority = .defaultLow
+        
+        NSLayoutConstraint.activate([
+            term1ContentView.centerXAnchor.constraint(equalTo: term1ContentScrollView.centerXAnchor),
+            contentViewCenterY,
+            contentViewHeight
+        ])
+    }
+    
+    private func setupTerm1ContentLabel() {
+        term1ContentView.addSubview(term1ContentLabel)
+        NSLayoutConstraint.activate([
+            term1ContentLabel.topAnchor.constraint(equalTo: term1ContentView.topAnchor, constant: 10),
+            term1ContentLabel.leadingAnchor.constraint(equalTo: term1ContentView.leadingAnchor, constant: 10),
+            term1ContentLabel.trailingAnchor.constraint(equalTo: term1ContentView.trailingAnchor, constant: -10),
+            term1ContentLabel.bottomAnchor.constraint(equalTo: term1ContentView.bottomAnchor, constant: 10)
+        ])
+    }
+    
+    private func setupTerm2ScrollView() {
+        allView.addSubview(term2ContentScrollView)
+        NSLayoutConstraint.activate([
+            term2ContentScrollView.topAnchor.constraint(equalTo: checkTerm2Btn.bottomAnchor, constant: 16),
+            term2ContentScrollView.leadingAnchor.constraint(equalTo: checkTerm2Btn.leadingAnchor),
+            term2ContentScrollView.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -40),
+            term2ContentScrollView.heightAnchor.constraint(equalToConstant: 162)
+        ])
+    }
+    
+    private func setupTerm2ContentView() {
+        term2ContentScrollView.addSubview(term2ContentView)
+        NSLayoutConstraint.activate([
+            term2ContentView.topAnchor.constraint(equalTo: term2ContentScrollView.topAnchor),
+            term2ContentView.leadingAnchor.constraint(equalTo: term2ContentScrollView.leadingAnchor),
+            term2ContentView.trailingAnchor.constraint(equalTo: term2ContentScrollView.trailingAnchor),
+            term2ContentView.bottomAnchor.constraint(equalTo: term2ContentScrollView.bottomAnchor)
+        ])
+        
+        let contentViewCenterY = term2ContentView.centerYAnchor.constraint(equalTo: term2ContentScrollView.centerYAnchor)
+        contentViewCenterY.priority = .defaultLow
+        
+        let contentViewHeight = term2ContentView.heightAnchor.constraint(greaterThanOrEqualTo: self.heightAnchor)
+        contentViewHeight.priority = .defaultLow
+        
+        NSLayoutConstraint.activate([
+            term2ContentView.centerXAnchor.constraint(equalTo: term2ContentScrollView.centerXAnchor),
+            contentViewCenterY,
+            contentViewHeight
+        ])
+    }
+    
+    private func setupTerm2ContentLabel() {
+        term2ContentView.addSubview(term2ContentLabel)
+        NSLayoutConstraint.activate([
+            term2ContentLabel.topAnchor.constraint(equalTo: term2ContentView.topAnchor, constant: 10),
+            term2ContentLabel.leadingAnchor.constraint(equalTo: term2ContentView.leadingAnchor, constant: 10),
+            term2ContentLabel.trailingAnchor.constraint(equalTo: term2ContentView.trailingAnchor, constant: -10),
+            term2ContentLabel.bottomAnchor.constraint(equalTo: term2ContentView.bottomAnchor, constant: 10)
         ])
     }
     
@@ -769,7 +923,73 @@ class RegisterView: UIView {
         dropDownBtn.setImage(isdropdownBtnClicked ? UIImage(systemName: "arrowtriangle.up.fill") : UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
         dropdown.show()
     }
-
+    
+    @objc func term1IsAgree() {
+        term1AgreeBtnClicked = !term1AgreeBtnClicked
+        changeTermColor(1)
+    }
+    
+    @objc func term2IsAgree() {
+        term2AgreeBtnClicked = !term2AgreeBtnClicked
+        changeTermColor(2)
+    }
+    
+    @objc func changeTermColor(_ idx: Int) {
+        if idx == 1 {
+            if term1AgreeBtnClicked {
+                checkTerm1Btn.tintColor = .primary
+                term1Label.textColor = .primary
+                term1EssentialLabel.textColor = .primary
+            }
+            else {
+                checkTerm1Btn.tintColor = .textField_gray
+                term1Label.textColor = UIColor(hexString: "818181")
+                term1EssentialLabel.textColor = .pdark
+            }
+        }
+        else {
+            if term2AgreeBtnClicked {
+                checkTerm2Btn.tintColor = .primary
+                term2Label.textColor = .primary
+                term2EssentialLabel.textColor = .primary
+            }
+            else {
+                checkTerm2Btn.tintColor = .textField_gray
+                term2Label.textColor = UIColor(hexString: "818181")
+                term2EssentialLabel.textColor = .pdark
+            }
+        }
+    }
+    
+    @objc func termAllAgree() {
+        allTermAgreeBtnClicked = !allTermAgreeBtnClicked
+        if allTermAgreeBtnClicked {
+            checkAllTermsBtn.tintColor = .primary
+            agreeAllTermsLabel.textColor = .primary
+            agreeAllTermsView.layer.borderColor = UIColor.primary.cgColor
+            
+            term1AgreeBtnClicked = true
+            term2AgreeBtnClicked = true
+            changeTermColor(1)
+            changeTermColor(2)
+            print(allTermAgreeBtnClicked)
+            print(term1AgreeBtnClicked)
+            print(term2AgreeBtnClicked)
+        }
+        else {
+            checkAllTermsBtn.tintColor = .textField_gray
+            agreeAllTermsLabel.textColor = UIColor(hexString: "818181")
+            agreeAllTermsView.layer.borderColor = UIColor.textField_gray.cgColor
+            
+            term1AgreeBtnClicked = false
+            term2AgreeBtnClicked = false
+            changeTermColor(1)
+            changeTermColor(2)
+            print(allTermAgreeBtnClicked)
+            print(term1AgreeBtnClicked)
+            print(term2AgreeBtnClicked)
+        }
+    }
 }
 
 extension RegisterView {
@@ -782,7 +1002,7 @@ extension RegisterView {
             self!.isdropdownBtnClicked = !self!.isdropdownBtnClicked
             self!.dropDownBtn.setImage(self!.isdropdownBtnClicked ? UIImage(systemName: "arrowtriangle.up.fill") : UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
         }
-
+        
         dropdown.cancelAction = { [weak self] in
             self!.isdropdownBtnClicked = !self!.isdropdownBtnClicked
             self!.dropDownBtn.setImage(self!.isdropdownBtnClicked ? UIImage(systemName: "arrowtriangle.up.fill") : UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
@@ -790,16 +1010,16 @@ extension RegisterView {
     }
 }
 
-//extension RegisterViewController: UITextFieldDelegate {
-//
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        textField.layer.borderWidth = 0.5
-//        textField.layer.borderColor = UIColor.primary.cgColor
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        textField.layer.borderWidth = 0.5
-//        textField.layer.borderColor = UIColor(hexString: "C5C5C5").cgColor
-//    }
-//
-//}
+extension RegisterView {
+    func readTextFile(filename: String) -> String {
+        var result = ""
+
+        guard let pahts = Bundle.main.path(forResource: filename, ofType: nil) else { return "" }
+        do {
+            result = try String(contentsOfFile: pahts, encoding: .utf8)
+            return result
+        } catch {
+            return "Error: file read failed - \(error.localizedDescription)"
+        }
+    }
+}
