@@ -163,6 +163,7 @@ class RegisterView: UIView {
         tf.layer.borderWidth = 1
         tf.roundCorners(corners: [.allCorners], radius: 5)
         tf.textColor = .text_black
+        tf.keyboardType = .numberPad
         return tf
     }()
     
@@ -388,6 +389,7 @@ class RegisterView: UIView {
         btn.backgroundColor = .primary
         btn.titleLabel?.font = UIFont.suit(size: 18, family: .Bold)
         btn.roundCorners(corners: [.allCorners], radius: 15)
+        btn.addTarget(self, action: #selector(registerBtnSelected), for: .touchUpInside)
         return btn
     }()
     
@@ -398,15 +400,17 @@ class RegisterView: UIView {
     private var term1AgreeBtnClicked: Bool = false
     private var term2AgreeBtnClicked: Bool = false
     private var allTermAgreeBtnClicked: Bool = false
+    private var idAccepted: Bool = false
+    private var pwdAccepted: Bool = false
     let menuList = ["전체", "성미료", "성미관", "엠시티", "그레이스", "이율", "운정빌", "장수", "풍림"]
     var popVCHandler: (() -> Void)?
-    var presentAlertHandler: (() -> Void)?
+    var presentAlertHandler: ((RejectRegisterType) -> Void)?
     
     func setupPopVCHandler(_ handler: @escaping() -> Void) {
         popVCHandler = handler
     }
     
-    func setupPresentAlertHandler(_ handler: @escaping() -> Void) {
+    func setupPresentAlertHandler(_ handler: @escaping(RejectRegisterType) -> Void) {
         presentAlertHandler = handler
     }
     
@@ -877,6 +881,63 @@ class RegisterView: UIView {
         popVCHandler?()
     }
     
+    @objc func registerBtnSelected() {
+        if !idAccepted {
+            presentAlertHandler?(.overlapId)
+            return
+        }
+        if !pwdAccepted {
+            presentAlertHandler?(.differentPwd)
+            return
+        }
+        if let id = idTextField.text,
+           let pwd = pwdTextField.text,
+           let name = nameTextField.text,
+           let phoneNumber = phoneNumberTextField.text,
+           let dormitory = dormitoryNameLabel.text,
+           let room = roomTextField.text {
+            if name.count == 0 {
+                presentAlertHandler?(.noName)
+                return
+            }
+            else if phoneNumber.count == 0 {
+                presentAlertHandler?(.noPhoneNumber)
+                return
+            }
+            else if dormitory == "기숙사 선택" {
+                presentAlertHandler?(.unselectDormitory)
+                return
+            }
+            else if room.count == 0 {
+                presentAlertHandler?(.unwrittenRoom)
+                return
+            }
+            else if !allTermAgreeBtnClicked {
+                presentAlertHandler?(.notAgreeTerms)
+                return
+            }
+            
+            let aes = AESUtil()
+            let securePwd = aes.setAES256Encrypt(string: pwd)
+            let model =  SignUpModel(id: id, password: securePwd, name: name, dormitoryName: dormitory, detailedAddress: room, phoneNumber: phoneNumber)
+            
+            Repository.shared.signUp(signUpModel: model) { status, result in
+                switch status {
+                case .ok:
+                    if result == "회원가입 성공" {
+                        UserDefaults.standard.set(dormitory, forKey: "dormitoryName")
+                        print("회원가입 성공")
+                        self.popVCHandler?()
+                    }
+                    return
+                    
+                default:
+                    break
+                }
+            }
+        }
+    }
+        
     @objc func checkIdOverlap() {
         if let id = idTextField.text {
             AF.request(
@@ -892,10 +953,12 @@ class RegisterView: UIView {
                         case "true":
                             self.idOverlapResultLabel.text = "사용 가능한 아이디입니다."
                             self.idOverlapResultLabel.textColor = .primary
+                            self.idAccepted = true
                             
                         case "false":
                             self.idOverlapResultLabel.text = "이미 존재하는 아이디입니다."
                             self.idOverlapResultLabel.textColor = UIColor(hexString: "FF0000")
+                            self.idAccepted = false
                             
                         default:
                             return
@@ -912,9 +975,11 @@ class RegisterView: UIView {
     @objc final private func checkPwdTextFieldValueChanged(textField: UITextField) {
         if checkPwdTextField.text != pwdTextField.text {
             pwdSameResultLabel.text = "비밀번호가 다릅니다."
+            self.pwdAccepted = false
         }
         else {
             pwdSameResultLabel.text = ""
+            self.pwdAccepted = true
         }
     }
     
@@ -927,11 +992,27 @@ class RegisterView: UIView {
     @objc func term1IsAgree() {
         term1AgreeBtnClicked = !term1AgreeBtnClicked
         changeTermColor(1)
+        if term1AgreeBtnClicked,term2AgreeBtnClicked {
+            allTermAgreeBtnClicked = true
+            changeTermColor(3)
+        }
+        else {
+            allTermAgreeBtnClicked = false
+            changeTermColor(3)
+        }
     }
     
     @objc func term2IsAgree() {
         term2AgreeBtnClicked = !term2AgreeBtnClicked
         changeTermColor(2)
+        if term1AgreeBtnClicked,term2AgreeBtnClicked {
+            allTermAgreeBtnClicked = true
+            changeTermColor(3)
+        }
+        else {
+            allTermAgreeBtnClicked = false
+            changeTermColor(3)
+        }
     }
     
     @objc func changeTermColor(_ idx: Int) {
@@ -947,7 +1028,7 @@ class RegisterView: UIView {
                 term1EssentialLabel.textColor = .pdark
             }
         }
-        else {
+        else if idx == 2 {
             if term2AgreeBtnClicked {
                 checkTerm2Btn.tintColor = .primary
                 term2Label.textColor = .primary
@@ -959,35 +1040,35 @@ class RegisterView: UIView {
                 term2EssentialLabel.textColor = .pdark
             }
         }
+        else {
+            if allTermAgreeBtnClicked {
+                checkAllTermsBtn.tintColor = .primary
+                agreeAllTermsLabel.textColor = .primary
+                agreeAllTermsView.layer.borderColor = UIColor.primary.cgColor
+            }
+            else {
+                checkAllTermsBtn.tintColor = .textField_gray
+                agreeAllTermsLabel.textColor = UIColor(hexString: "818181")
+                agreeAllTermsView.layer.borderColor = UIColor.textField_gray.cgColor
+            }
+        }
     }
     
     @objc func termAllAgree() {
         allTermAgreeBtnClicked = !allTermAgreeBtnClicked
         if allTermAgreeBtnClicked {
-            checkAllTermsBtn.tintColor = .primary
-            agreeAllTermsLabel.textColor = .primary
-            agreeAllTermsView.layer.borderColor = UIColor.primary.cgColor
-            
+            changeTermColor(3)
             term1AgreeBtnClicked = true
             term2AgreeBtnClicked = true
             changeTermColor(1)
             changeTermColor(2)
-            print(allTermAgreeBtnClicked)
-            print(term1AgreeBtnClicked)
-            print(term2AgreeBtnClicked)
         }
         else {
-            checkAllTermsBtn.tintColor = .textField_gray
-            agreeAllTermsLabel.textColor = UIColor(hexString: "818181")
-            agreeAllTermsView.layer.borderColor = UIColor.textField_gray.cgColor
-            
+            changeTermColor(3)
             term1AgreeBtnClicked = false
             term2AgreeBtnClicked = false
             changeTermColor(1)
             changeTermColor(2)
-            print(allTermAgreeBtnClicked)
-            print(term1AgreeBtnClicked)
-            print(term2AgreeBtnClicked)
         }
     }
 }

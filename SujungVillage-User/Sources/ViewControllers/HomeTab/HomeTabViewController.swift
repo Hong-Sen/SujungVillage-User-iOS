@@ -72,6 +72,7 @@ class HomeTabViewController: UIViewController {
         setUI()
         setCalendarView()
         viewModel.fetchResidentInfo(year: curYear, month: curMonth)
+        print("Home ViewWillAppear")
     }
     
     func presentLoginVC() {

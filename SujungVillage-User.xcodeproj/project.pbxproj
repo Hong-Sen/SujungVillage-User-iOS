@@ -12,7 +12,6 @@
 		74008EF228F302D4008A609F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF128F302D4008A609F /* UITextField+Extension.swift */; };
 		74008EF428F31314008A609F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74008EF328F31314008A609F /* RegisterViewController.swift */; };
 		74180BFC29680A5D0096754C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74180BFB29680A5D0096754C /* RegisterView.swift */; };
-		74180BFE29680B410096754C /* RegisterTmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74180BFD29680B410096754C /* RegisterTmpViewController.swift */; };
 		74180C0029685CF40096754C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74180BFF29685CF40096754C /* UIButton+Extension.swift */; };
 		741E062E290E2E4600417519 /* MyQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E062C290E2E4600417519 /* MyQCell.swift */; };
 		741E062F290E2E4600417519 /* MyQCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741E062D290E2E4600417519 /* MyQCell.xib */; };
@@ -91,6 +90,7 @@
 		7496929D29117424008CBB33 /* WriteQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496929C29117424008CBB33 /* WriteQuestionViewController.swift */; };
 		74A1011E293C52F70022DAF9 /* CommunityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A1011D293C52F70022DAF9 /* CommunityManager.swift */; };
 		74A45C1B291AA8340044683A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A45C1A291AA8340044683A /* Date+Extension.swift */; };
+		74B071A429766BC500BDD095 /* RejectRegisterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B071A329766BC500BDD095 /* RejectRegisterType.swift */; };
 		74C6A96728EFF95D00C7C536 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */; };
 		74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */; };
 		74D0E06D2900ECEC0040C462 /* RollCallAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */; };
@@ -124,7 +124,6 @@
 		74008EF128F302D4008A609F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		74008EF328F31314008A609F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		74180BFB29680A5D0096754C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		74180BFD29680B410096754C /* RegisterTmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTmpViewController.swift; sourceTree = "<group>"; };
 		74180BFF29685CF40096754C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		741E062C290E2E4600417519 /* MyQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQCell.swift; sourceTree = "<group>"; };
 		741E062D290E2E4600417519 /* MyQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQCell.xib; sourceTree = "<group>"; };
@@ -205,6 +204,7 @@
 		7496929C29117424008CBB33 /* WriteQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteQuestionViewController.swift; sourceTree = "<group>"; };
 		74A1011D293C52F70022DAF9 /* CommunityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityManager.swift; sourceTree = "<group>"; };
 		74A45C1A291AA8340044683A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		74B071A329766BC500BDD095 /* RejectRegisterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectRegisterType.swift; sourceTree = "<group>"; };
 		74C6A96628EFF95D00C7C536 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		74D0E06A2900ECEC0040C462 /* RollCallAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollCallAlertViewController.swift; sourceTree = "<group>"; };
 		74D0E06B2900ECEC0040C462 /* RollCallAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RollCallAlertViewController.xib; sourceTree = "<group>"; };
@@ -439,6 +439,7 @@
 				741E0630290E3A0400417519 /* MyQResponse.swift */,
 				74FA0098292F68FC00A01244 /* CommunityResponse.swift */,
 				741F0675294B95C9008394BB /* NotificationResponse.swift */,
+				74B071A329766BC500BDD095 /* RejectRegisterType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -582,7 +583,6 @@
 			children = (
 				7483C7A128E6E4CE00CCF70A /* LoginViewController.swift */,
 				74008EF328F31314008A609F /* RegisterViewController.swift */,
-				74180BFD29680B410096754C /* RegisterTmpViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -885,7 +885,6 @@
 				7483C7A228E6E4CE00CCF70A /* LoginViewController.swift in Sources */,
 				7469A15128F803C9007286C3 /* NoticeDetailViewModel.swift in Sources */,
 				7476EF9628F7FD63008B7ABF /* GetNoticeDetailViewController.swift in Sources */,
-				74180BFE29680B410096754C /* RegisterTmpViewController.swift in Sources */,
 				74D0E06C2900ECEC0040C462 /* RollCallAlertViewController.swift in Sources */,
 				742F33E328F6EAC400DA8478 /* NoticeTableViewCell.swift in Sources */,
 				7483C7A428E70D8A00CCF70A /* HTTPStaus+Enum.swift in Sources */,
@@ -896,6 +895,7 @@
 				74180BFC29680A5D0096754C /* RegisterView.swift in Sources */,
 				74D0E0742900ED500040C462 /* ExeatAlertViewController.swift in Sources */,
 				741E0631290E3A0400417519 /* MyQResponse.swift in Sources */,
+				74B071A429766BC500BDD095 /* RejectRegisterType.swift in Sources */,
 				74A1011E293C52F70022DAF9 /* CommunityManager.swift in Sources */,
 				743D8897290D2F7600D601E0 /* FAQDetailTableViewCell.swift in Sources */,
 				7483C7AA28E82DA500CCF70A /* LoginResponse.swift in Sources */,
