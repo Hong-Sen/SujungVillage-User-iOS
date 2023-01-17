@@ -29,6 +29,10 @@ extension UIColor {
         return UIColor(hexString: "838383")
     }
     
+    @nonobjc class var textField_gray: UIColor {
+        return UIColor(hexString: "C5C5C5")
+    }
+    
     convenience init(rgb: Int, alpha: CGFloat = 1.0) {
         self.init(red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0, green: CGFloat((rgb & 0xFF00) >> 8) / 255.0, blue: CGFloat(rgb & 0xFF) / 255.0, alpha: alpha)
     }
