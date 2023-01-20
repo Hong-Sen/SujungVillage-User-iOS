@@ -107,7 +107,7 @@ class CommunityDetailView: UIView {
         btn.setTitle("신고하기", for: .normal)
         btn.setTitleColor(.text_gray, for: .normal)
         btn.titleLabel?.font = UIFont.suit(size: 14, family: .Light)
-        btn.addTarget(self, action: #selector(declarationBtnSelected), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(reportPostBtnSelected), for: .touchUpInside)
         return btn
     }()
     
@@ -179,13 +179,18 @@ class CommunityDetailView: UIView {
     var registerCommentHandler: (() -> Void)?
     var deletePostHandler: (() -> Void)?
     var deleteCommentHandler: (()->Void)?
-    var declarationHandler: (() -> Void)?
+    var reportPostHandler: (() -> Void)?
+    var reportCommentHandler: (() -> Void)?
     var postId: Int = -1
+    var id: String = ""
     
     init() {
         super.init(frame: .zero)
         setTableView()
         setupViews()
+        if let userId = UserDefaults.standard.string(forKey: "id") {
+            id = userId
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -208,8 +213,12 @@ class CommunityDetailView: UIView {
         deleteCommentHandler = handler
     }
     
-    func setupDeclarationHandler(_ handler: @escaping() -> Void) {
-        declarationHandler = handler
+    func setupReportPostHandler(_ handler: @escaping() -> Void) {
+        reportPostHandler = handler
+    }
+    
+    func setupReportCommentHandler(_ handler: @escaping() -> Void) {
+        reportCommentHandler = handler
     }
     
     private func setTableView() {
@@ -444,8 +453,12 @@ class CommunityDetailView: UIView {
         deleteCommentHandler?()
     }
     
-    @objc func declarationBtnSelected() {
-        declarationHandler?()
+    @objc func reportPostBtnSelected() {
+        reportPostHandler?()
+    }
+    
+    @objc func reportCommentBtnSelected() {
+        reportCommentHandler?()
     }
 }
 
@@ -467,14 +480,18 @@ extension CommunityDetailView: UITableViewDelegate, UITableViewDataSource {
         formatTime = formatTime.replacingOccurrences(of: "-", with: "/")
         cell.dateLabel.text = String(formatTime.prefix(16))
         cell.contentLabel.text = commentList[indexPath.row].content
-        if commentList[indexPath.row].writerID != UserDefaults.standard.string(forKey: "id") {
-            cell.deleteBtn.isEnabled = true
-            cell.deleteBtn.setTitle("", for: .normal)
+        if commentList[indexPath.row].writerID != id {
+            cell.deleteBtn.isHidden = true
         }
-        cell.deleteBtn.tag = commentList[indexPath.row].id
-        cell.deleteBtn.addTarget(self, action: #selector(deleteBtnSelected), for: .touchUpInside)
+        else {
+            cell.deleteBtn.isHidden = false
+            cell.deleteBtn.tag = commentList[indexPath.row].id
+            cell.deleteBtn.addTarget(self, action: #selector(deleteBtnSelected), for: .touchUpInside)
+        }
+        cell.reportBtn.addTarget(self, action: #selector(reportCommentBtnSelected), for: .touchUpInside)
         cell.separatorInset = UIEdgeInsets.zero
         cell.selectionStyle = .none
+    
         return cell
     }
 }

@@ -111,33 +111,13 @@ class CommunityDetailViewController: UIViewController {
             }
         }
         
-        detailView.setupDeclarationHandler {
-            let alert = UIAlertController(title: "신고가 접수되었습니다. 검토는 최대 24시간 소요됩니다.", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .cancel))
-            
-            let actionSheet = UIAlertController(title: "신고 사유 선택", message: "누적 신고 횟수가 3회 이상인 유저는 글을 작성할 수 없게 됩니다.", preferredStyle: .actionSheet)
-            actionSheet.addAction(UIAlertAction(title: "상업적 광고 및 판매", style: .default, handler: { action in
-                self.present(alert, animated: true)
-            }))
-            
-            actionSheet.addAction(UIAlertAction(title: "욕설/비하", style: .default, handler: { action in
-                self.present(alert, animated: true)
-            }))
-            
-            actionSheet.addAction(UIAlertAction(title: "유출/사칭.사기", style: .default, handler: { action in
-                self.present(alert, animated: true)
-            }))
-            
-            actionSheet.addAction(UIAlertAction(title: "음란물", style: .default, handler: { action in
-                self.present(alert, animated: true)
-            }))
-            
-            actionSheet.addAction(UIAlertAction(title: "게시판 성격에 부적절함", style: .default, handler: { action in
-                self.present(alert, animated: true)
-            }))
-            
-            actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel))
-            
+        detailView.setupReportPostHandler {
+            let actionSheet = self.makeReportAlert()
+            self.present(actionSheet, animated: true)
+        }
+        
+        detailView.setupReportCommentHandler {
+            let actionSheet = self.makeReportAlert()
             self.present(actionSheet, animated: true)
         }
     }
@@ -160,5 +140,35 @@ class CommunityDetailViewController: UIViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
+    }
+    
+    func makeReportAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "신고가 접수되었습니다. 검토는 최대 24시간 소요됩니다.", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+        
+        let actionSheet = UIAlertController(title: "신고 사유 선택", message: "누적 신고 횟수가 3회 이상인 유저는 글을 작성할 수 없게 됩니다.", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "상업적 광고 및 판매", style: .default, handler: { action in
+            self.present(alert, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "욕설/비하", style: .default, handler: { action in
+            self.present(alert, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "유출/사칭.사기", style: .default, handler: { action in
+            self.present(alert, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "음란물", style: .default, handler: { action in
+            self.present(alert, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "게시판 성격에 부적절함", style: .default, handler: { action in
+            self.present(alert, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel))
+        
+        return actionSheet
     }
 }

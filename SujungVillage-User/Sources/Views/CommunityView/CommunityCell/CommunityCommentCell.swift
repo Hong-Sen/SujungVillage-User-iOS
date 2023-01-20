@@ -48,7 +48,17 @@ class CommunityCommentCell: UITableViewCell {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.tintColor = .text_gray
-        btn.setTitle("댓글삭제", for: .normal)
+        btn.setTitle("삭제", for: .normal)
+        btn.setTitleColor(.text_gray, for: .normal)
+        btn.titleLabel?.font = UIFont.suit(size: 10, family: .Light)
+        return btn
+    }()
+    
+    lazy var reportBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.tintColor = .text_gray
+        btn.setTitle("신고", for: .normal)
         btn.setTitleColor(.text_gray, for: .normal)
         btn.titleLabel?.font = UIFont.suit(size: 10, family: .Light)
         return btn
@@ -71,6 +81,7 @@ class CommunityCommentCell: UITableViewCell {
     private func setUpViews() {
         setUpCellView()
         setUpNameLabel()
+        setUpReportBtn()
         setUpDeleteBtn()
         setUpDateLabel()
         setUpContentLabel()
@@ -94,13 +105,22 @@ class CommunityCommentCell: UITableViewCell {
         ])
     }
     
+    private func setUpReportBtn() {
+        cellView.addSubview(reportBtn)
+        NSLayoutConstraint.activate([
+            reportBtn.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 13),
+            reportBtn.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -30)
+        ])
+    }
+    
     private func setUpDeleteBtn() {
         cellView.addSubview(deleteBtn)
         NSLayoutConstraint.activate([
-            deleteBtn.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 13),
-            deleteBtn.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -34)
+            deleteBtn.topAnchor.constraint(equalTo: reportBtn.topAnchor),
+            deleteBtn.trailingAnchor.constraint(equalTo: reportBtn.leadingAnchor, constant: -4)
         ])
     }
+
     
     private func setUpDateLabel() {
         cellView.addSubview(dateLabel)
@@ -115,8 +135,7 @@ class CommunityCommentCell: UITableViewCell {
         NSLayoutConstraint.activate([
             contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 7),
             contentLabel.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 42),
-            contentLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -40),
-//            contentLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -10)
+            contentLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -40)
         ])
     }
 }
