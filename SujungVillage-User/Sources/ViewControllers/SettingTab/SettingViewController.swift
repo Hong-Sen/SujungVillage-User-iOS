@@ -49,7 +49,13 @@ class SettingViewController: UIViewController {
             case .deleteAccount:
                 let alert = UIAlertController(title: "정말 탈퇴 하시겠습니까?", message: nil, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "탈퇴하기", style: .default, handler: { UIAlertAction in
-                    // FIX
+                    UserLoginManager.shared.doDeleteAccount { result in
+                        if result {
+                            UserDefaults.standard.autoLogin = false
+                            UserDefaults.standard.needLogin = true
+                            NotificationCenter.default.post(name: Notification.Name("showHomeTab"), object: nil)
+                        }
+                    }
                 }))
                 alert.addAction(UIAlertAction(title: "취소", style: .destructive, handler: nil))
                 self.present(alert, animated: true)

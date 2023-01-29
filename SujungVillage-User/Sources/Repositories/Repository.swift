@@ -79,6 +79,20 @@ extension Repository {
             }
         }
     }
+    
+    func deleteAccount(jwtToken: String, completion: @escaping(HTTPStatusCode, _ result: String)->Void) {
+        AF.request(
+        "\(baseUrl)/common/deleteUser",
+    method: .get,
+        encoding: JSONEncoding.default,
+        headers: ["jwt_token": jwtToken]
+        )
+        .responseString { response in
+            if let statusCode = response.response?.statusCode, let result = response.value {
+                completion(HTTPStatusCode.init(rawValue: statusCode), result)
+            }
+        }
+    }
 }
 
 // MARK: Home
