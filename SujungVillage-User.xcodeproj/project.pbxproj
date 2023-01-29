@@ -87,6 +87,8 @@
 		74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */; };
 		7484D0D02972EDA700B07E7C /* 수정마을_개인정보처리방침.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7484D0CE2972EDA600B07E7C /* 수정마을_개인정보처리방침.txt */; };
 		7484D0D12972EDA700B07E7C /* 수정마을_이용약관.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7484D0CF2972EDA700B07E7C /* 수정마을_이용약관.txt */; };
+		748BAB28297BFC7700D774A6 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BAB27297BFC7700D774A6 /* SettingView.swift */; };
+		748BAB2A297C249E00D774A6 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BAB29297C249E00D774A6 /* SettingType.swift */; };
 		7496929D29117424008CBB33 /* WriteQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7496929C29117424008CBB33 /* WriteQuestionViewController.swift */; };
 		74A1011E293C52F70022DAF9 /* CommunityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A1011D293C52F70022DAF9 /* CommunityManager.swift */; };
 		74A45C1B291AA8340044683A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A45C1A291AA8340044683A /* Date+Extension.swift */; };
@@ -201,6 +203,8 @@
 		74840A7B28E5B77C002AF1BC /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		7484D0CE2972EDA600B07E7C /* 수정마을_개인정보처리방침.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "수정마을_개인정보처리방침.txt"; sourceTree = "<group>"; };
 		7484D0CF2972EDA700B07E7C /* 수정마을_이용약관.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "수정마을_이용약관.txt"; sourceTree = "<group>"; };
+		748BAB27297BFC7700D774A6 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		748BAB29297C249E00D774A6 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		7496929C29117424008CBB33 /* WriteQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteQuestionViewController.swift; sourceTree = "<group>"; };
 		74A1011D293C52F70022DAF9 /* CommunityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityManager.swift; sourceTree = "<group>"; };
 		74A45C1A291AA8340044683A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -440,6 +444,7 @@
 				74FA0098292F68FC00A01244 /* CommunityResponse.swift */,
 				741F0675294B95C9008394BB /* NotificationResponse.swift */,
 				74B071A329766BC500BDD095 /* RejectRegisterType.swift */,
+				748BAB29297C249E00D774A6 /* SettingType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -539,6 +544,7 @@
 				742F33E028F6EA6900DA8478 /* NoticeTableView */,
 				7477DACC28F1C62000E3C865 /* TabbarView */,
 				7477DACB28F1C61000E3C865 /* LMPHistoryCellView */,
+				748BAB26297BFC5C00D774A6 /* Setting */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -610,6 +616,14 @@
 				7484D0CF2972EDA700B07E7C /* 수정마을_이용약관.txt */,
 			);
 			path = TermsOfUse;
+			sourceTree = "<group>";
+		};
+		748BAB26297BFC5C00D774A6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				748BAB27297BFC7700D774A6 /* SettingView.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		74D2615C28FEA5C8008BC5BE /* AlertView */ = {
@@ -846,6 +860,7 @@
 				742D13D928E438FB00150673 /* HomeTabViewController.swift in Sources */,
 				742D13F228E447CD00150673 /* CustomTabbarController.swift in Sources */,
 				744FE448290C390200EA04C4 /* MyQuestionViewController.swift in Sources */,
+				748BAB28297BFC7700D774A6 /* SettingView.swift in Sources */,
 				7469D7BA2902FB3000168FFA /* String+Extension.swift in Sources */,
 				74F3A15129477DBA0077CB43 /* NotificationMainView.swift in Sources */,
 				742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */,
@@ -864,6 +879,7 @@
 				7483C7A828E74F9E00CCF70A /* Repository.swift in Sources */,
 				74F3FA6C2901796F00226A42 /* GetRollCallInfoViewModel.swift in Sources */,
 				74E9AF902911049C0009D481 /* FAQTableViewCell.swift in Sources */,
+				748BAB2A297C249E00D774A6 /* SettingType.swift in Sources */,
 				742D13E628E4399C00150673 /* SettingViewController.swift in Sources */,
 				74280080292FB6DA0006BD23 /* CommunityViewModel.swift in Sources */,
 				7483C7A628E74F3800CCF70A /* API.swift in Sources */,

@@ -79,4 +79,26 @@ class UserLoginManager {
             }
         }
     }
+    
+    func doDeleteAccount(completion: @escaping(Bool)->Void) {
+        if let jwtToken = UserDefaults.standard.string(forKey: "jwtToken") {
+            Repository.shared.deleteAccount(jwtToken: jwtToken) { status, result in
+                print("result: \(result)")
+                switch status {
+                case .ok:
+                    if result == "회원탈퇴 완료" {
+                        print("회원탈퇴 완료")
+                        completion(true)
+                    }
+                    else {
+                        print("회원탈퇴 실패")
+                        completion(false)
+                    }
+                default:
+                    print("do delete account error: \(status)")
+                    completion(false)
+                }
+            }
+        }
+    }
 }
