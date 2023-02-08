@@ -1,4 +1,41 @@
-# 우리들이 꿈 꾸는 공간, 수정마을 🏡
+# 기숙사 통합 서비스, 수정마을 🏡
+
+#### 기존에 분산되어 있던 성신여대 기숙사 서비스를 통합한 '재사생용' iOS 앱입니다.</br>
+#### **🍎[App store](https://apps.apple.com/app/수정마을/id1661553949)🍎**에서 다운 받으실 수 있습니다.
+<span style="color:red"> (현재 서버 운영 종료로 실제 사용은 어렵습니다..) </span>
+
+</br>
+
+## 🖥️ 개발 환경
+
+* Xcode 14.2
+* Swift 5
+* iOS 14.0 
+* Alamofire 5.2
+* Firebase
+
+</br>
+
+## 🏠 기능 
+* 외박신청
+<br/><img src="https://user-images.githubusercontent.com/66013544/217562843-7f0c4439-77ca-4a9e-9026-c87aac9b02cc.png" width="280px" height="550px" title="외박" alt="setting"></img><br/>
+
+* 점호
+<br/><img src="https://user-images.githubusercontent.com/66013544/217561630-efa876a5-43cf-448c-8c8a-e7c12b482d16.png" width="500px" height="550px" title="점호" alt="setting"></img><br/>
+
+* 홈 캘린더에서 신청사항 확인 가능
+<br/><img src="https://user-images.githubusercontent.com/66013544/217561662-3c983590-0bcb-4271-bac3-3f54822a781d.png" width="750px" height="550px" title="홈" alt="setting"></img><br/>
+
+* 커뮤니티
+<br/><img src="https://user-images.githubusercontent.com/66013544/217561675-86986d37-1202-4cf4-b1e3-e6a1f0c3271b.png" width="1000px" height="550px" title="커뮤니티" alt="setting"></img><br/>
+
+* Q&A
+<br/><img src="https://user-images.githubusercontent.com/66013544/217561681-0da1bef9-38e3-42b8-ba8a-57e21b7d4098.png" width="500px" height="550px" title="QnA" alt="setting"></img><br/>
+
+* 공지사항
+<br/><img src="https://user-images.githubusercontent.com/66013544/217561682-2018a199-1b2e-4071-8304-f5ed5a73cf72.png" width="500px" height="550px" title="공지사항" alt="setting"></img><br/>
+
+</br>
 
 ## 📌 Commit Message Convention
 - ➕ **[ADD]** : FEAT 이외의 부수적인 코드, 라이브러리, 파일 추가
@@ -14,13 +51,7 @@
 - ⏪️ **[RENAME]** : 파일 이름 변경
 - ♻️ **[REFACTOR]** : 전면 수정
 
-<br>
-
-## 📌 References
-- [수정마을 발표 자료](https://github.com/b1urrrr/TheBluePlanet/files/9537863/default.pdf)
-- [▶ 수정마을 시연영상](https://user-images.githubusercontent.com/70993562/189418286-766a0428-2771-4b2f-a503-8f55df8673a2.mp4)
-
-<br>
+</br>
 
 ## 📌 개인정보처리방침
 ```
