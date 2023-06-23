@@ -10,7 +10,8 @@ import Lottie
 
 class SplashViewController: UIViewController {
     
-    var animationView = AnimationView()
+    var animationView = LottieAnimationView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

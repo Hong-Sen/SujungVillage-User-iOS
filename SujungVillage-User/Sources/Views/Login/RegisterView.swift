@@ -917,8 +917,7 @@ class RegisterView: UIView {
                 return
             }
             
-            let aes = AESUtil()
-            let securePwd = aes.setAES256Encrypt(string: pwd)
+            let securePwd = String(PBKDF2().pbkdf2SHA1Calibrate(password: pwd))
             let model =  SignUpModel(id: id, password: securePwd, name: name, dormitoryName: dormitory, detailedAddress: room, phoneNumber: phoneNumber)
             
             Repository.shared.signUp(signUpModel: model) { status, result in
