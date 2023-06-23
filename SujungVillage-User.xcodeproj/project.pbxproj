@@ -22,6 +22,7 @@
 		741F0670294B8CDC008394BB /* CommunityNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F066F294B8CDC008394BB /* CommunityNotificationViewController.swift */; };
 		741F0673294B9243008394BB /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F0672294B9243008394BB /* NotificationCell.swift */; };
 		741F0676294B95C9008394BB /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F0675294B95C9008394BB /* NotificationResponse.swift */; };
+		742278152A4315460094D48B /* PBKDF2Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742278142A4315460094D48B /* PBKDF2Util.swift */; };
 		74280080292FB6DA0006BD23 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428007F292FB6DA0006BD23 /* CommunityViewModel.swift */; };
 		742D13B928E2C6FE00150673 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13B828E2C6FE00150673 /* AppDelegate.swift */; };
 		742D13BB28E2C6FE00150673 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742D13BA28E2C6FE00150673 /* SceneDelegate.swift */; };
@@ -136,6 +137,7 @@
 		741F066F294B8CDC008394BB /* CommunityNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNotificationViewController.swift; sourceTree = "<group>"; };
 		741F0672294B9243008394BB /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		741F0675294B95C9008394BB /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
+		742278142A4315460094D48B /* PBKDF2Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBKDF2Util.swift; sourceTree = "<group>"; };
 		7428007F292FB6DA0006BD23 /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		742D13B528E2C6FE00150673 /* SujungVillage-User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SujungVillage-User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		742D13B828E2C6FE00150673 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				74680B6828F55F57006E289F /* AESUtil.swift */,
+				742278142A4315460094D48B /* PBKDF2Util.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 				74D2DB7B29028AA600695F62 /* GetExeatInfoViewModel.swift in Sources */,
 				741F0670294B8CDC008394BB /* CommunityNotificationViewController.swift in Sources */,
 				74840A7C28E5B77C002AF1BC /* UIColor+Extension.swift in Sources */,
+				742278152A4315460094D48B /* PBKDF2Util.swift in Sources */,
 				742F33EA28F6F03C00DA8478 /* NoticeResponse.swift in Sources */,
 				741F0673294B9243008394BB /* NotificationCell.swift in Sources */,
 				741F0676294B95C9008394BB /* NotificationResponse.swift in Sources */,
